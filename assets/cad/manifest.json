@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ptz-v10-studio",
+    "title": "PTZ V10 \u00b7 studio orbit",
+    "description": "Colour-coded mechanisms, clean separation and a shaded studio backdrop.",
+    "image": "ptz-v10-studio.jpg",
+    "video": "ptz-v10-studio-14s.mp4",
+    "prompt": "A cinematic product shot of this exploded pan-and-tilt camera rig. Keep the components separated in their reference positions as the camera makes a slow, subtle orbit. Teal and blue anodized frames, brushed metal covers, brass pulleys, black belts and a purple electronics drawer. Soft studio lighting, precise mechanical detail, gentle reflections. Keep the existing parts and overall composition; no labels or added components.",
+    "derivation": "Image extracted at 7 seconds; video is first 14 seconds, 1280x720, 24 fps, no audio. Original untouched.",
+    "sha256": {
+      "image": "bb761d5c1f49e973b733e6bc35893f99953549582e29799a958ea9b4feff8e19",
+      "video": "9a1866a2f31eb94be0620962dc1aee8b42fa050eab05b3c929a786359bfd53b9"
+    }
+  },
+  {
+    "id": "ptz-v10-wireframe",
+    "title": "PTZ V10 \u00b7 white wireframe",
+    "description": "A neutral CAD reference for testing a photoreal material treatment.",
+    "image": "ptz-v10-wireframe.jpg",
+    "video": "ptz-v10-wireframe-14s.mp4",
+    "prompt": "Turn this exploded CAD view of a pan-and-tilt camera rig into a realistic product film. Matte graphite housings, machined aluminum brackets, steel fasteners, brass drive pulleys and black timing belts. Maintain the visible layout and recognizable component shapes. A slow camera orbit around the suspended parts in a seamless white studio; soft shadows, restrained reflections, no text or invented parts.",
+    "derivation": "Image extracted at 7 seconds; video is first 14 seconds, 1280x720, 24 fps, no audio. Original untouched.",
+    "sha256": {
+      "image": "9d04a818b929a9048d6e8cc6a1eb3130d59ad5bf34283b0a581928863181c7ad",
+      "video": "fd754bb651de140aebf81c60527b40230a1f4df77194d0da13f2c8e29c12ce13"
+    }
+  },
+  {
+    "id": "ptz-v09-exploded",
+    "title": "PTZ V9 \u00b7 exploded housing",
+    "description": "Large, readable surfaces and distinct belt-drive subassemblies.",
+    "image": "ptz-v09-exploded.png",
+    "prompt": "A premium industrial product film of this exploded camera gimbal assembly. Preserve the sage-green housings, exposed belt drives, silver shafts and separated covers. Slow, controlled camera movement around the suspended components. Realistic machined materials, soft grey studio lighting, subtle metallic reflections and clean mechanical detail. Keep the parts separated and the composition stable; no text or extra components.",
+    "derivation": "Byte-identical copy of original render.",
+    "sha256": {
+      "image": "47005854714fdf2787e7736a143a220c89ba1fd8d1951316075a77b1b99865fa"
+    }
+  },
+  {
+    "id": "canoe-carriage",
+    "title": "Canoe camera \u00b7 roller carriage",
+    "description": "Simple geometry, textured wood and dark rollers make a strong material test.",
+    "image": "canoe-carriage.png",
+    "prompt": "A close-up engineering product film of this exploded canoe-camera roller carriage. Preserve the plywood side plates, black rollers, steel axles, stock brackets and visible fasteners. Gentle camera orbit with realistic wood grain, brushed steel highlights and rubber surfaces. Soft workshop-style studio lighting, deliberate motion, no extra parts, no labels or geometric melting.",
+    "derivation": "Byte-identical copy of original render.",
+    "sha256": {
+      "image": "5fb8ddf565feb0c8f312916a9b435de65efcd9ac35a238538654d247e725b6ae"
+    }
+  }
+]

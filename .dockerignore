@@ -1,0 +1,10 @@
+**
+!infra/
+!infra/blender/
+!infra/blender/**
+!blender/
+!blender/window_edit.py
+!scripts/
+!scripts/export-studio-scene.py
+!tests/
+!tests/native-window.blender.py

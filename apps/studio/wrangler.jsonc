@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "blackblend-studio",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": true,
+  "vars": {
+    "APP_ORIGIN": "https://your-studio.your-account.workers.dev",
+    "CLERK_ISSUER": "https://your-clerk-instance.clerk.accounts.dev"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "blackblend-studio",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "drizzle"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "blackblend-studio-media"
+    }
+  ]
+}

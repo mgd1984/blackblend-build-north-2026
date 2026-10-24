@@ -1,0 +1,5 @@
+Built-in imagegen review graphic. No application API credential or paid Blender/fal test was used.
+
+Final specification: Light-mode, high-legibility editorial architecture review map titled BLACKBLEND — STUDIO BASELINE. Studio (Three.js scene, chat, choreography, review) sends jobs to Cloudflare Worker, which owns Clerk authorization, D1 project/job records and private R2 artifacts. Worker calls Sol/Agents SDK and OpenAI hosted shell with Blender 5.1; candidate revisions return through Worker to Studio for Preview, Apply and Undo. A separate Worker branch reaches fal video behind human paid-generation approval. Metronome/Stripe sandbox adapters remain commercially inactive. Optional desktop execution uses Blender and Keychain on loopback. One web app, one project ledger, private source geometry. No vendor logos, private assets, arbitrary Blender scripting claims or invented metrics.
+
+Revision instruction: Correct arrows so external service candidates return through Worker; remove any external-agent-to-fal arrow. Worker alone owns the separate paid-video branch.

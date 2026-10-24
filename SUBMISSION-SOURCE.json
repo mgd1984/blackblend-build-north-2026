@@ -1,0 +1,1019 @@
+{
+  "snapshot": "Build North 2026",
+  "sourceCommit": "89b6579c9c1aaf68cf59abc706efd96f4b1da2b4",
+  "testedIntegration": "18cefa2b7f15a165eadd69236d6c0d04c89dcb41",
+  "publicationChanges": [
+    "README.md",
+    "apps/studio/wrangler.jsonc",
+    "docs/BASELINE.md",
+    "docs/HACKATHON-MVP.md"
+  ],
+  "omittedHistoricalPaths": [
+    "docs/BUILD-NORTH.md",
+    "docs/HANDOFF-2026-10-21.md",
+    "docs/RECOVERY.md",
+    "docs/archive/prototype-2026-10-20/ARCHITECTURE.md",
+    "docs/archive/prototype-2026-10-20/BUSINESS.md",
+    "docs/archive/prototype-2026-10-20/PRODUCT.md",
+    "docs/archive/prototype-2026-10-20/SITES.md",
+    "docs/archive/prototype-2026-10-20/STACK.md",
+    "docs/visuals/README.md",
+    "docs/visuals/STYLE.md",
+    "docs/visuals/blackblend-business-model-prompt-v1.txt",
+    "docs/visuals/blackblend-business-model-prompt-v4.txt",
+    "docs/visuals/blackblend-business-model-v1.png",
+    "docs/visuals/blackblend-business-model-v4.png",
+    "docs/visuals/blackblend-business-model-v5-prompt.txt",
+    "docs/visuals/blackblend-business-model-v5.png",
+    "docs/visuals/blackblend-completion-roadmap-prompt-v1.txt",
+    "docs/visuals/blackblend-completion-roadmap-prompt-v4.txt",
+    "docs/visuals/blackblend-completion-roadmap-v1.png",
+    "docs/visuals/blackblend-completion-roadmap-v4.png",
+    "docs/visuals/blackblend-customer-journey-edit-prompt-v4.txt",
+    "docs/visuals/blackblend-customer-journey-prompt-v1.txt",
+    "docs/visuals/blackblend-customer-journey-prompt-v4.txt",
+    "docs/visuals/blackblend-customer-journey-v1.png",
+    "docs/visuals/blackblend-customer-journey-v4.png",
+    "docs/visuals/blackblend-digital-twin-path-v1-edit-prompt.txt",
+    "docs/visuals/blackblend-digital-twin-path-v1-prompt.txt",
+    "docs/visuals/blackblend-digital-twin-path-v1.png",
+    "docs/visuals/blackblend-inference-economics-prompt-v1.txt",
+    "docs/visuals/blackblend-inference-economics-prompt-v2.txt",
+    "docs/visuals/blackblend-inference-economics-prompt-v4.txt",
+    "docs/visuals/blackblend-inference-economics-v1.png",
+    "docs/visuals/blackblend-inference-economics-v2.png",
+    "docs/visuals/blackblend-inference-economics-v4.png",
+    "docs/visuals/blackblend-inference-roadmap-prompt-v1.txt",
+    "docs/visuals/blackblend-inference-roadmap-prompt-v2.txt",
+    "docs/visuals/blackblend-inference-roadmap-prompt-v4.txt",
+    "docs/visuals/blackblend-inference-roadmap-v1.png",
+    "docs/visuals/blackblend-inference-roadmap-v2.png",
+    "docs/visuals/blackblend-inference-roadmap-v4.png",
+    "docs/visuals/blackblend-product-film-economics-v3-prompt.txt",
+    "docs/visuals/blackblend-product-film-economics-v3.png",
+    "docs/visuals/blackblend-production-roadmap-v3-prompt.txt",
+    "docs/visuals/blackblend-production-roadmap-v3.png",
+    "docs/visuals/blackblend-production-roadmap-v5-prompt.txt",
+    "docs/visuals/blackblend-production-roadmap-v5.png",
+    "docs/visuals/blackblend-system-map-prompt-v1.txt",
+    "docs/visuals/blackblend-system-map-prompt-v4.txt",
+    "docs/visuals/blackblend-system-map-v1.md",
+    "docs/visuals/blackblend-system-map-v1.png",
+    "docs/visuals/blackblend-system-map-v4.png",
+    "docs/visuals/blackblend-technical-architecture-prompt-v1.txt",
+    "docs/visuals/blackblend-technical-architecture-prompt-v2.txt",
+    "docs/visuals/blackblend-technical-architecture-prompt-v4.txt",
+    "docs/visuals/blackblend-technical-architecture-v2.png",
+    "docs/visuals/blackblend-technical-architecture-v4.png",
+    "docs/visuals/gallery.html",
+    "docs/visuals/hero-stationary-comparison-qa.png",
+    "docs/visuals/ptz-comparison-qa.png",
+    "docs/visuals/studio-direction-qa.png"
+  ],
+  "privateMaterialExcluded": [
+    "Git history",
+    "environment files and credentials",
+    "native CAD/Blender geometry",
+    "personal reference photographs",
+    "account records and private run receipts",
+    "private provider result URLs"
+  ],
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "49a26a8de7b197c1c3fe4a1659016081370b4092dae5b9b0fb95258d22a19d09"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "116ed5c803e625ac14709fa70bfb844d63a85f57612928d775f46e91167b404b"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "ef688d9fd6ff99f56aff3f44b42802e7b15cc28b3b9ab836c858b467caa951a6"
+    },
+    {
+      "path": ".nvmrc",
+      "sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "1965bc37cc1b862dbcf6e1db368843ba4940bcc822d92a748ccd7f179cd166f2"
+    },
+    {
+      "path": "README.md",
+      "sha256": "10747588005f13b360e51e332826524b866d2905d79b0c224992ba3eda0df3f1"
+    },
+    {
+      "path": "apps/studio/.gitignore",
+      "sha256": "356c34590b7af935df46ece9dfa65541281f9fe3ab34f8dc699ea46aa3ef35c9"
+    },
+    {
+      "path": "apps/studio/.npmrc",
+      "sha256": "a3909ac0447c469fda12c57374993be70f47ce73e49fd3124678c7c047f2214d"
+    },
+    {
+      "path": "apps/studio/README.md",
+      "sha256": "60b7f11b9eb67ea9f00cf0909beff69180fdeacbe454b8d785d7c1a1a69fcf98"
+    },
+    {
+      "path": "apps/studio/app/account.tsx",
+      "sha256": "10b30e497d88a22fac16ac2124259a01d054e5d117757b300026190154c0c400"
+    },
+    {
+      "path": "apps/studio/app/api/billing/metronome/route.ts",
+      "sha256": "58b71f2c483f1f16b55089ec54f5fe0df454be77b49edf5d2c9bdb6f16c1b4d3"
+    },
+    {
+      "path": "apps/studio/app/api/billing/route.ts",
+      "sha256": "ebd49b1afd49d7192f5c1856fa9cfd29fbd0890db10d0caf578b5727c9d88837"
+    },
+    {
+      "path": "apps/studio/app/api/billing/stripe/route.ts",
+      "sha256": "5128bb87ad04f879000f49e87188bbe4f776a2f2c5868529a8c271d7f87ece0f"
+    },
+    {
+      "path": "apps/studio/app/api/briefs/route.ts",
+      "sha256": "f0426f76df31ded7ca0a09a1dd3fc42dceebbac43fcb89144d367f9b1a516a3e"
+    },
+    {
+      "path": "apps/studio/app/api/generation-media/route.ts",
+      "sha256": "9dbbdb625e32972e37dfe9c3ae57d577bf8f63064d7ade3b97efbd094f68ba5a"
+    },
+    {
+      "path": "apps/studio/app/api/generation-source/route.ts",
+      "sha256": "275ec0fa34542d98a73d687c312449301680221f396e925ae45f45c3e92c0413"
+    },
+    {
+      "path": "apps/studio/app/api/generations/route.ts",
+      "sha256": "60eb3f26010a2076540e6b25e38962b6cfb4c8e777ead80def29aa81757a47f9"
+    },
+    {
+      "path": "apps/studio/app/api/scene-agent/route.ts",
+      "sha256": "0f8ef439aa40a8a917964fa2a62dbd9eac42eee077b4994b70b9c8813e1e3eba"
+    },
+    {
+      "path": "apps/studio/app/api/scene-example/route.ts",
+      "sha256": "44d474dcbe09ff0100908d3bf9cf423035538efe516d8e52955dff44a65f672d"
+    },
+    {
+      "path": "apps/studio/app/api/scene-geometry/route.ts",
+      "sha256": "1501d4c6c8fb4c78a6b808a421997f7d213501ea494a6f7ded7c10ac4b4ccb0d"
+    },
+    {
+      "path": "apps/studio/app/api/scenes/route.ts",
+      "sha256": "c062c67d9ad2eb2e657bdee72dd037776ea986721a96f5ecf7ee7aba6ea5ea02"
+    },
+    {
+      "path": "apps/studio/app/api/version/route.ts",
+      "sha256": "954f53e2f3a4c14f680cfa7e7f66838c9b741c29ef0ea21eb1ccadd4c237bb4d"
+    },
+    {
+      "path": "apps/studio/app/api/workflow-media/route.ts",
+      "sha256": "b59ace97fa46f8e2252f3d930e2fb54b89ba3229e874a07ba3c0cb6f7f391bee"
+    },
+    {
+      "path": "apps/studio/app/api/workflows/route.ts",
+      "sha256": "58744ef2a8de2c19ec501a960b777cb2cff8b04cd60b14ea3bc77e4db60e9b6c"
+    },
+    {
+      "path": "apps/studio/app/globals.css",
+      "sha256": "30350d4db811bf6a997802acaafa8f1447d5033748ea3816a9470753484e8ed8"
+    },
+    {
+      "path": "apps/studio/app/home.tsx",
+      "sha256": "54c48ad77ec5b0c0283e6a52a03656808e35caab3baf2a5935b8fd7862e8a1e0"
+    },
+    {
+      "path": "apps/studio/app/layout.tsx",
+      "sha256": "b04e8630e6e91be7bf96621eb541c7d01549ff1163b1226332aa2aa6e7292620"
+    },
+    {
+      "path": "apps/studio/app/mcp/route.ts",
+      "sha256": "e0d310da0ae49c4e083a6c23273c994da6ebdb19bb0bc2cc3909865f95d35323"
+    },
+    {
+      "path": "apps/studio/app/page.tsx",
+      "sha256": "26d3d2b4faab5103718c0c698c42436ba9cf8b6b79076b0a504f2ac2fbe0261f"
+    },
+    {
+      "path": "apps/studio/app/perspective/page.tsx",
+      "sha256": "026ef861066818e5c52cded8e6e94241f647a8b81d3a4192338b868b3edfcab6"
+    },
+    {
+      "path": "apps/studio/app/providers.tsx",
+      "sha256": "cced0a9410e1170e7b9179e220b99fe407bf0f5800675e5867f70a681e4730db"
+    },
+    {
+      "path": "apps/studio/app/sign-in/page.tsx",
+      "sha256": "a054bb33f1de7f6353c2e138b987b8ae5f20c691ecec748837e5183a1f0d9bc0"
+    },
+    {
+      "path": "apps/studio/app/studio/billing-status.tsx",
+      "sha256": "32c017ba4f85722dc8c1e46d000c3a612355a4d21f34ff4a579b69c8dff2b1ef"
+    },
+    {
+      "path": "apps/studio/app/studio/canvas-dock.tsx",
+      "sha256": "12f99e86bacc6b193bbcd6921c35fa6795502c36c1bfa5183d9fd4c5c0408620"
+    },
+    {
+      "path": "apps/studio/app/studio/comparison.tsx",
+      "sha256": "302ab7847a181cc27f88b01423d964156d59cc36b1c01134522000bed5793afa"
+    },
+    {
+      "path": "apps/studio/app/studio/editor.tsx",
+      "sha256": "47f8339751097b790575b849b0bf81f9baa47e67cf3fa532ad4b2d4d46179316"
+    },
+    {
+      "path": "apps/studio/app/studio/generation-panel.tsx",
+      "sha256": "46ade3f7b25ae9d8e7c2fce6a2c830b21426865018cfbee0b526269154c96193"
+    },
+    {
+      "path": "apps/studio/app/studio/orientation-gizmo.tsx",
+      "sha256": "49171a6ebe628701dbb8e042978534a4bfd513b2ac365700981251b21765a173"
+    },
+    {
+      "path": "apps/studio/app/studio/page.tsx",
+      "sha256": "326055f5f100fc9847698443b1fb61c9a4cf3986a7e6251994dba222b763c729"
+    },
+    {
+      "path": "apps/studio/app/studio/prompt-composer.tsx",
+      "sha256": "64404aac25d44075e45965c8fe9e7a20e015602bbba83d485d434c4fd0b380c5"
+    },
+    {
+      "path": "apps/studio/app/studio/scene-viewer.tsx",
+      "sha256": "042450b8f0afc70175461509055ca36318a42e52341553364d942bcb8dba1c4f"
+    },
+    {
+      "path": "apps/studio/app/studio/scene-workspace.tsx",
+      "sha256": "cab82a1afbb9fded2418144dd1f23c87b63f5bcd0b72f8069ae426ac87a7bb73"
+    },
+    {
+      "path": "apps/studio/app/studio/scene.css",
+      "sha256": "d5d873bbeaf1216371d52c2313289eda9073eb689f225649aa9457188520405d"
+    },
+    {
+      "path": "apps/studio/app/studio/source-player.tsx",
+      "sha256": "5f9cd17a5386ef8034dcc9ef1d8de9b4e780701667999fe93ac1cb6f757fe979"
+    },
+    {
+      "path": "apps/studio/app/studio/studio-sidebar.tsx",
+      "sha256": "b52a24f086195522dcd2d6b9449c107ea97950a8acea580e7978b4120d433b91"
+    },
+    {
+      "path": "apps/studio/app/studio/studio.tsx",
+      "sha256": "445801c48be7ef7774bb0f13fbd425fea24772526b294f455b084b0d1240889c"
+    },
+    {
+      "path": "apps/studio/app/studio/view-controls.tsx",
+      "sha256": "9772381aa40a7938fbefc9a4ad04218bf0334b241de9b33e3b0ee83dd3cff77e"
+    },
+    {
+      "path": "apps/studio/app/studio/workbench.css",
+      "sha256": "9510828fa219368e2cd7bbd987acae243c44e256ab33ebc5ef1b8e64f1f7ecde"
+    },
+    {
+      "path": "apps/studio/app/workflows/page.tsx",
+      "sha256": "795cd38674c94544ca914ddc48c6e816bd1bb91cfe7b3f26b897be376978e506"
+    },
+    {
+      "path": "apps/studio/app/workspace/page.tsx",
+      "sha256": "3f9dc5c95f9dc9595246fd90ee4f42b2fabfd7d2a5dc8e6fbfa8082e9fe1c8d2"
+    },
+    {
+      "path": "apps/studio/cloudflare-env.d.ts",
+      "sha256": "8b0eca84aa3364cc7ccc43cc3af6beb88dd34ebd410de08690bf094ce39fbcb0"
+    },
+    {
+      "path": "apps/studio/components.json",
+      "sha256": "1ba2354c0f35108290d2c343a8f0c9ead6d098a0384adf7ca6dd962f3fbf93c1"
+    },
+    {
+      "path": "apps/studio/components/ui/LICENSE.md",
+      "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+    },
+    {
+      "path": "apps/studio/components/ui/README.md",
+      "sha256": "f0fa9870a8d3b1f82e8a154edb3c8cdeece8f958bf1edb9d35caf2776ed17408"
+    },
+    {
+      "path": "apps/studio/components/ui/button.tsx",
+      "sha256": "06585d28686bcfc61059d12f0bf8880f64dcd5e3ab8bc6a54b2465cfdf17e6fe"
+    },
+    {
+      "path": "apps/studio/components/ui/popover.tsx",
+      "sha256": "76f1eb0a775af9c4417af8ff2cf087e92e60e1753685c43418335e8a81f2049f"
+    },
+    {
+      "path": "apps/studio/components/ui/textarea.tsx",
+      "sha256": "59ad946fd2957953c38c2eee59a923d4e7206d4ac723d5d9c3a89f57b2413489"
+    },
+    {
+      "path": "apps/studio/db/index.ts",
+      "sha256": "75b533563d71e0033e3f7d1954a6a232ef6c95de37a87343d68c05dfb834e2a6"
+    },
+    {
+      "path": "apps/studio/db/schema.ts",
+      "sha256": "eba10eff1f078437310a1e892a86b47d1080954a607bfee8048bd853be5caeb3"
+    },
+    {
+      "path": "apps/studio/dev/native-window.ts",
+      "sha256": "6e6832438d056851304e445d0d46fdb5ed589f8c97148e9a1a149a7bf1aeacaf"
+    },
+    {
+      "path": "apps/studio/dev/scene-runtime.ts",
+      "sha256": "5459774c0f7915a3ae78a48a238fcbf7e8194bfd52a86553ff3d0f66099315fd"
+    },
+    {
+      "path": "apps/studio/drizzle.config.ts",
+      "sha256": "af081f7384aaeb0082cf422e29f139d137ca2f6a57c69b2c37b9fb1f8479867b"
+    },
+    {
+      "path": "apps/studio/drizzle/0000_bouncy_cargill.sql",
+      "sha256": "40c79708818bdea560c1f3cc0261c6692e0fc52b09cc003181b5862bdbbe34d3"
+    },
+    {
+      "path": "apps/studio/drizzle/0001_large_living_tribunal.sql",
+      "sha256": "139e87848edefba4230b2ce07a6a3cee676466fd609f5bcaea2fb02906564b56"
+    },
+    {
+      "path": "apps/studio/drizzle/0002_scene_documents.sql",
+      "sha256": "a07734b1d4c07611f5f9c7dd7587e4992bb2cf34359a50b9ca3e1596ef3f822e"
+    },
+    {
+      "path": "apps/studio/drizzle/0003_modern_photon.sql",
+      "sha256": "54253dc84a33609daea22f200ff9d3b9f545c834aedde910e1b1546265fa678f"
+    },
+    {
+      "path": "apps/studio/drizzle/0004_clear_justice.sql",
+      "sha256": "7bd23afa4bb709ede16763c4d3fdaa7493798ca655316ba9a8d2bcd0b098f5fa"
+    },
+    {
+      "path": "apps/studio/drizzle/0005_billing_persistence.sql",
+      "sha256": "d97614f3d3bca344e0db2b6d8ffaa81be5f4eb4ba1f487f448aba1d1ab2abad4"
+    },
+    {
+      "path": "apps/studio/drizzle/0006_native_geometry.sql",
+      "sha256": "9428d4625925427dda9cf543905d60b259c2066593926cb4997c40f804c3dd9c"
+    },
+    {
+      "path": "apps/studio/drizzle/0007_openai_native_receipts.sql",
+      "sha256": "64db972bf0c82c1abb0fce1858eeee1dccf7ccb9a196fb67aee19492344f7ee1"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0000_snapshot.json",
+      "sha256": "f86aaa9fada335bd1e413bde7f2d879e03e520f9e1b936a6b69ea49845bfdee3"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0001_snapshot.json",
+      "sha256": "2079b4a3ac96fd339491e98a8c680c8ffac96185f28851540d30da49e3052185"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0002_snapshot.json",
+      "sha256": "62da4dd9181442000a60de241857a0fd8860f4c1411e052ad02441296eaeeebf"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0003_snapshot.json",
+      "sha256": "a438e746126407fd8681317d193e3a4a049e9a1fcc9979b83609c117d6fa7fd7"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0004_snapshot.json",
+      "sha256": "4eb5c3e44b3823960707280d0d6329709361a8a7ac0a9f62e379c1fb602099d8"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0005_snapshot.json",
+      "sha256": "e21e05e93a39ec812f78db282e41d47dbb76be3fd575d6ae8a805d756c6213ea"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0006_snapshot.json",
+      "sha256": "6d64436bfce51a926d3fba6d865fd38bc849c2a61a86bc3a8b2695e3f71ad3af"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/0007_snapshot.json",
+      "sha256": "b6bfa1619fd9a31abbcd2a770b3604938236aad226f5f0604658f9add6d79439"
+    },
+    {
+      "path": "apps/studio/drizzle/meta/_journal.json",
+      "sha256": "746d5eb4eef684dbe1c94c6226eb9bafea491239c0c7abeebbf4c7c2c7b1b885"
+    },
+    {
+      "path": "apps/studio/eslint.config.mjs",
+      "sha256": "5b40cfb167f59e190f8402baad5bbcb61a36477ce759b4ecb685f40f21bd0948"
+    },
+    {
+      "path": "apps/studio/lib/billing-dispatch.ts",
+      "sha256": "0f418f1e010a741b3c8dbcd881d03041ade934d4dab702c8523e890fba61b702"
+    },
+    {
+      "path": "apps/studio/lib/billing-http.ts",
+      "sha256": "f9b0eb4032f7081cabbcd721996939806efa9592e41900aa91c6e082a4e3d903"
+    },
+    {
+      "path": "apps/studio/lib/billing-store.ts",
+      "sha256": "66378a7333bef52eec79112c78b51a2c3a33d0b5f46721b6902765d8981c7d90"
+    },
+    {
+      "path": "apps/studio/lib/billing-webhooks.ts",
+      "sha256": "3abbc26027decc0338f3d07d27e66725c4382ab8e52bc4bd1775547f1e1da222"
+    },
+    {
+      "path": "apps/studio/lib/brief-store.ts",
+      "sha256": "47efbdc71b6bb647749713573e70c14cfda5117293a9ec5648b6d375c85db6a3"
+    },
+    {
+      "path": "apps/studio/lib/briefs.ts",
+      "sha256": "7736b989ac12ed37b0683160b691e5994c501b87856c3e94d7280709ebe63417"
+    },
+    {
+      "path": "apps/studio/lib/browser-previs.ts",
+      "sha256": "e8053e4560749c8b8760acc9af37e2065469f1f15d61f21328b7ca2a91714d7c"
+    },
+    {
+      "path": "apps/studio/lib/clerk-session.ts",
+      "sha256": "c45dfcd244988dc77cf722862e0343e64b393f9a5f05ec2450a73798ccd66304"
+    },
+    {
+      "path": "apps/studio/lib/fal-queue.ts",
+      "sha256": "b992e792dd59f2629fe4967c059b24d1ef2f011c4f29ae94a7c975ab93ae9968"
+    },
+    {
+      "path": "apps/studio/lib/generation-http.ts",
+      "sha256": "778dbacc6cdb2567395397250bd17b855f90540259518847ce935f14d243e1b3"
+    },
+    {
+      "path": "apps/studio/lib/generation-service.ts",
+      "sha256": "693f58aa7436c317defc1b418a49016a93f9b93a0efc443bea6b03ed00358436"
+    },
+    {
+      "path": "apps/studio/lib/hosted-geometry.ts",
+      "sha256": "8083fd35954d668fc24220e713069d6bc9809df8b76bf8fa80a854d745144f75"
+    },
+    {
+      "path": "apps/studio/lib/hosted-scene-agent.ts",
+      "sha256": "dbec527a85fbc46ad86a254f86fac587e46adb1af2da47c325534749daa5e6ee"
+    },
+    {
+      "path": "apps/studio/lib/identity.ts",
+      "sha256": "b96719a7b1d2159bd83f29c414c3e5272b2b8143e7e04b86e0035cb2f7ed31de"
+    },
+    {
+      "path": "apps/studio/lib/media-inspection.ts",
+      "sha256": "2f18b4e11d798c5c95878d490ae9a139d4f81307a470ba05263e00c7221199e5"
+    },
+    {
+      "path": "apps/studio/lib/metered-billing.ts",
+      "sha256": "52c6252e79c047195b248d14945c6c98daaa5f1a0905e5cd3d1f39ed3e0c744d"
+    },
+    {
+      "path": "apps/studio/lib/native-packet.ts",
+      "sha256": "f9383f7e3a68a022471e02129793ac235353f6bfdebc3ad7a83fc5d326c772c0"
+    },
+    {
+      "path": "apps/studio/lib/openai-blender.ts",
+      "sha256": "edc0601a9f515ab90b62f8f126cf467c330adec48549b946e040843de1c25833"
+    },
+    {
+      "path": "apps/studio/lib/ptz-comparison.ts",
+      "sha256": "2d1f61a505b1f5ffe3907e62d08afaa3fb4c4e1356430b9e878aee6db400a371"
+    },
+    {
+      "path": "apps/studio/lib/request-body.ts",
+      "sha256": "1e7ba6cb0a31bff4b2d97a38560aade6338860aaf565f7e1bb524332587482e5"
+    },
+    {
+      "path": "apps/studio/lib/scene-agent-runner.ts",
+      "sha256": "aac099fc54db697d35382f809b2f960e682900a170bb73423792d6b0319ef679"
+    },
+    {
+      "path": "apps/studio/lib/scene-agent.ts",
+      "sha256": "6acf00d7d4f9fd64acdc87ab75c493cee199f5f816c1fac1baaa39cc754555c6"
+    },
+    {
+      "path": "apps/studio/lib/scene-camera.ts",
+      "sha256": "ecc953d2de31f244a4302cd56d0932747a9e4e999a4d21ff82bb4bc5cb70d2ad"
+    },
+    {
+      "path": "apps/studio/lib/scene-changes.ts",
+      "sha256": "9273c0fb9748f7774f49ce7384d25a95e646183706d108676cff12f652e134ca"
+    },
+    {
+      "path": "apps/studio/lib/scene-chat-recovery.ts",
+      "sha256": "c37114ce42e9d3d224d19123d50f79423d18bcd9a287cdb6aee08e4d09a30c08"
+    },
+    {
+      "path": "apps/studio/lib/scene-document.ts",
+      "sha256": "511af19af585ff4d556526654e35e0751d87bac7b3b74c23c35e8cdb784af7ef"
+    },
+    {
+      "path": "apps/studio/lib/scene-examples.ts",
+      "sha256": "1e38d768f25383eb06c7a01b1b02cf36c5af61a2c4ed4f12f4afd9003c7fd171"
+    },
+    {
+      "path": "apps/studio/lib/scene-store.ts",
+      "sha256": "4fd59212dc70b894b48c7330032b021f4b6d517a5fc5351175a2826cf2b1e862"
+    },
+    {
+      "path": "apps/studio/lib/studio-examples.ts",
+      "sha256": "191f74068eae962ef35beb57e94ce724526c3bf05fc0226b8b70697e8ae3d6fe"
+    },
+    {
+      "path": "apps/studio/lib/studio-location.ts",
+      "sha256": "9c7914961788fed13007e1abab8b35197dadf8b5e46f1e57a8c4339e2b289dfb"
+    },
+    {
+      "path": "apps/studio/lib/utils.ts",
+      "sha256": "92ba897962a1012e09a8146bf03f9fa2c479596e9f876339652dddec2c8a385f"
+    },
+    {
+      "path": "apps/studio/lib/webmcp.ts",
+      "sha256": "3404a8060ff62ba7bce320c372658ddb5ebebf519b644e340d91b509e0bf9c89"
+    },
+    {
+      "path": "apps/studio/lib/window-edit.ts",
+      "sha256": "def4e49c569b6577ee60030063dbf71515034ae1700891f7bf4b1e02af753a92"
+    },
+    {
+      "path": "apps/studio/lib/workflow-contract.ts",
+      "sha256": "27125ada54762c31c621af3f21ab34f54686741c99b8c0f410956b9503ecc6d2"
+    },
+    {
+      "path": "apps/studio/lib/workflow-store.ts",
+      "sha256": "2b6d42ea3646c6c359978f10a3bca5c3deb19b8397d6cb62ab719ef533201e75"
+    },
+    {
+      "path": "apps/studio/next.config.ts",
+      "sha256": "3d67696b2d8ecf9b8025548fd981dd21955ba718cb824920f71552d320e1962e"
+    },
+    {
+      "path": "apps/studio/package.json",
+      "sha256": "b81fe5f7b422f1d5330e33cd46aa137a69f6258b76727c574c58872f56f54767"
+    },
+    {
+      "path": "apps/studio/postcss.config.mjs",
+      "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde"
+    },
+    {
+      "path": "apps/studio/public/favicon.svg",
+      "sha256": "e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7"
+    },
+    {
+      "path": "apps/studio/public/media/README.md",
+      "sha256": "da8f94bf3375ba699d19d6db86232e961e241ffa118189bf5e1f8e8e5d8e481f"
+    },
+    {
+      "path": "apps/studio/public/media/blackblend-business-model-v5.png",
+      "sha256": "c5fc38e89f6f4778fddcfc1ca4677a81bac6966f550828b753524f3d0ee63cea"
+    },
+    {
+      "path": "apps/studio/public/media/blackblend-digital-twin-path-v1.png",
+      "sha256": "dc7ef2f6a0940f818cfd4d40ea95144d2511ef4881a76ff0ac726ebcdb66c0f6"
+    },
+    {
+      "path": "apps/studio/public/media/blackblend-production-roadmap-v5.png",
+      "sha256": "a452f5ae7e636b3e02a12f1b884d9e408e426a2e39f10dc57f7da6946740dab7"
+    },
+    {
+      "path": "apps/studio/public/media/massey-harris-21-result.mp4",
+      "sha256": "3e2f0f1d0f716ac204df04bc4d54db18c803bae2da9af097f5e0b8079415ee51"
+    },
+    {
+      "path": "apps/studio/public/media/massey-harris-21-source.mp4",
+      "sha256": "c0887d386c4da96be8f54970ca71c374e1cbcaaa919c27376d9b645e8e36f21d"
+    },
+    {
+      "path": "apps/studio/public/media/ptz-compare-result.mp4",
+      "sha256": "3c77a7336ecc425f662713b68cda66fdb8a2f55327b414693c755d5ed1f411bb"
+    },
+    {
+      "path": "apps/studio/public/media/ptz-compare-source.mp4",
+      "sha256": "0f82d428801f1ec84575461c775329cfe0b60f9af33ddeb0f7d9a5e5ca6cc654"
+    },
+    {
+      "path": "apps/studio/public/media/ptz-orbit.mp4",
+      "sha256": "9a1866a2f31eb94be0620962dc1aee8b42fa050eab05b3c929a786359bfd53b9"
+    },
+    {
+      "path": "apps/studio/public/media/ptz-poster.jpg",
+      "sha256": "bb761d5c1f49e973b733e6bc35893f99953549582e29799a958ea9b4feff8e19"
+    },
+    {
+      "path": "apps/studio/public/media/ptz-wireframe.jpg",
+      "sha256": "9d04a818b929a9048d6e8cc6a1eb3130d59ad5bf34283b0a581928863181c7ad"
+    },
+    {
+      "path": "apps/studio/public/media/woodshed-hero-result.mp4",
+      "sha256": "5a0aac801b7bd60749fb7f64b86bca5baa3f5d73bf5e4c249f8e74e0fa73986d"
+    },
+    {
+      "path": "apps/studio/public/media/woodshed-hero-source.mp4",
+      "sha256": "1b6b3fe5bddd7c642aca142a1b8c649fa190d9a8519b650279b24b2aa30b5a67"
+    },
+    {
+      "path": "apps/studio/public/media/woodshed-orbit.mp4",
+      "sha256": "8ade9c57b2a2a17c2b4a423413c05b35bb8177c62ced931d531976a4b99eaff0"
+    },
+    {
+      "path": "apps/studio/public/media/woodshed-poster.jpg",
+      "sha256": "e62e5f333108545e2b3a959262d3b736e0b982d8aa103a2196b100659955f06f"
+    },
+    {
+      "path": "apps/studio/scripts/normalize-build.mjs",
+      "sha256": "b4f52d651cc7a686921541ba16e1dd66d7e44b01d92d393de27067f84ccb1a6f"
+    },
+    {
+      "path": "apps/studio/standalone-env.d.ts",
+      "sha256": "dd01005b22987515b7a72d2a444f133ac1d92fd3a2a21cc4503c41f7ce648fe0"
+    },
+    {
+      "path": "apps/studio/tests/agent-fixture.ts",
+      "sha256": "dc22d01c2073b5208442c9b04b24dbdbf6c7f554d42da0d47b0b96681c7811a8"
+    },
+    {
+      "path": "apps/studio/tests/auth-http.mjs",
+      "sha256": "c3a87358e56ddb1748773f6332d5ef2197be19a2b36f1da036eadff666ef1934"
+    },
+    {
+      "path": "apps/studio/tests/billing-persistence.test.ts",
+      "sha256": "350cde4e44ab6152db1d2d778b5d5046b9de6d68e83bf65b8066565bd35ea3c9"
+    },
+    {
+      "path": "apps/studio/tests/billing-webhooks.test.ts",
+      "sha256": "97828a2eb8dc98cda35cf7244c2900b2e9c7efe0788efba632c66292b237ab9d"
+    },
+    {
+      "path": "apps/studio/tests/briefs.test.ts",
+      "sha256": "80d1b542c1d06426c925a2c562bd3a053f8b425c7c08495cdb5cbc5ccf87dc00"
+    },
+    {
+      "path": "apps/studio/tests/browser-previs.test.ts",
+      "sha256": "367474b949bc4f4e23b1e870540adda611c7dd5f707b9544e09198b37849de46"
+    },
+    {
+      "path": "apps/studio/tests/clerk-session.test.mjs",
+      "sha256": "cdb9bc85badd9d5a597359e1278454bfb81a62cc4bf68d2d4b6dbf846294bca9"
+    },
+    {
+      "path": "apps/studio/tests/generation-http.test.ts",
+      "sha256": "1e0be5a94c7fca28cbac865c346c7c096177bb7cb6098aa3fa71b8dd39ae1c6f"
+    },
+    {
+      "path": "apps/studio/tests/generation-service.test.ts",
+      "sha256": "b9939ed8f05f94bce6aa0927e18953850b12b8ff01d6c6a5849b9d327ffb58b2"
+    },
+    {
+      "path": "apps/studio/tests/hosted-geometry.test.ts",
+      "sha256": "bdb3e82e07ead98b57cbc7df5e9a205c21cf7900a6c76e61e68121a1c633d3e6"
+    },
+    {
+      "path": "apps/studio/tests/hosted-scene-agent.test.ts",
+      "sha256": "8ff60fc07d697672f3d66cd64991b74d83e191a1821d2449332d37d91338bed1"
+    },
+    {
+      "path": "apps/studio/tests/http-review.test.ts",
+      "sha256": "c6a159061a913e3c13fd59b78d7f97e08f223b5928a7a0e77227cef08e5a8c1d"
+    },
+    {
+      "path": "apps/studio/tests/metered-billing.test.ts",
+      "sha256": "7ddc92a8c241764e5746241ad68df8ce03db92010c7f1e5ef0ef5a29557c66e2"
+    },
+    {
+      "path": "apps/studio/tests/migration-metadata.test.ts",
+      "sha256": "89932765e5bf3c52d2e1db6238221a51e11f197c85a7eefb039ab8ced5faeacd"
+    },
+    {
+      "path": "apps/studio/tests/native-packet.test.ts",
+      "sha256": "70f67e19ed8ee6ecf387a98db9c9160c6cb1754d2bb90dfca3f04ec3ed8edb49"
+    },
+    {
+      "path": "apps/studio/tests/openai-blender.test.ts",
+      "sha256": "76995d80e6ba6c5575e21532a332f113b2bd0f09291483a9d9f3940eb9cca9b1"
+    },
+    {
+      "path": "apps/studio/tests/ptz-comparison.test.ts",
+      "sha256": "f88869faf2a798d310950211f4111521da733e753ab6eb924460476b01276474"
+    },
+    {
+      "path": "apps/studio/tests/render-http.mjs",
+      "sha256": "58832b0a5f4444a22a3925f17e8069f32d48775837c14006eb382960e07ca34e"
+    },
+    {
+      "path": "apps/studio/tests/scene-agent.test.ts",
+      "sha256": "7594db1ead3e6f8313196375ab67ac1a40a3b64e5bbfc48a7a7c69e2527423fe"
+    },
+    {
+      "path": "apps/studio/tests/scene-camera.test.ts",
+      "sha256": "68f4f6f019f45ab60a6d5c434653ecc496d3f00bf49b2585471a67f9ed75c765"
+    },
+    {
+      "path": "apps/studio/tests/scene-changes.test.ts",
+      "sha256": "56abb14ff616f06985a7ac481ff167f7def3854df907c042e3bec1dafb85112e"
+    },
+    {
+      "path": "apps/studio/tests/scene-chat-recovery.test.ts",
+      "sha256": "6c50e89fb2b2775fde68c8dd43a9e78a0a67bc6cd0b74b68da8133fc6cc3d247"
+    },
+    {
+      "path": "apps/studio/tests/scene-document.test.ts",
+      "sha256": "5d8b80b2cade0851e580318b99bf416602db5ed7cc9921226226afbaff6cd407"
+    },
+    {
+      "path": "apps/studio/tests/scene-examples.test.ts",
+      "sha256": "2b9632b0f648c9f41c65ad44f31501e27470e6ce145cd01a65750f2312eaafb3"
+    },
+    {
+      "path": "apps/studio/tests/sqlite-d1.ts",
+      "sha256": "fa83a63e199224c893dfaf58d647bc455a1471bb85180c4048e1f92f8024bcdf"
+    },
+    {
+      "path": "apps/studio/tests/studio-location.test.ts",
+      "sha256": "daec1ba230dafdf13c26153395e19022edfa791aa73fe25733a08faae32a1092"
+    },
+    {
+      "path": "apps/studio/tests/toolchain.test.mjs",
+      "sha256": "1cf54b4d681be38808fb7539046434c53b72d4f4d8153a48631337198294c492"
+    },
+    {
+      "path": "apps/studio/tests/window-edit.test.ts",
+      "sha256": "eff3ceac5ba70f1840463844ba0aa76ec9c4c6b9960bf43f917b1d7f3cec4ae8"
+    },
+    {
+      "path": "apps/studio/tests/workflow-contract.test.ts",
+      "sha256": "378cb716843b76b85d57a688fc1d3d316f0350e7c30963dcb6538f3e4b6a58d4"
+    },
+    {
+      "path": "apps/studio/tsconfig.json",
+      "sha256": "1bffd63fd413a1067ca9db9774966417d3b18c810616fccdbae735c759235e3a"
+    },
+    {
+      "path": "apps/studio/vite.config.ts",
+      "sha256": "4cfdce27818253408d647c9b87a6afeec94d98d68ee3446279a5ff4d356c94b2"
+    },
+    {
+      "path": "apps/studio/worker/index.ts",
+      "sha256": "7b8ff9a2453f198d70ecfab326fd3d43c03b643d2ff030593a517f9335a894a4"
+    },
+    {
+      "path": "apps/studio/wrangler.jsonc",
+      "sha256": "c9daeca080298742c1670f0bd2432f7441e5488bfd74cfc629825c269f7c1005"
+    },
+    {
+      "path": "assets/cad/manifest.json",
+      "sha256": "4b60fd0d75a0d104a151a52c80fd28903982ad4c046195bc916826b24ecc9e09"
+    },
+    {
+      "path": "blender/blackblend.py",
+      "sha256": "d6ec9e46e6b27371089dac40939f3f6d18da44adaa9040ef7586dd6947157616"
+    },
+    {
+      "path": "blender/smoke_test.py",
+      "sha256": "21f0bc96ce806f50cb6f9c7821d78bf201fa27271f5ee6f1aa946df9e24e565d"
+    },
+    {
+      "path": "blender/window_edit.py",
+      "sha256": "37d2274eecb7e72802f4c74d0cc5850743aed3ca9b402506ae2c418bcb655633"
+    },
+    {
+      "path": "blender/workflow.py",
+      "sha256": "7decbe80413a4f34f688f713d389ad382e5a7c3e0f613b96900981bb48bf9db5"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "9cd9d633a51b10e845bc4af50534582275a95aeaec45ba9ee861717da5147cd1"
+    },
+    {
+      "path": "docs/BASELINE.md",
+      "sha256": "1e5c8048c54c3d555d8e4b44f88a6ea28abddcf0fd240e8110b2ee7e98d2cf27"
+    },
+    {
+      "path": "docs/CONFIGURATION.md",
+      "sha256": "295aa5a7fb97ce11b3c6c9799026544095408608471ab29640f297047aa2ac90"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "sha256": "1ab6c5385da0305b8dbe81dd44064fee76b06e948dadda80ba77f182193c3b6f"
+    },
+    {
+      "path": "docs/HACKATHON-DEMO.md",
+      "sha256": "1e7f0f909b2da4d8ed6651102a94cf886db88cf5d1d21546eb03942ccb4336e6"
+    },
+    {
+      "path": "docs/HACKATHON-MVP.md",
+      "sha256": "241d0d964b5e962cc219b6451cfaac5fd4b4683a0e717c5a8d18cfffdb231f4f"
+    },
+    {
+      "path": "docs/HOSTED-BLENDER.md",
+      "sha256": "bd26384118bc91d4fd46950c01bf80cfdfef2e9c1ea4a1d05f28efdc43278fc0"
+    },
+    {
+      "path": "docs/HOSTED-GENERATION.md",
+      "sha256": "c5b35269395aca77a4ab4ceddc17afea7dafb2689226730acf8870113df7e7fa"
+    },
+    {
+      "path": "docs/INFERENCE-ROADMAP.md",
+      "sha256": "6c95a69f72b778c776da9dc986eabc541bbbf16e7b8564d39946785b8bf50ed6"
+    },
+    {
+      "path": "docs/METERED-BILLING.md",
+      "sha256": "438f426b986adeea8c720b6da069f3cfd2e4edb12660c73a58078c2d2733359c"
+    },
+    {
+      "path": "docs/MVP-FOCUS.md",
+      "sha256": "154a055de1af9cc16a2f43bbed30e58dc99affaeea3e4add4bd9e42535e36d91"
+    },
+    {
+      "path": "docs/NATIVE-WINDOW.md",
+      "sha256": "90e109ecf9eba715e1b5080b72a1f59a3171319bc96435c5f0334bd9e1084c89"
+    },
+    {
+      "path": "docs/PRODUCT-FILM-ECONOMICS.md",
+      "sha256": "955ff6a2b0c205c66f73e07d904c6b63037c81bd00eaf46dbf13d9fbc512ec05"
+    },
+    {
+      "path": "docs/PRODUCT.md",
+      "sha256": "fb090e98f49f0707bb3ca228d89d5ad78e0c693f10fa1d084f41a878647c894b"
+    },
+    {
+      "path": "docs/SCENE-STUDIO.md",
+      "sha256": "3ebf7b9d9debcbf23a9da22c87d518bfecfd868bf995a2908c9e6c7552bce780"
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "0f7b2b664e485bdeec43b843586acfcddf9acedb07f0f653b05ec7cc9063ae95"
+    },
+    {
+      "path": "docs/WORKFLOW.md",
+      "sha256": "fcee2d92e036023243682b866a31bbe96c2b2f156092307d268756886678efa3"
+    },
+    {
+      "path": "docs/reviews/studio-baseline-prompt.txt",
+      "sha256": "1155e3587d1defba4b523f1e5ef9c8b221e1a772fb46ee976ee6e5c56ebdbb5a"
+    },
+    {
+      "path": "docs/reviews/studio-baseline.png",
+      "sha256": "1c102d6ccc2bb785e0a26858bd5537870b2b1e63652714b1cc7de4b88d4690d1"
+    },
+    {
+      "path": "fal-video.mjs",
+      "sha256": "76115ad05b78cf35d9b5951f248810abbc627fac871a89918b014ec96bedca3c"
+    },
+    {
+      "path": "infra/blender/Dockerfile",
+      "sha256": "31671f85e75674186f3bc85743537d0b35fd6a1eed2fa326be6341bc41be3e6e"
+    },
+    {
+      "path": "infra/blender/server.py",
+      "sha256": "63afce2e42595b89e49ddecff88da38f04d62d591425385f1c88011528417f5c"
+    },
+    {
+      "path": "infra/blender/test_server.py",
+      "sha256": "8a1f18e71b3212418820f4f861b4488a666aab1501597c502a8bfaa3ada23c41"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "34531f74b3fa8d1ff8c275efe9e8d98fafb3a8a49fff43b6b148521900c95416"
+    },
+    {
+      "path": "package.json",
+      "sha256": "fb22ffab7798d9ddcdf1053fff8ff1c28d071425e246250a317cc622c39568f8"
+    },
+    {
+      "path": "public/workflow.css",
+      "sha256": "715edf0026d757b2f1db7c5c93a6b857d79fe66f4176f905d7f42024ddf5a5ab"
+    },
+    {
+      "path": "public/workflow.html",
+      "sha256": "7a39a37722dc33626e903fd92b74cc992264e0288a8f7d2b42d26a8aa06a3c19"
+    },
+    {
+      "path": "public/workflow.js",
+      "sha256": "0427a6331f25a2c5ec3cb79fa39e2be8176ec7aa1a015bce68bba5317324a207"
+    },
+    {
+      "path": "scene-execution.mjs",
+      "sha256": "698e237cbe2bf97c98b58908ffda0825bd54b5509fa09453b8a6d5e6360e4a7e"
+    },
+    {
+      "path": "scripts/agent-key.mjs",
+      "sha256": "8c09fcb40152254354d686dc18d8a23360c67282c402074a157ecbeaf877e9ab"
+    },
+    {
+      "path": "scripts/audit-dependencies.mjs",
+      "sha256": "ec7779d3ffa2bf08e2a68a43d9cc5a747ddf77f915d683f64cf191be631a1a35"
+    },
+    {
+      "path": "scripts/export-studio-scene.py",
+      "sha256": "7d455b047becaccc82bffe1007b58259876213e0debd1334acfeb2f48990f7c4"
+    },
+    {
+      "path": "scripts/keychain.swift",
+      "sha256": "75f081258f6ec284a35e32a1b9b9a110ba75fd26d85f203fad93f63ac5d3b4c0"
+    },
+    {
+      "path": "scripts/package-openai-blender.py",
+      "sha256": "da3479027ecf058ba3f85b6f2f5752fb57ec948a0944a677e4a069281c3f3a2b"
+    },
+    {
+      "path": "scripts/prepare-massey-example.mjs",
+      "sha256": "4faf30e195e43736a43627fd4b9fc169fae28b8c1b16bc04ad6fa00b28c5b921"
+    },
+    {
+      "path": "scripts/prepare-ptz-example.mjs",
+      "sha256": "371e288ad289ea1a65604a338f1fdf32a3e017a5a0b053f52a14076baec6589f"
+    },
+    {
+      "path": "scripts/workflow-handoff.mjs",
+      "sha256": "8c1746c96841d1f725648b6177597ca32070cb55cc298a9c34d1b717c3d2cbc0"
+    },
+    {
+      "path": "server.mjs",
+      "sha256": "01dc09df60f953002797e7b62bd08ab30062587c50d88ee1debf1605123c8d0b"
+    },
+    {
+      "path": "tests/dependencies.test.mjs",
+      "sha256": "284acefde73621cc85ef210d5c069ecd2b138e62b861f70d77ab321a15741d60"
+    },
+    {
+      "path": "tests/fal.test.mjs",
+      "sha256": "0b0f6d9e19c76a3ad955662b8205f0576efc4874f7d458249879e9624b4af290"
+    },
+    {
+      "path": "tests/fixtures.mjs",
+      "sha256": "78bc5225a4fa20d1f6baebff7ad8bbe2ad80a3993742a6e5b8e0fab494968e5d"
+    },
+    {
+      "path": "tests/native-window.blender.py",
+      "sha256": "c0dac81132d080392e68e506c2d064c0e364f1b61c99fa2653a8b5e576b87b58"
+    },
+    {
+      "path": "tests/project-runs.test.mjs",
+      "sha256": "bdbe0efdf27ed554cdb5180948e2678d6e36fca0c5311215f70202c9216a8e2b"
+    },
+    {
+      "path": "tests/scene-execution.test.mjs",
+      "sha256": "955bd0ae7bc560f32c19a8c667909095203da39e5ade6e6ccb0af6e44902fb04"
+    },
+    {
+      "path": "tests/server.test.mjs",
+      "sha256": "3e2071c24810d9fa5b6c9bcc5296fa0835080dc63d92b4e457cae6508b5176aa"
+    },
+    {
+      "path": "tests/video.test.mjs",
+      "sha256": "09a804cff2fa37c05207271058ec427c5c7bb4e6d3d340edd3b7f47bfe8d0c8b"
+    },
+    {
+      "path": "tests/workflow.test.mjs",
+      "sha256": "ff5bddec62fd1e31cfdd1cf450b3d4ef942a64277aebb26e625a7302f6860ea4"
+    },
+    {
+      "path": "tt-video.mjs",
+      "sha256": "00a68cc8fea4579101a4148d9e3ead198c95edbebc4f4e8f73da76b9a4fb5156"
+    },
+    {
+      "path": "vendor/braces/BLACKBLEND-PATCH.md",
+      "sha256": "19fbf34eb51233d51518a169d95e840257fb92fe8cb21090a8e1ec312999d11c"
+    },
+    {
+      "path": "vendor/braces/LICENSE",
+      "sha256": "35bdd8a44339719441900fb50fbefc5e2dca1ca662cbaed7a687de842c8b70f2"
+    },
+    {
+      "path": "vendor/braces/index.js",
+      "sha256": "332ea07c7b006361aad12aa994ca75dc1db8e8382b884909e2f38f10b85c88a4"
+    },
+    {
+      "path": "vendor/braces/lib/compile.js",
+      "sha256": "13febe2986034e5955dae520fff83b95d4f6c9719714ed117de547363a9494ed"
+    },
+    {
+      "path": "vendor/braces/lib/constants.js",
+      "sha256": "c18ac5adb57308f1ce42a28552da3a31f5d83709743ebd9a636336813a744d4b"
+    },
+    {
+      "path": "vendor/braces/lib/depth.js",
+      "sha256": "ee5f9b7226a3b4e43117b11eb141104d87b9d2830c52749587094eab3bc7e40a"
+    },
+    {
+      "path": "vendor/braces/lib/expand.js",
+      "sha256": "fbab230c6b9a3ce78c58fb4b46f0b2888247396755b004333ce210996f565f6c"
+    },
+    {
+      "path": "vendor/braces/lib/parse.js",
+      "sha256": "71f633443d6f7db14b8bc28812436a574b761a899bd18d821f00accb41aa7c63"
+    },
+    {
+      "path": "vendor/braces/lib/stringify.js",
+      "sha256": "ae0ff9c90add3509ae7353b195931820be69f12b4b497f81f3fcd93101124e47"
+    },
+    {
+      "path": "vendor/braces/lib/utils.js",
+      "sha256": "b5a7596aa67730412b3c029ef09e84e6b67b8e445cffd35d1d295549c89066c7"
+    },
+    {
+      "path": "vendor/braces/package.json",
+      "sha256": "362e854b81f6add5437c9e70dfd38936c539decd6100113e7910fbb422036b46"
+    },
+    {
+      "path": "workflow.mjs",
+      "sha256": "316b7ddc090c5049dd6f605d903fbefe00dca538c84b8645cd391c715fa102da"
+    }
+  ]
+}
