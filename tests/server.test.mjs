@@ -50,6 +50,15 @@ test('local UI lifecycle, duplicate submission, origin checks, media range and r
   assert.equal(result.status,'completed');assert.equal(result.processingSeconds,8);assert.ok(result.totalSeconds>=0);assert.equal(posts,1);assert.equal(reads,1);
   assert.ok(!JSON.stringify(result).includes('hidden-key'));
   const media=await fetch(base+result.video,{headers:{Range:'bytes=0-11'}});assert.equal(media.status,206);assert.equal((await media.arrayBuffer()).byteLength,12);
+  // The in-memory status is visible before the asynchronous receipt write completes.
+  // A graceful restart fixture must wait for durable completion, not filesystem speed.
+  let receipt;
+  for(let i=0;i<100;i++){
+   try{receipt=JSON.parse(await fs.readFile(path.join(dir,result.id,'ui.json'),'utf8'));}catch{}
+   if(receipt?.status==='completed' && receipt.hasVideo)break;
+   await new Promise(resolve=>setTimeout(resolve,10));
+  }
+  assert.equal(receipt?.status,'completed');assert.equal(receipt.hasVideo,true);
   await fs.writeFile(path.join(dir,result.id,'source.mp4'),Buffer.from('source-video-fixture'));
   await new Promise(resolve=>app.close(resolve));
   app=await createApp(options);await new Promise(resolve=>app.listen(0,'127.0.0.1',resolve));

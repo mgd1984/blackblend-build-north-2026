@@ -6,7 +6,8 @@
     "README.md",
     "apps/studio/wrangler.jsonc",
     "docs/BASELINE.md",
-    "docs/HACKATHON-MVP.md"
+    "docs/HACKATHON-MVP.md",
+    "tests/server.test.mjs"
   ],
   "omittedHistoricalPaths": [
     "docs/BUILD-NORTH.md",
@@ -953,7 +954,7 @@
     },
     {
       "path": "tests/server.test.mjs",
-      "sha256": "3e2071c24810d9fa5b6c9bcc5296fa0835080dc63d92b4e457cae6508b5176aa"
+      "sha256": "5e9d1d5336ff753d9eb8513abe1a919831e6f57c72351652a491139da4189485"
     },
     {
       "path": "tests/video.test.mjs",
@@ -1015,5 +1016,8 @@
       "path": "workflow.mjs",
       "sha256": "316b7ddc090c5049dd6f605d903fbefe00dca538c84b8645cd391c715fa102da"
     }
+  ],
+  "publicationNotes": [
+    "The desktop mock restart test waits for its completed on-disk receipt; this removes a Linux CI scheduling race without changing application behavior."
   ]
 }
