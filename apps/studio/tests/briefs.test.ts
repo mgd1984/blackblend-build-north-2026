@@ -22,10 +22,7 @@ test("brief validation bounds and rejects hidden operation fields", () => {
     { providerKey: "secret" },
     { owner: "someone-else" },
   ])
-    assert.equal(
-      briefInput.safeParse({ ...valid, ...mutation }).success,
-      false,
-    );
+    assert.equal(briefInput.safeParse({ ...valid, ...mutation }).success, false);
 });
 test("native preflight never asks a provider to generate and retains acceptance gates", () => {
   const plan = planFor(briefInput.parse(valid));

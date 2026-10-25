@@ -8,7 +8,10 @@ import { promisify } from "node:util";
 const base = process.env.BLACKBLEND_TEST_ORIGIN ?? "http://127.0.0.1:4330";
 if (new URL(base).hostname !== "127.0.0.1") throw Error("Local fixtures only.");
 const session = process.env.BLACKBLEND_TEST_SESSION;
-if (!session) throw Error("Provide a short-lived local Clerk test session; platform/mock cookies are not accepted.");
+if (!session)
+  throw Error(
+    "Provide a short-lived local Clerk test session; platform/mock cookies are not accepted.",
+  );
 const headers = { Authorization: `Bearer ${session}`, Origin: base };
 async function post(data) {
   return fetch(base + "/api/workflows", {
@@ -74,10 +77,7 @@ try {
   const data = await response.json();
   assert.equal(response.status, 200, JSON.stringify(data));
   flow = data.workflow;
-  assert.equal(
-    flow.sourceHash,
-    createHash("sha256").update(bytes).digest("hex"),
-  );
+  assert.equal(flow.sourceHash, createHash("sha256").update(bytes).digest("hex"));
   assert.equal(
     (
       await post({

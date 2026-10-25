@@ -29,10 +29,7 @@ export async function GET(request: Request) {
     if (object.range && "offset" in object.range) {
       const start = object.range.offset ?? 0,
         length = object.range.length ?? object.size;
-      headers.set(
-        "Content-Range",
-        `bytes ${start}-${start + length - 1}/${object.size}`,
-      );
+      headers.set("Content-Range", `bytes ${start}-${start + length - 1}/${object.size}`);
       headers.set("Content-Length", String(length));
       return new Response(object.body, { status: 206, headers });
     }

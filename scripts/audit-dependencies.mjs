@@ -2,9 +2,7 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-const expected = fileURLToPath(
-  new URL("../vendor/braces/index.js", import.meta.url),
-);
+const expected = fileURLToPath(new URL("../vendor/braces/index.js", import.meta.url));
 if (
   require.resolve("braces") !== expected ||
   require("braces/package.json").version !== "3.0.3+blackblend.1"
@@ -13,10 +11,7 @@ if (
 // Run the real dependency-chain regression checks before accepting this one local patch.
 const tests = spawnSync(
   process.execPath,
-  [
-    "--test",
-    fileURLToPath(new URL("../tests/dependencies.test.mjs", import.meta.url)),
-  ],
+  ["--test", fileURLToPath(new URL("../tests/dependencies.test.mjs", import.meta.url))],
   { stdio: "inherit" },
 );
 if (tests.status !== 0) process.exit(1);
@@ -26,8 +21,7 @@ const treeResult = npm
       encoding: "utf8",
     })
   : spawnSync("npm", ["ls", "braces", "--all", "--json"], { encoding: "utf8" });
-if (treeResult.status !== 0)
-  throw Error("Installed braces dependency tree is invalid.");
+if (treeResult.status !== 0) throw Error("Installed braces dependency tree is invalid.");
 const tree = JSON.parse(treeResult.stdout);
 function verifyTree(node) {
   for (const [name, child] of Object.entries(node.dependencies ?? {})) {
@@ -57,10 +51,7 @@ for (const [name, item] of Object.entries(vulnerabilities)) {
       if (!vulnerabilities[via]) unexpected.push(via);
       continue;
     }
-    if (
-      via.name !== "braces" ||
-      via.url !== "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm"
-    )
+    if (via.name !== "braces" || via.url !== "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm")
       unexpected.push(`${name}: ${via.url ?? via.title}`);
   }
 }

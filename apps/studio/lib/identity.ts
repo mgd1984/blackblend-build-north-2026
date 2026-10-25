@@ -14,16 +14,10 @@ export async function requestOwner(request: Request): Promise<string | null> {
     .find((s) => s.startsWith("__session="))
     ?.slice(10);
   const authorization = request.headers.get("authorization");
-  const token = authorization?.startsWith("Bearer ")
-    ? authorization.slice(7)
-    : cookie;
+  const token = authorization?.startsWith("Bearer ") ? authorization.slice(7) : cookie;
   if (!token) return null;
   try {
-    return await verifyClerkSession(
-      token,
-      config.CLERK_ISSUER,
-      config.APP_ORIGIN,
-    );
+    return await verifyClerkSession(token, config.CLERK_ISSUER, config.APP_ORIGIN);
   } catch {
     return null;
   }

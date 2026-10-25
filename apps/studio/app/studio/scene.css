@@ -207,7 +207,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.scene-group-chevron { flex-shrink: 0; }
+.scene-group-chevron {
+  flex-shrink: 0;
+}
 .scene-parts summary .scene-part-eye {
   display: grid;
   place-items: center;
@@ -217,11 +219,20 @@
   padding: 0;
   border-radius: 6px;
 }
-.scene-parts summary .scene-group-eye { opacity: 1; }
+.scene-parts summary .scene-group-eye {
+  opacity: 1;
+}
 .scene-assembly-group[data-visibility="hidden"] .scene-group-name,
-.scene-part-row.is-hidden .scene-part-name { opacity: .45; }
-.scene-assembly-group[data-visibility="mixed"] .scene-group-eye { color: #d6edaa; }
-.scene-parts summary .scene-part-eye:hover { background: #ffffff0c; color: #d6edaa; }
+.scene-part-row.is-hidden .scene-part-name {
+  opacity: 0.45;
+}
+.scene-assembly-group[data-visibility="mixed"] .scene-group-eye {
+  color: #d6edaa;
+}
+.scene-parts summary .scene-part-eye:hover {
+  background: #ffffff0c;
+  color: #d6edaa;
+}
 .scene-visibility-reset {
   display: flex;
   align-items: center;
@@ -239,7 +250,11 @@
   color: #d6edaa;
   padding: 5px;
 }
-.scene-parts-empty { padding: 10px; color: #92929f; font-size: 12px; }
+.scene-parts-empty {
+  padding: 10px;
+  color: #92929f;
+  font-size: 12px;
+}
 .scene-part-row {
   display: flex;
   align-items: center;
@@ -898,9 +913,7 @@
 .scene-grid {
   --assembly-width: 216px;
   --director-width: 330px;
-  grid-template-columns: var(--assembly-width) minmax(0, 1fr) var(
-      --director-width
-    );
+  grid-template-columns: var(--assembly-width) minmax(0, 1fr) var(--director-width);
 }
 .scene-tree {
   grid-column: 1;
@@ -941,9 +954,7 @@
   .scene-grid {
     --assembly-width: 0px;
     --director-width: 300px;
-    grid-template-columns: var(--assembly-width) minmax(0, 1fr) var(
-        --director-width
-      );
+    grid-template-columns: var(--assembly-width) minmax(0, 1fr) var(--director-width);
   }
 }
 @media (max-width: 620px) {
@@ -1006,12 +1017,74 @@
 .no-assembly .scene-stage-label {
   left: 53px;
 }
-.flow-references{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--muted)}.flow-references>label{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.flow-references>div{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}.flow-references button{display:grid;gap:5px;background:transparent;border:0;color:#83907c;font-size:9px}.flow-references img{width:72px;height:60px;object-fit:cover;border:1px solid #ffffff14;border-radius:5px}.flow-references .fine{margin-top:10px}
+.flow-references {
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.flow-references > label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.flow-references > div {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.flow-references button {
+  display: grid;
+  gap: 5px;
+  background: transparent;
+  border: 0;
+  color: #83907c;
+  font-size: 9px;
+}
+.flow-references img {
+  width: 72px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #ffffff14;
+  border-radius: 5px;
+}
+.flow-references .fine {
+  margin-top: 10px;
+}
 
-.scene-agent-receipt { padding: 10px 14px; color: var(--muted, #8d9791); font-size: 11px; border-top: 1px solid #ffffff0a; }
-.scene-agent-receipt summary { cursor: pointer; }
-.scene-agent-receipt p { margin: 7px 0; }
-.scene-agent-receipt small { display: block; overflow-wrap: anywhere; margin-top: 6px; font: 10px ui-monospace, monospace; }
-.scene-agent-receipt a, .scene-native-download { color: #c7dda6; font-size: 11px; }
-.scene-native-download { display: inline-block; margin-top: 10px; }
-.scene-proposal > div { flex-wrap: wrap; }
+.scene-agent-receipt {
+  padding: 10px 14px;
+  color: var(--muted, #8d9791);
+  font-size: 11px;
+  border-top: 1px solid #ffffff0a;
+}
+.scene-agent-receipt summary {
+  cursor: pointer;
+}
+.scene-agent-receipt p {
+  margin: 7px 0;
+}
+.scene-agent-receipt small {
+  display: block;
+  overflow-wrap: anywhere;
+  margin-top: 6px;
+  font:
+    10px ui-monospace,
+    monospace;
+}
+.scene-agent-receipt a,
+.scene-native-download {
+  color: #c7dda6;
+  font-size: 11px;
+}
+.scene-native-download {
+  display: inline-block;
+  margin-top: 10px;
+}
+.scene-proposal > div {
+  flex-wrap: wrap;
+}

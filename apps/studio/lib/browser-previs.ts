@@ -26,13 +26,25 @@ export async function encodeCanvasMp4(
 ): Promise<Blob | null> {
   const frames = previsFrames(seconds);
   if (typeof VideoEncoder === "undefined") return null;
-  const { Output, BufferTarget, CanvasSource, Mp4OutputFormat, canEncodeVideo } = await import("mediabunny");
-  if (!await canEncodeVideo("avc", { width: canvas.width, height: canvas.height, bitrate: PREVIS_BITRATE })) return null;
+  const { Output, BufferTarget, CanvasSource, Mp4OutputFormat, canEncodeVideo } =
+    await import("mediabunny");
+  if (
+    !(await canEncodeVideo("avc", {
+      width: canvas.width,
+      height: canvas.height,
+      bitrate: PREVIS_BITRATE,
+    }))
+  )
+    return null;
   const output = new Output({
     format: new Mp4OutputFormat({ fastStart: "in-memory" }),
     target: new BufferTarget(),
   });
-  const source = new CanvasSource(canvas, { codec: "avc", bitrate: PREVIS_BITRATE, keyFrameInterval: 1 });
+  const source = new CanvasSource(canvas, {
+    codec: "avc",
+    bitrate: PREVIS_BITRATE,
+    keyFrameInterval: 1,
+  });
   output.addVideoTrack(source, { frameRate: frames.length / seconds });
   try {
     await output.start();

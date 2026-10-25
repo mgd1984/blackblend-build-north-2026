@@ -47,7 +47,12 @@ function object(value: unknown): Record<string, unknown> {
   return value as Record<string, unknown>;
 }
 function integer(value: unknown, maximum: number, minimum = 0): number {
-  if (typeof value !== "number" || !Number.isSafeInteger(value) || value < minimum || value > maximum)
+  if (
+    typeof value !== "number" ||
+    !Number.isSafeInteger(value) ||
+    value < minimum ||
+    value > maximum
+  )
     throw Error("Invalid usage quantity.");
   return value;
 }
@@ -56,14 +61,25 @@ function identifier(value: unknown, pattern: RegExp): string {
   return value;
 }
 function timestamp(value: unknown): number {
-  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}T.*Z$/.test(value) || !Number.isFinite(Date.parse(value)))
+  if (
+    typeof value !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}T.*Z$/.test(value) ||
+    !Number.isFinite(Date.parse(value))
+  )
     throw Error("Invalid usage timestamp.");
   return Date.parse(value);
 }
 
-export function validateSandboxAccount(value: unknown, expectedStripeAccount: string): SandboxBillingAccount {
+export function validateSandboxAccount(
+  value: unknown,
+  expectedStripeAccount: string,
+): SandboxBillingAccount {
   const account = object(value);
-  if (account.environment !== "sandbox" || account.usageConfigured !== true || account.stripeAccountId !== expectedStripeAccount)
+  if (
+    account.environment !== "sandbox" ||
+    account.usageConfigured !== true ||
+    account.stripeAccountId !== expectedStripeAccount
+  )
     throw Error("Sandbox billing account is not configured.");
   return {
     owner: identifier(account.owner, ownerPattern),
@@ -79,12 +95,17 @@ export function validateSandboxAccount(value: unknown, expectedStripeAccount: st
 /** Load from trusted server settings or records selected by the verified account owner. */
 export function createSandboxAccountResolver(accounts: unknown, stripeAccountId: string) {
   identifier(stripeAccountId, stripeAccountPattern);
-  if (!Array.isArray(accounts) || accounts.length > 1000) throw Error("Invalid billing account configuration.");
+  if (!Array.isArray(accounts) || accounts.length > 1000)
+    throw Error("Invalid billing account configuration.");
   const mapping = new Map<string, SandboxBillingAccount>();
   const customers = new Set<string>();
   for (const value of accounts) {
     const account = validateSandboxAccount(value, stripeAccountId);
-    if (mapping.has(account.owner) || customers.has(account.metronomeCustomerId) || customers.has(account.stripeCustomerId))
+    if (
+      mapping.has(account.owner) ||
+      customers.has(account.metronomeCustomerId) ||
+      customers.has(account.stripeCustomerId)
+    )
       throw Error("Duplicate billing account mapping.");
     mapping.set(account.owner, account);
     customers.add(account.metronomeCustomerId);
@@ -96,7 +117,11 @@ export function createSandboxAccountResolver(accounts: unknown, stripeAccountId:
   };
 }
 
-export function toMetronomeEvent(record: UsageOutboxRecord, account: SandboxBillingAccount, now = Date.now()): IngestEvent {
+export function toMetronomeEvent(
+  record: UsageOutboxRecord,
+  account: SandboxBillingAccount,
+  now = Date.now(),
+): IngestEvent {
   identifier(record.id, uuid);
   identifier(record.owner, ownerPattern);
   if (record.owner !== account.owner) throw Error("Usage owner does not match billing account.");
@@ -108,7 +133,10 @@ export function toMetronomeEvent(record: UsageOutboxRecord, account: SandboxBill
   let properties: Record<string, string | number>;
   let event_type: IngestEvent["event_type"];
   if (record.kind === "generation.completed") {
-    if (payload.model !== "minimax/h3-max/3d-to-video" || !["480P", "768P", "1080P"].includes(String(payload.resolution)))
+    if (
+      payload.model !== "minimax/h3-max/3d-to-video" ||
+      !["480P", "768P", "1080P"].includes(String(payload.resolution))
+    )
       throw Error("Unsupported generation usage dimensions.");
     properties = {
       units: 1,
@@ -118,7 +146,8 @@ export function toMetronomeEvent(record: UsageOutboxRecord, account: SandboxBill
       resolution: String(payload.resolution),
       reference_count: integer(payload.reference_count, 6),
     };
-    if (payload.processing_ms !== undefined) properties.processing_ms = integer(payload.processing_ms, 24 * 60 * 60 * 1000);
+    if (payload.processing_ms !== undefined)
+      properties.processing_ms = integer(payload.processing_ms, 24 * 60 * 60 * 1000);
     event_type = "blackblend.generation.completed";
   } else if (record.kind === "agent.completed") {
     if (typeof payload.model !== "string" || !/^[a-zA-Z0-9._:-]{1,128}$/.test(payload.model))
@@ -161,9 +190,15 @@ export function createUsageDelivery(dependencies: {
   const now = dependencies.now ?? Date.now;
   return async (records: UsageOutboxRecord[]) => {
     const config = dependencies.config;
-    if (!config.enabled || config.environment !== "sandbox" || !config.token || !stripeAccountPattern.test(config.stripeAccountId))
+    if (
+      !config.enabled ||
+      config.environment !== "sandbox" ||
+      !config.token ||
+      !stripeAccountPattern.test(config.stripeAccountId)
+    )
       throw Error("Sandbox metered billing is not configured.");
-    if (!Array.isArray(records) || records.length > 100) throw Error("Usage batch must contain at most 100 records.");
+    if (!Array.isArray(records) || records.length > 100)
+      throw Error("Usage batch must contain at most 100 records.");
     const pending = records.filter((record) => !record.delivered_at);
     if (!pending.length) return { accepted: 0 };
     const seen = new Set<string>();
@@ -194,7 +229,10 @@ export function createUsageDelivery(dependencies: {
     }
     await response.body?.cancel();
     // If this write fails, leave the records pending and resend the same transaction IDs.
-    await dependencies.markDelivered(pending.map((record) => record.id), new Date(now()).toISOString());
+    await dependencies.markDelivered(
+      pending.map((record) => record.id),
+      new Date(now()).toISOString(),
+    );
     return { accepted: events.length };
   };
 }

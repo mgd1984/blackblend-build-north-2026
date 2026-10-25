@@ -1,15 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import {
-  ArrowLeft,
-  Upload,
-  Box,
-  Columns2,
-  PanelRightClose,
-  Film,
-  Library,
-} from "lucide-react";
+import { ArrowLeft, Upload, Box, Columns2, PanelRightClose, Film, Library } from "lucide-react";
 import Account from "../account";
 import Editor from "./editor";
 import CanvasDock from "./canvas-dock";
@@ -18,10 +10,7 @@ import StudioSidebar from "./studio-sidebar";
 import SourcePlayer from "./source-player";
 import SceneWorkspace from "./scene-workspace";
 import type { SceneDocument } from "../../lib/scene-document";
-import {
-  readStudioLocation,
-  studioProjectUrl,
-} from "../../lib/studio-location";
+import { readStudioLocation, studioProjectUrl } from "../../lib/studio-location";
 import { studioExamples, type StudioExampleId } from "../../lib/studio-examples";
 import Comparison from "../studio/comparison";
 import { usePageTools } from "../../lib/webmcp";
@@ -30,27 +19,19 @@ export default function Studio({
 }: {
   initialRoute: ReturnType<typeof readStudioLocation>;
 }) {
-  const initialExample = studioExamples.find(
-    (item) => item.id === initialRoute.example,
-  )!;
-  const [view, setView] = useState<"build" | "examples" | "projects">(
-    initialRoute.view,
-  );
-  const [projectId, setProjectId] = useState<string | null>(
-    initialRoute.projectId,
-  );
-  const [exampleId, setExampleId] = useState<StudioExampleId>(
-    initialRoute.example,
-  );
+  const initialExample = studioExamples.find((item) => item.id === initialRoute.example)!;
+  const [view, setView] = useState<"build" | "examples" | "projects">(initialRoute.view);
+  const [projectId, setProjectId] = useState<string | null>(initialRoute.projectId);
+  const [exampleId, setExampleId] = useState<StudioExampleId>(initialRoute.example);
   const [source, setSource] = useState<string>(initialExample.source),
     [result, setResult] = useState<string>(initialExample.result),
-    [name, setName] = useState(
-      initialExample.title + " · " + initialExample.subtitle,
-    ),
+    [name, setName] = useState(initialExample.title + " · " + initialExample.subtitle),
     [prompt, setPrompt] = useState<string>(initialExample.prompt),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
-  const [finishTarget, setFinishTarget] = useState<"examples" | "projects">(initialRoute.view === "projects" ? "projects" : "examples");
+  const [finishTarget, setFinishTarget] = useState<"examples" | "projects">(
+    initialRoute.view === "projects" ? "projects" : "examples",
+  );
   const [projectPanel, setProjectPanel] = useState("generate");
   const animationInput = useRef<HTMLInputElement>(null);
   const [reviewPanelOpen, setReviewPanelOpen] = useState(true);
@@ -102,11 +83,7 @@ export default function Studio({
   }
   function choose(file: File | undefined, kind: "source" | "result") {
     if (!file) return false;
-    if (
-      !/\.(mp4|mov|webm)$/i.test(file.name) ||
-      file.size > 25_000_000 ||
-      !file.size
-    ) {
+    if (!/\.(mp4|mov|webm)$/i.test(file.name) || file.size > 25_000_000 || !file.size) {
       setError("Choose an MP4, MOV or WebM under 25 MB.");
       return false;
     }
@@ -190,7 +167,7 @@ export default function Studio({
           briefId: savedBrief.current,
           prompt,
           quality: "480P",
-          ...(renderedScene.current ? {scene:renderedScene.current} : {}),
+          ...(renderedScene.current ? { scene: renderedScene.current } : {}),
         });
         savedFlow.current = data.workflow.id;
         setHasSavedTake(true);
@@ -201,13 +178,9 @@ export default function Studio({
       body.set("kind", "source");
       const file =
         sourceFile.current ??
-        new File(
-          [await (await fetch(source)).blob()],
-          exampleId + "-native.mp4",
-          {
-            type: "video/mp4",
-          },
-        );
+        new File([await (await fetch(source)).blob()], exampleId + "-native.mp4", {
+          type: "video/mp4",
+        });
       body.set("file", file);
       const res = await fetch("/api/workflows", { method: "POST", body });
       const data = (await res.json()) as {
@@ -267,47 +240,115 @@ export default function Studio({
           <span className="mark">b.</span>
         </Link>
         <nav aria-label="Workspace views">
-          <button aria-label="Animate" aria-pressed={view === "build"} onClick={() => navigate("build")}>
-            <Box size={19} /><span>Animate</span>
+          <button
+            aria-label="Animate"
+            aria-pressed={view === "build"}
+            onClick={() => navigate("build")}
+          >
+            <Box size={19} />
+            <span>Animate</span>
           </button>
-          <button aria-label="Finish" aria-pressed={view !== "build"} onClick={() => { setProjectPanel("generate"); navigate(finishTarget); }}>
-            <Film size={19} /><span>Finish</span>
+          <button
+            aria-label="Finish"
+            aria-pressed={view !== "build"}
+            onClick={() => {
+              setProjectPanel("generate");
+              navigate(finishTarget);
+            }}
+          >
+            <Film size={19} />
+            <span>Finish</span>
           </button>
         </nav>
-        <button className="workbench-library" aria-label="Open saved takes" title="Saved takes" onClick={() => { setProjectPanel("takes"); setFinishTarget("projects"); navigate("projects"); }}><Library size={19}/><span>Library</span></button>
+        <button
+          className="workbench-library"
+          aria-label="Open saved takes"
+          title="Saved takes"
+          onClick={() => {
+            setProjectPanel("takes");
+            setFinishTarget("projects");
+            navigate("projects");
+          }}
+        >
+          <Library size={19} />
+          <span>Library</span>
+        </button>
         <div className="workbench-account">
           <Account />
         </div>
       </aside>
-      <input ref={animationInput} type="file" accept="video/mp4,.mp4" hidden aria-label="Import Blender animation" onChange={event => {
-        const file = event.target.files?.[0];
-        if (file && choose(file, "source")) { setReviewTab("source"); navigate("examples"); }
-        event.target.value = "";
-      }} />
+      <input
+        ref={animationInput}
+        type="file"
+        accept="video/mp4,.mp4"
+        hidden
+        aria-label="Import Blender animation"
+        onChange={(event) => {
+          const file = event.target.files?.[0];
+          if (file && choose(file, "source")) {
+            setReviewTab("source");
+            navigate("examples");
+          }
+          event.target.value = "";
+        }}
+      />
       <div className="workbench-content">
-        {view === "build" && error && <div className="studio-intake-error" role="alert">{error}<button onClick={() => setError("")}>Dismiss</button></div>}
+        {view === "build" && error && (
+          <div className="studio-intake-error" role="alert">
+            {error}
+            <button onClick={() => setError("")}>Dismiss</button>
+          </div>
+        )}
         {view === "build" ? (
-          <SceneWorkspace onRender={receiveRender} onImportAnimation={() => animationInput.current?.click()} onViewExample={(id="woodshed") => { selectExample(id); setReviewTab("compare"); setView("examples"); }} />
+          <SceneWorkspace
+            onRender={receiveRender}
+            onImportAnimation={() => animationInput.current?.click()}
+            onViewExample={(id = "woodshed") => {
+              selectExample(id);
+              setReviewTab("compare");
+              setView("examples");
+            }}
+          />
         ) : view === "projects" ? (
           <Editor
             projectId={projectId}
-            activePanel={projectPanel} onPanelChange={setProjectPanel} onActiveTake={setProjectId}
+            activePanel={projectPanel}
+            onPanelChange={setProjectPanel}
+            onActiveTake={setProjectId}
             onNewProject={() => navigate("build")}
           />
         ) : (
           <main className="studio-main">
             <header className="workbench-heading">
               <div>
-                <span className="workbench-section">02 / FINISH · {isCustomSource ? "Your source animation" : "Existing example"}</span>
+                <span className="workbench-section">
+                  02 / FINISH · {isCustomSource ? "Your source animation" : "Existing example"}
+                </span>
                 <h1>{name}</h1>
               </div>
               <div className="review-heading-actions">
-                {isCustomSource && <button className="scene-secondary" onClick={() => navigate("build")}><ArrowLeft size={14}/> Back to Animate</button>}
-                {!reviewPanelOpen && <button className="scene-secondary scene-open-sidebar" aria-label="Open studio sidebar" aria-expanded={false} aria-controls="review-sidebar" onClick={() => setReviewPanelOpen(true)}><PanelRightClose size={15}/> Studio</button>}
+                {isCustomSource && (
+                  <button className="scene-secondary" onClick={() => navigate("build")}>
+                    <ArrowLeft size={14} /> Back to Animate
+                  </button>
+                )}
+                {!reviewPanelOpen && (
+                  <button
+                    className="scene-secondary scene-open-sidebar"
+                    aria-label="Open studio sidebar"
+                    aria-expanded={false}
+                    aria-controls="review-sidebar"
+                    onClick={() => setReviewPanelOpen(true)}
+                  >
+                    <PanelRightClose size={15} /> Studio
+                  </button>
+                )}
               </div>
             </header>
             <div
-              className={"studio-layout studio-canvas-layout" + (!reviewPanelOpen ? " sidebar-closed" : "")}
+              className={
+                "studio-layout studio-canvas-layout" + (!reviewPanelOpen ? " sidebar-closed" : "")
+              }
             >
               <section className="studio-view" aria-label="Animation viewer">
                 {result ? (
@@ -318,88 +359,146 @@ export default function Studio({
                     resultLabel="TREATMENT"
                     controlsTarget={comparisonTarget}
                     profile={
-                      exampleId === "ptz" &&
-                      !isCustomSource &&
-                      result === studioExamples[1].result
+                      exampleId === "ptz" && !isCustomSource && result === studioExamples[1].result
                         ? "ptz"
                         : undefined
                     }
                   />
                 ) : (
-                  <SourcePlayer key={source} src={source}/>
+                  <SourcePlayer key={source} src={source} />
                 )}
                 <p className="fine">
                   {!isCustomSource
                     ? name + " · native source / existing generated take"
                     : name + " · your rendered source"}
                 </p>
-              {reviewTab === "source" && editingAppearance && <CanvasDock id="review-treatment" className="studio-controls" label="Appearance composer">
-                <PromptComposer
-                  label="Appearance direction" placeholder="Describe the materials, lighting and finish…"
-                  value={prompt} onChange={setPrompt} maxLength={12000}
-                  disabled={busy} readOnly={hasSavedTake} busy={busy}
-                  submitLabel={busy ? "Saving…" : "Prepare video"}
-                  onSubmit={() => void save()}
+                {reviewTab === "source" && editingAppearance && (
+                  <CanvasDock
+                    id="review-treatment"
+                    className="studio-controls"
+                    label="Appearance composer"
+                  >
+                    <PromptComposer
+                      label="Appearance direction"
+                      placeholder="Describe the materials, lighting and finish…"
+                      value={prompt}
+                      onChange={setPrompt}
+                      maxLength={12000}
+                      disabled={busy}
+                      readOnly={hasSavedTake}
+                      busy={busy}
+                      submitLabel={busy ? "Saving…" : "Prepare video"}
+                      onSubmit={() => void save()}
+                    />
 
-                />
-
-
-                {!isCustomSource && <button className="canvas-action-note canvas-cancel-edit" disabled={busy} onClick={() => setEditingAppearance(false)}>Cancel treatment</button>}
-              </CanvasDock>}
+                    {!isCustomSource && (
+                      <button
+                        className="canvas-action-note canvas-cancel-edit"
+                        disabled={busy}
+                        onClick={() => setEditingAppearance(false)}
+                      >
+                        Cancel treatment
+                      </button>
+                    )}
+                  </CanvasDock>
+                )}
                 {error && (
                   <p role="alert" className="error">
-                    {error}{" "}
-                    <button onClick={() => navigate("projects")}>
-                      Your projects ↗
-                    </button>
+                    {error} <button onClick={() => navigate("projects")}>Your projects ↗</button>
                   </p>
                 )}
               </section>
-              <StudioSidebar id="review-sidebar" open={reviewPanelOpen} active={reviewTab} onSelect={setReviewTab} onClose={() => setReviewPanelOpen(false)} tabs={[
-                {id:"source",label:"Source",icon:Film,content:<>
-                  <div className="sidebar-section"><h2>Source animation</h2>
-              {!isCustomSource && <div className="studio-example-picker" aria-label="Example product">
-                {studioExamples.map((example) => (
-                  <button
-                    key={example.id}
-                    aria-pressed={exampleId === example.id && !isCustomSource}
-                    disabled={busy}
-                    onClick={() => selectExample(example.id)}
-                  >
-                    {example.title}
-                  </button>
-                ))}
-              </div>}                <label className="upload-control">
-                  <Upload size={16} /> Replace source
-                  <input
-                    aria-label="Replace source video"
-                    type="file"
-                    accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
-                    disabled={busy}
-                    onChange={(e) => choose(e.target.files?.[0], "source")}
-                  />
-                </label>
-                <label className="upload-control">
-                  <Upload size={16} /> Compare a video
-                  <input
-                    aria-label="Choose comparison video"
-                    type="file"
-                    accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
-                    disabled={busy}
-                    onChange={(e) => choose(e.target.files?.[0], "result")}
-                  />
-                </label>
-                  <p>Start with a Blender animation or the woodshed example. Prepare video saves the source and direction; generation runs after you approve its price.</p>
-                  {exampleId === "massey-harris-21" && !isCustomSource && <p>R04 Blender source / existing barn treatment. Seven assemblies explode and reassemble through a full orbit. Both clips run 12 seconds; compare the generated framing and geometry against the source.</p>}
-                  {!editingAppearance && !hasSavedTake && <button className="scene-secondary" disabled={busy} onClick={() => setEditingAppearance(true)}><Film size={14}/> New treatment</button>}
-
-                  </div>
-                </>},
-                {id:"compare",label:"Compare",icon:Columns2,content:<>
-                  {!result && <p className="sidebar-empty">Add a comparison video in Source to compare it with your animation.</p>}
-                  <div ref={setComparisonTarget} />
-                </>},
-              ]} />
+              <StudioSidebar
+                id="review-sidebar"
+                open={reviewPanelOpen}
+                active={reviewTab}
+                onSelect={setReviewTab}
+                onClose={() => setReviewPanelOpen(false)}
+                tabs={[
+                  {
+                    id: "source",
+                    label: "Source",
+                    icon: Film,
+                    content: (
+                      <>
+                        <div className="sidebar-section">
+                          <h2>Source animation</h2>
+                          {!isCustomSource && (
+                            <div className="studio-example-picker" aria-label="Example product">
+                              {studioExamples.map((example) => (
+                                <button
+                                  key={example.id}
+                                  aria-pressed={exampleId === example.id && !isCustomSource}
+                                  disabled={busy}
+                                  onClick={() => selectExample(example.id)}
+                                >
+                                  {example.title}
+                                </button>
+                              ))}
+                            </div>
+                          )}{" "}
+                          <label className="upload-control">
+                            <Upload size={16} /> Replace source
+                            <input
+                              aria-label="Replace source video"
+                              type="file"
+                              accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
+                              disabled={busy}
+                              onChange={(e) => choose(e.target.files?.[0], "source")}
+                            />
+                          </label>
+                          <label className="upload-control">
+                            <Upload size={16} /> Compare a video
+                            <input
+                              aria-label="Choose comparison video"
+                              type="file"
+                              accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
+                              disabled={busy}
+                              onChange={(e) => choose(e.target.files?.[0], "result")}
+                            />
+                          </label>
+                          <p>
+                            Start with a Blender animation or the woodshed example. Prepare video
+                            saves the source and direction; generation runs after you approve its
+                            price.
+                          </p>
+                          {exampleId === "massey-harris-21" && !isCustomSource && (
+                            <p>
+                              R04 Blender source / existing barn treatment. Seven assemblies explode
+                              and reassemble through a full orbit. Both clips run 12 seconds;
+                              compare the generated framing and geometry against the source.
+                            </p>
+                          )}
+                          {!editingAppearance && !hasSavedTake && (
+                            <button
+                              className="scene-secondary"
+                              disabled={busy}
+                              onClick={() => setEditingAppearance(true)}
+                            >
+                              <Film size={14} /> New treatment
+                            </button>
+                          )}
+                        </div>
+                      </>
+                    ),
+                  },
+                  {
+                    id: "compare",
+                    label: "Compare",
+                    icon: Columns2,
+                    content: (
+                      <>
+                        {!result && (
+                          <p className="sidebar-empty">
+                            Add a comparison video in Source to compare it with your animation.
+                          </p>
+                        )}
+                        <div ref={setComparisonTarget} />
+                      </>
+                    ),
+                  },
+                ]}
+              />
             </div>
           </main>
         )}

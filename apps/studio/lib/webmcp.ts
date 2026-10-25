@@ -12,10 +12,7 @@ export type PageTool = {
   execute: (input: unknown) => unknown | Promise<unknown>;
 };
 type Registry = {
-  registerTool: (
-    tool: PageTool,
-    options: { signal: AbortSignal },
-  ) => void | Promise<void>;
+  registerTool: (tool: PageTool, options: { signal: AbortSignal }) => void | Promise<void>;
 };
 // Wait for the shared React action to be reflected on the visible page.
 export const afterPaint = () =>
@@ -29,8 +26,7 @@ export function usePageTools(tools: PageTool[]) {
   });
   const names = tools.map((t) => t.name).join("|");
   useEffect(() => {
-    const registry = (document as Document & { modelContext?: Registry })
-      .modelContext;
+    const registry = (document as Document & { modelContext?: Registry }).modelContext;
     if (typeof registry?.registerTool !== "function") return;
     const lifecycle = new AbortController();
     for (const tool of latest.current) {
@@ -40,11 +36,8 @@ export function usePageTools(tools: PageTool[]) {
             {
               ...tool,
               async execute(input) {
-                const current = latest.current.find(
-                  (item) => item.name === tool.name,
-                );
-                if (!current)
-                  throw new Error("Page tool is no longer available.");
+                const current = latest.current.find((item) => item.name === tool.name);
+                if (!current) throw new Error("Page tool is no longer available.");
                 const result = await current.execute(input);
                 await afterPaint();
                 return result;
@@ -52,9 +45,7 @@ export function usePageTools(tools: PageTool[]) {
             },
             { signal: lifecycle.signal },
           ),
-        ).catch(() =>
-          console.warn("Blackblend page tool registration failed:", tool.name),
-        );
+        ).catch(() => console.warn("Blackblend page tool registration failed:", tool.name));
       } catch {
         console.warn("Blackblend page tool registration failed:", tool.name);
       }

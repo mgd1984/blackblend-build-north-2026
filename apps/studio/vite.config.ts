@@ -3,11 +3,12 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { defineConfig, loadEnv } from "vite";
 import { cloudflare, getLocalWorkerdCompatibilityDate } from "@cloudflare/vite-plugin";
-import sceneRuntime from './dev/scene-runtime';
+import sceneRuntime from "./dev/scene-runtime";
 export default defineConfig(({ mode, command }) => {
   const values = loadEnv(mode, process.cwd(), "VITE_");
   const revision = execFileSync("git", ["rev-parse", "HEAD"], {
-    cwd: fileURLToPath(new URL("../../", import.meta.url)), encoding: "utf8",
+    cwd: fileURLToPath(new URL("../../", import.meta.url)),
+    encoding: "utf8",
   }).trim();
   return {
     plugins: [
@@ -17,10 +18,13 @@ export default defineConfig(({ mode, command }) => {
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         configPath: "wrangler.jsonc",
         // Local emulation uses the installed runtime; production retains its pinned date.
-        config: command === "serve" ? (config) => ({
-          compatibility_date: getLocalWorkerdCompatibilityDate().date,
-          vars: {...config.vars, APP_ORIGIN: "http://127.0.0.1:4331"},
-        }) : undefined,
+        config:
+          command === "serve"
+            ? (config) => ({
+                compatibility_date: getLocalWorkerdCompatibilityDate().date,
+                vars: { ...config.vars, APP_ORIGIN: "http://127.0.0.1:4331" },
+              })
+            : undefined,
         inspectorPort: false,
       }),
     ],

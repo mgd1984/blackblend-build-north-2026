@@ -4,7 +4,9 @@ import { briefs } from "../db/schema";
 import { briefInput, briefId } from "./briefs";
 export class BriefConflictError extends Error {
   constructor() {
-    super("This request ID was already used with different brief fields. Use a new request ID for a new brief.");
+    super(
+      "This request ID was already used with different brief fields. Use a new request ID for a new brief.",
+    );
   }
 }
 function publicBrief(row: typeof briefs.$inferSelect) {

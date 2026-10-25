@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { sceneDocument } from './scene-document.ts';
+import { sceneDocument } from "./scene-document.ts";
 export const command = z.discriminatedUnion("action", [
   z
     .object({
@@ -10,9 +10,7 @@ export const command = z.discriminatedUnion("action", [
       scene: sceneDocument.optional(),
     })
     .strict(),
-  z
-    .object({ action: z.literal("prepare_render"), id: z.string().uuid() })
-    .strict(),
+  z.object({ action: z.literal("prepare_render"), id: z.string().uuid() }).strict(),
   z
     .object({
       action: z.literal("review_render"),
@@ -52,12 +50,9 @@ export function requireTransition(
   provided?: string,
 ) {
   if (
-    [
-      "review_render",
-      "request_generation",
-      "record_submission",
-      "link_local_approval",
-    ].includes(action) &&
+    ["review_render", "request_generation", "record_submission", "link_local_approval"].includes(
+      action,
+    ) &&
     (!hash || hash !== provided)
   )
     throw new Error("Source changed. Review the current render.");

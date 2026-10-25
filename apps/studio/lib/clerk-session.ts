@@ -1,10 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "jose";
 const keysets = new Map<string, ReturnType<typeof createRemoteJWKSet>>();
-export async function verifyClerkSession(
-  token: string,
-  issuer: string,
-  origin: string,
-) {
+export async function verifyClerkSession(token: string, issuer: string, origin: string) {
   const issuerUrl = new URL(issuer);
   if (issuerUrl.protocol !== "https:") throw Error("Invalid Clerk issuer.");
   let keys = keysets.get(issuer);

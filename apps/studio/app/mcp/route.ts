@@ -53,15 +53,13 @@ const tools = [
 
   {
     name: "blackblend_capabilities",
-    description:
-      "Read what Blackblend can do now, its offers, and the hosted/local boundary.",
+    description: "Read what Blackblend can do now, its offers, and the hosted/local boundary.",
     inputSchema: empty,
     annotations: { readOnlyHint: true },
   },
   {
     name: "blackblend_list_briefs",
-    description:
-      "List up to 50 project briefs owned by the authenticated caller.",
+    description: "List up to 50 project briefs owned by the authenticated caller.",
     inputSchema: empty,
     annotations: { readOnlyHint: true, untrustedContentHint: true },
   },
@@ -86,15 +84,7 @@ const tools = [
         source: { enum: ["blender", "cad", "video", "none"] },
         fidelity: { enum: ["native", "appearance"] },
       },
-      required: [
-        "requestId",
-        "title",
-        "track",
-        "audience",
-        "goal",
-        "source",
-        "fidelity",
-      ],
+      required: ["requestId", "title", "track", "audience", "goal", "source", "fidelity"],
       additionalProperties: false,
     },
     annotations: {
@@ -136,13 +126,14 @@ export async function POST(request: Request) {
   const headers = { "Cache-Control": "private, no-store" };
   let id: unknown = null;
   try {
-    const body = await readJsonBounded(request, 20000, { requireJson: false }) as {
-      id?: unknown; jsonrpc?: string; method?: string;
+    const body = (await readJsonBounded(request, 20000, { requireJson: false })) as {
+      id?: unknown;
+      jsonrpc?: string;
+      method?: string;
       params?: { name?: string; arguments?: unknown };
     };
     id = body.id ?? null;
-    const reply = (result: unknown) =>
-      Response.json({ jsonrpc: "2.0", id, result }, { headers });
+    const reply = (result: unknown) => Response.json({ jsonrpc: "2.0", id, result }, { headers });
     if (body.jsonrpc !== "2.0") throw new Error("Invalid JSON-RPC.");
     if (body.method === "server/discover")
       return reply({
@@ -155,8 +146,7 @@ export async function POST(request: Request) {
         capabilities: { tools: {} },
         serverInfo: { name: "blackblend", version: "0.1.0" },
       });
-    if (body.method === "notifications/initialized")
-      return new Response(null, { status: 204 });
+    if (body.method === "notifications/initialized") return new Response(null, { status: 204 });
     if (body.method === "tools/list") return reply({ tools });
     if (body.method !== "tools/call")
       return Response.json(
@@ -175,8 +165,10 @@ export async function POST(request: Request) {
       result = capabilities;
     } else {
       // Match requestOwner's credential selection: a bearer token never falls back to cookies.
-      if (!request.headers.get("authorization")?.startsWith("Bearer ") &&
-          request.headers.get("origin") !== new URL(request.url).origin)
+      if (
+        !request.headers.get("authorization")?.startsWith("Bearer ") &&
+        request.headers.get("origin") !== new URL(request.url).origin
+      )
         return Response.json({ error: "Invalid origin." }, { status: 403, headers });
       const owner = await requestOwner(request);
       if (!owner) throw new Error("Sign in to access your briefs.");
@@ -185,24 +177,15 @@ export async function POST(request: Request) {
         result = await listWorkflows(owner);
       } else if (name === "blackblend_render_workflow_action")
         result = await actWorkflow(owner, args);
-      else if (name === "blackblend_create_brief")
-        result = await createBrief(owner, args);
+      else if (name === "blackblend_create_brief") result = await createBrief(owner, args);
       else if (name === "blackblend_list_briefs") {
         z.object({}).strict().parse(args);
         result = await listBriefs(owner);
-      } else if (
-        name === "blackblend_get_brief" ||
-        name === "blackblend_plan_brief"
-      ) {
-        const { id: key } = z
-          .object({ id: z.string().uuid() })
-          .strict()
-          .parse(args);
+      } else if (name === "blackblend_get_brief" || name === "blackblend_plan_brief") {
+        const { id: key } = z.object({ id: z.string().uuid() }).strict().parse(args);
         const brief = await getBrief(owner, key);
         result =
-          name === "blackblend_get_brief"
-            ? brief
-            : planFor(brief as Parameters<typeof planFor>[0]);
+          name === "blackblend_get_brief" ? brief : planFor(brief as Parameters<typeof planFor>[0]);
       } else throw new Error("Unknown tool.");
     }
     return reply({ content: [{ type: "text", text: JSON.stringify(result) }] });

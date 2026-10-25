@@ -12,7 +12,11 @@ export function readStudioLocation(search: string) {
           : ("build" as const),
     projectId,
     example:
-      query.get("example") === "massey-harris-21" ? ("massey-harris-21" as const) : query.get("example") === "ptz" ? ("ptz" as const) : ("woodshed" as const),
+      query.get("example") === "massey-harris-21"
+        ? ("massey-harris-21" as const)
+        : query.get("example") === "ptz"
+          ? ("ptz" as const)
+          : ("woodshed" as const),
   };
 }
 export function studioProjectUrl(projectId?: string | null) {
@@ -20,9 +24,7 @@ export function studioProjectUrl(projectId?: string | null) {
     ? "/studio?project=" + encodeURIComponent(projectId)
     : "/studio?view=projects";
 }
-export function legacyWorkflowUrl(
-  query: Record<string, string | string[] | undefined>,
-) {
+export function legacyWorkflowUrl(query: Record<string, string | string[] | undefined>) {
   const value = typeof query.flow === "string" ? query.flow : undefined;
   return studioProjectUrl(value);
 }

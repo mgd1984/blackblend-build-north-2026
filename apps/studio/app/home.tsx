@@ -3,12 +3,7 @@ import Link from "next/link";
 import { usePageTools } from "../lib/webmcp";
 import { z } from "zod";
 import Comparison from "./studio/comparison";
-import {
-  ArrowUpRight,
-  ArrowRight,
-  Check,
-  Plus,
-} from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check, Plus } from "lucide-react";
 const steps = [
   ["01", "Start", "Open the woodshed model or bring a rendered Blender animation."],
   ["02", "Animate", "Direct the camera and assembly motion, then render a previs."],
@@ -46,7 +41,8 @@ export default function Home() {
             "native Blender authoring and optional desktop execution",
             "approved provider jobs through the desktop adapter",
           ],
-          digitalTwins: "Future direction: revision-linked assets, validated simulation and physical data. No connected twin or Omniverse integration is shipped.",
+          digitalTwins:
+            "Future direction: revision-linked assets, validated simulation and physical data. No connected twin or Omniverse integration is shipped.",
           approachUrl: "/perspective",
           paidActions: false,
         };
@@ -125,10 +121,13 @@ export default function Home() {
               brought to life.
             </h2>
             <p>
-              Blackblend helps designers and engineers turn existing 3D work into product films. Animate the assembly, direct an AI treatment, and inspect the result beside the native source.
+              Blackblend helps designers and engineers turn existing 3D work into product films.
+              Animate the assembly, direct an AI treatment, and inspect the result beside the native
+              source.
             </p>
             <p className="quiet">
-              Today: native animation and generated-take comparison. Next: repeatable scene preparation and revision-linked deliverables.
+              Today: native animation and generated-take comparison. Next: repeatable scene
+              preparation and revision-linked deliverables.
             </p>
           </div>
         </section>
@@ -155,8 +154,8 @@ export default function Home() {
                 source.
               </h3>
               <p>
-                A native Blender animation alongside its generated treatment.
-                Drag the reveal to compare the same motion.
+                A native Blender animation alongside its generated treatment. Drag the reveal to
+                compare the same motion.
               </p>
               <small>PTZ camera rig · matched motion + adaptive framing.</small>
             </div>
@@ -174,50 +173,105 @@ export default function Home() {
         <section id="agencies" className="agency-section wrap section">
           <div className="agency-heading">
             <p className="eyebrow">FOR INDEPENDENTS & DESIGN STUDIOS</p>
-            <h2>Another pair<br /><em>of capable hands.</em></h2>
-            <p>Bring us in for a demanding shot, a product launch or a new way
-              of working. We can support your team behind the scenes or collaborate
-              directly with your client.</p>
+            <h2>
+              Another pair
+              <br />
+              <em>of capable hands.</em>
+            </h2>
+            <p>
+              Bring us in for a demanding shot, a product launch or a new way of working. We can
+              support your team behind the scenes or collaborate directly with your client.
+            </p>
             <Link className="text-link" href="/studio">
               Explore the Studio <ArrowUpRight size={17} />
             </Link>
           </div>
           <div className="agency-services">
             {[
-              ["01", "Production", "Camera and assembly choreography, material direction, film finishing and revisions."],
-              ["02", "Workflow", "Hands-on setup and guidance for teams bringing agents, Blender and CAD into their practice."],
-              ["03", "Continuity", "A path from launch assets to product updates, technical illustrations and documentation."],
-            ].map(([n,title,copy]) => <article key={n}><span>{n}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}
-            <p className="fine">Scope, confidentiality, client relationships and source-file delivery agreed per project.</p>
+              [
+                "01",
+                "Production",
+                "Camera and assembly choreography, material direction, film finishing and revisions.",
+              ],
+              [
+                "02",
+                "Workflow",
+                "Hands-on setup and guidance for teams bringing agents, Blender and CAD into their practice.",
+              ],
+              [
+                "03",
+                "Continuity",
+                "A path from launch assets to product updates, technical illustrations and documentation.",
+              ],
+            ].map(([n, title, copy]) => (
+              <article key={n}>
+                <span>{n}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
+              </article>
+            ))}
+            <p className="fine">
+              Scope, confidentiality, client relationships and source-file delivery agreed per
+              project.
+            </p>
           </div>
         </section>
         <section id="digital-twins" className="twin-section section">
           <div className="wrap">
             <div className="twin-heading">
               <p className="eyebrow">THE LONGER VIEW</p>
-              <h2>One product.<br /><em>A longer useful life.</em></h2>
-              <p>A well-prepared digital model can serve a launch film, a design
-                review and a service manual. We want to help that work carry forward
-                into simulation and digital-twin workflows.</p>
+              <h2>
+                One product.
+                <br />
+                <em>A longer useful life.</em>
+              </h2>
+              <p>
+                A well-prepared digital model can serve a launch film, a design review and a service
+                manual. We want to help that work carry forward into simulation and digital-twin
+                workflows.
+              </p>
             </div>
             <ol className="twin-path">
-              <li><span>01 / TODAY</span><h3>Visualize.</h3><p>Prepared scenes, directed motion and reviewed takes.</p></li>
-              <li><span>02 / PROPOSED</span><h3>Reuse.</h3><p>Component identities, source revisions and technical documentation.</p></li>
-              <li><span>03 / RESEARCH</span><h3>Simulate.</h3><p>Interoperable scenes, physical behavior and validated tests.</p></li>
-              <li><span>04 / LONGER TERM</span><h3>Connect.</h3><p>Link a physical asset to maintained operational data.</p></li>
+              <li>
+                <span>01 / TODAY</span>
+                <h3>Visualize.</h3>
+                <p>Prepared scenes, directed motion and reviewed takes.</p>
+              </li>
+              <li>
+                <span>02 / PROPOSED</span>
+                <h3>Reuse.</h3>
+                <p>Component identities, source revisions and technical documentation.</p>
+              </li>
+              <li>
+                <span>03 / RESEARCH</span>
+                <h3>Simulate.</h3>
+                <p>Interoperable scenes, physical behavior and validated tests.</p>
+              </li>
+              <li>
+                <span>04 / LONGER TERM</span>
+                <h3>Connect.</h3>
+                <p>Link a physical asset to maintained operational data.</p>
+              </li>
             </ol>
-            <div className="twin-footnote"><p>Digital twins extend beyond appearance to behavior and real-world data.
-              NVIDIA Omniverse is one ecosystem we are evaluating. Simulation, connected twins and an Omniverse integration are future work.</p>
-              <Link className="text-link" href="/perspective">Explore the direction <ArrowUpRight size={17} /></Link></div>
+            <div className="twin-footnote">
+              <p>
+                Digital twins extend beyond appearance to behavior and real-world data. NVIDIA
+                Omniverse is one ecosystem we are evaluating. Simulation, connected twins and an
+                Omniverse integration are future work.
+              </p>
+              <Link className="text-link" href="/perspective">
+                Explore the direction <ArrowUpRight size={17} />
+              </Link>
+            </div>
           </div>
         </section>
         <section id="ways" className="offers wrap section">
           <div className="section-head">
             <p className="eyebrow">THREE WAYS TO WORK</p>
             <h2>Choose your level of support.</h2>
-            <p>
-              Direct it yourself, commission a film or bring us into the design.
-            </p>
+            <p>Direct it yourself, commission a film or bring us into the design.</p>
           </div>
           <div className="offer-grid three-tiers">
             {[
@@ -301,8 +355,8 @@ export default function Home() {
             ))}
           </div>
           <p className="fine pricing-note">
-            Pricing preview · Packages are being tested during early access.
-            Subscriptions and service checkout are planned. Open Studio to explore the working prototype.
+            Pricing preview · Packages are being tested during early access. Subscriptions and
+            service checkout are planned. Open Studio to explore the working prototype.
           </p>
         </section>
         <section id="agents" className="agent-section section">
@@ -315,9 +369,8 @@ export default function Home() {
                 Approve.
               </h2>
               <p>
-                Ask an agent to prepare a Blender render, bring it into the
-                workspace and assemble a generation request. Review the source
-                and settings before approving a paid job.
+                Ask an agent to prepare a Blender render, bring it into the workspace and assemble a
+                generation request. Review the source and settings before approving a paid job.
               </p>
               <Link href="/studio" className="text-link">
                 Open studio <ArrowRight size={17} />
@@ -325,8 +378,7 @@ export default function Home() {
             </div>
             <div className="agent-console">
               <div className="console-top">
-                <span className="live-dot" /> BLACKBLEND / MCP{" "}
-                <span>AVAILABLE NOW</span>
+                <span className="live-dot" /> BLACKBLEND / MCP <span>AVAILABLE NOW</span>
               </div>
               <div className="tool-row">
                 <span>01</span>
@@ -345,9 +397,9 @@ export default function Home() {
               </div>
               <p>Human approval before paid generation.</p>
               <small>
-                Studio keeps your scene, animation and reviews together. Hosted
-                tools handle scene proposals, a native window edit and approved video generation.
-                Detailed Blender authoring can also run on your computer.
+                Studio keeps your scene, animation and reviews together. Hosted tools handle scene
+                proposals, a native window edit and approved video generation. Detailed Blender
+                authoring can also run on your computer.
               </small>
             </div>
           </div>

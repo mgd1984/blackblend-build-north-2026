@@ -27,6 +27,8 @@ The Convex app, Sites target, separate video-lab frontend and earlier Python cli
 
 Use the primary checkout for the development server. Keep recovered worktrees as history/experiments; do not serve or deploy them as another current app. Release builds must come from a committed tree with no tracked changes. Check `/api/version` after startup and deployment; it must expose only the commit and development/release mode.
 
+Run `npm run format` before committing JavaScript/TypeScript, styles or configuration; `npm run format:check` is required by CI. Keep formatting-only changes separate from behavior changes. Do not format generated files, migration metadata or vendored code.
+
 Use Node 22 LTS or 24+. Run root `npm ci`, `npm run typecheck`, `npm test` and `npm run build`. `npm run dev` starts Studio on 4331; `npm run start:desktop` starts optional local execution on 4317. Media tests need ffmpeg/ffprobe; `FFMPEG_PATH`/`FFPROBE_PATH` can select executables. Compile changed addon Python with `python3 -m py_compile` and test changed operators with mocked submissions when appropriate. Never use paid provider calls as tests.
 
 Run `npm run check:dependencies` before release. Only the documented, regression-tested local braces exception is accepted; new advisories block release. Local Workers has a compatibility-date mismatch: use an explicit local preview override rather than changing production settings. Builds and tests never deploy.

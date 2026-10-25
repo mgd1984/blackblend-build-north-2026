@@ -18,7 +18,9 @@
     "test:studio": "npm run test --workspace @blackblend/studio",
     "check:dependencies": "node scripts/audit-dependencies.mjs",
     "deploy": "npm run deploy --workspace @blackblend/studio",
-    "db:local": "npm run db:local --workspace @blackblend/studio"
+    "db:local": "npm run db:local --workspace @blackblend/studio",
+    "format": "prettier --write \"*.{mjs,json}\" \".github/workflows/*.{yml,yaml}\" \"apps/studio/**/*.{ts,tsx,mjs,json,jsonc,css}\" \"{public,scripts,tests}/**/*.{mjs,js,css,html}\"",
+    "format:check": "prettier --check \"*.{mjs,json}\" \".github/workflows/*.{yml,yaml}\" \"apps/studio/**/*.{ts,tsx,mjs,json,jsonc,css}\" \"{public,scripts,tests}/**/*.{mjs,js,css,html}\""
   },
   "dependencies": {
     "@fal-ai/client": "^1.10.1"
@@ -28,7 +30,8 @@
     "vendor/*"
   ],
   "devDependencies": {
-    "braces": "file:vendor/braces"
+    "braces": "file:vendor/braces",
+    "prettier": "3.9.10"
   },
   "overrides": {
     "fflate": "0.8.3",

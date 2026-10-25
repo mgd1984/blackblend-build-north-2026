@@ -30,6 +30,7 @@ npm run dev
 Open http://127.0.0.1:4331. The tests use synthetic fixtures and mocked providers; they need no private models or paid requests.
 
 ```sh
+npm run format:check
 npm run typecheck
 npm test
 npm run build
@@ -40,7 +41,7 @@ For your own deployment, replace the D1, Clerk and application-origin placeholde
 
 ## Submission provenance
 
-This public repository is the audited Build North source snapshot of release `ebdc8f9f9dbaa3fa1b209469ce82bc63a2a2a948` (reviewed PR head `3412fe4`), merged on 25 October 2026. It has its own public history. Development and full recovery history remain in the private Blackblend repository. Public snapshots are refreshed deliberately after review; they do not follow private pushes automatically. `SUBMISSION-SOURCE.json` records source hashes, exclusions and publication changes.
+This public repository is the audited Build North source snapshot of release `c24340633f4089912488ed9bf296bbe9cd4a9468` (reviewed PR head `454a431`), merged on 25 October 2026. It has its own public history. Development and full recovery history remain in the private Blackblend repository. Public snapshots are refreshed deliberately after review; they do not follow private pushes automatically. `SUBMISSION-SOURCE.json` records source hashes, exclusions and publication changes.
 
 The woodshed, PTZ and combine assets and earlier visualization experiments predate the hackathon software. During Build Week, development built and consolidated the Studio, browser animation capture, review/comparison, account boundaries and hosted agent/generation workflow, using AI coding assistance. Earlier model and video work is disclosed as demonstration input. Clerk provides identity; server-side checks enforce access to each user's projects and files.
 

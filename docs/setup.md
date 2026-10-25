@@ -20,9 +20,16 @@ Put your Clerk **publishable** key in ignored `apps/studio/.env.standalone.local
 
 Without private model exports, Studio uses a labelled concept woodshed. Adding a model locally does not upload it to production. [Studio](studio.md#examples) lists the preparation scripts and [Blender](blender.md) covers private source storage.
 
+## Formatting
+
+Run `npm run format` before committing, then `npm run format:check` to verify it. CI runs the same check. Prettier is pinned at the root and uses a 100-column target; editor integrations read `.prettierrc.json`.
+
+The commands cover our JavaScript, TypeScript, styles and configuration. They exclude generated output, migration metadata, the lockfile and vendored code. Python and Swift keep their current formatting. Avoid mixing behavior changes into the initial formatting commit.
+
 ## Check a build
 
 ```sh
+npm run format:check
 npm run typecheck
 npm test
 npm run build

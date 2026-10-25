@@ -1,0 +1,22 @@
+# Dependencies, third-party source and private material
+**/node_modules/
+vendor/
+runs/
+assets/
+.env*
+**/.env*
+**/.dev.vars*
+
+# Builds, generated metadata and tool state
+**/dist/
+**/.next/
+**/.vinext/
+**/.wrangler/
+**/.sites-runtime/
+**/coverage/
+**/outputs/
+**/work/
+**/next-env.d.ts
+**/*.tsbuildinfo
+package-lock.json
+apps/studio/drizzle/

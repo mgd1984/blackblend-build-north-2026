@@ -5,7 +5,7 @@ import * as schema from "./schema";
 export function getDb() {
   if (!env.DB) {
     throw new Error(
-      "Cloudflare D1 binding `DB` is unavailable. Start Studio with its Wrangler configuration so the DB binding is available."
+      "Cloudflare D1 binding `DB` is unavailable. Start Studio with its Wrangler configuration so the DB binding is available.",
     );
   }
 

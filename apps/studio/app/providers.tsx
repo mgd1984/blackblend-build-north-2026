@@ -1,7 +1,6 @@
 "use client";
 import { ClerkProvider } from "@clerk/react";
-export const clerkKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as
-  string | undefined;
+export const clerkKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string | undefined;
 export default function Providers({ children }: { children: React.ReactNode }) {
   if (!clerkKey) return <>{children}</>;
   return (

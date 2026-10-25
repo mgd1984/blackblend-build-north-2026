@@ -17,12 +17,7 @@ export async function getWorkflow(owner: string, id: string) {
 export function viewFlow(record: typeof workflows.$inferSelect) {
   const { owner, proofKey, sourceKey, resultKey, ...result } = record;
   const url = (kind: string) =>
-    "/api/workflow-media?id=" +
-    record.id +
-    "&kind=" +
-    kind +
-    "&v=" +
-    record.revision;
+    "/api/workflow-media?id=" + record.id + "&kind=" + kind + "&v=" + record.revision;
   return {
     ...result,
     metadata: JSON.parse(record.metadata),
@@ -78,7 +73,7 @@ export async function actWorkflow(owner: string, input: unknown) {
         briefId: brief.id,
         status: "draft",
         revision: crypto.randomUUID(),
-        metadata: JSON.stringify(data.scene ? {scene: data.scene} : {}),
+        metadata: JSON.stringify(data.scene ? { scene: data.scene } : {}),
         prompt: data.prompt,
         quality: data.quality,
         createdAt: now,
@@ -122,28 +117,18 @@ export async function actWorkflow(owner: string, input: unknown) {
       }),
     };
 }
-export async function putMedia(
-  owner: string,
-  id: string,
-  kind: string,
-  file: File,
-) {
+export async function putMedia(owner: string, id: string, kind: string, file: File) {
   if (!env.BUCKET) throw new Error("Media storage unavailable.");
   const flow = await getWorkflow(owner, id);
-  if (!["proof", "source", "result"].includes(kind))
-    throw new Error("Invalid media kind.");
-  if (file.size <= 0 || file.size > 25_000_000)
-    throw new Error("Use media under 25 MB.");
+  if (!["proof", "source", "result"].includes(kind)) throw new Error("Invalid media kind.");
+  if (file.size <= 0 || file.size > 25_000_000) throw new Error("Use media under 25 MB.");
   if (kind === "result" && flow.generationId)
-    throw new Error("Hosted results are attached by the generation job. Upload a separate take for other media.");
-  if (kind === "result" && flow.status !== "submitted")
     throw new Error(
-      "Record the approved local submission before uploading a result.",
+      "Hosted results are attached by the generation job. Upload a separate take for other media.",
     );
-  if (
-    kind !== "result" &&
-    !["draft", "prepared", "rendered", "reviewed"].includes(flow.status)
-  )
+  if (kind === "result" && flow.status !== "submitted")
+    throw new Error("Record the approved local submission before uploading a result.");
+  if (kind !== "result" && !["draft", "prepared", "rendered", "reviewed"].includes(flow.status))
     throw new Error("Start a new workflow to change this render.");
   const bytes = await file.arrayBuffer(),
     head = new Uint8Array(bytes);
@@ -157,9 +142,7 @@ export async function putMedia(
   await env.BUCKET.put(key, bytes, {
     httpMetadata: { contentType: kind === "proof" ? "image/png" : "video/mp4" },
   });
-  const hash = Array.from(
-    new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
-  )
+  const hash = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)))
     .map((v) => v.toString(16).padStart(2, "0"))
     .join("");
   const values =

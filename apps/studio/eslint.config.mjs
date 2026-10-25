@@ -13,7 +13,6 @@ const eslintConfig = defineConfig([
     "outputs/**",
     "work/**",
   ]),
-
 ]);
 
 export default eslintConfig;
