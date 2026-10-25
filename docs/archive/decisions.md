@@ -1,4 +1,6 @@
-> Historical decision log. Superseded decisions are retained as history; current architecture is in [ARCHITECTURE.md](ARCHITECTURE.md).
+> Historical note. Start with the [current guides](../../README.md#docs). Dates, plans and test results below describe the earlier work.
+
+> Historical decision log. Superseded decisions are retained as history; current architecture is in [ARCHITECTURE.md](../architecture.md).
 
 # Blackblend — decisions and next slice
 

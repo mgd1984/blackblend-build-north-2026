@@ -3,7 +3,7 @@ import {createUsageDelivery,toMetronomeEvent,type UsageOutboxRecord,type Sandbox
 
 type Row=Omit<UsageOutboxRecord,'payload'>&{payload:string};
 const LIMIT=20,LEASE_MS=60_000;
-/** One bounded batch per scheduled invocation; no schedule is activated by this export. */
+/** Send one limited batch when scheduled. Exporting this function does not enable a schedule. */
 export async function dispatchBillingUsage(env:BillingEnv,dependencies:{fetchImpl?:typeof fetch;now?:()=>number}={}){
   if(!billingEnabled(env))return {status:'disabled' as const,accepted:0,attentionRequired:0};
   const db=env.DB!,now=dependencies.now??Date.now,at=now(),token=crypto.randomUUID();

@@ -1,4 +1,4 @@
-/** Server-only billing seam. Never pass browser input directly to this adapter. */
+/** Send billing usage from trusted server records, never directly from browser input. */
 export type UsageOutboxRecord = {
   id: string;
   owner: string;
@@ -15,7 +15,7 @@ export type SandboxBillingAccount = {
   stripeCustomerId: string;
   metronomeCustomerId: string;
   metronomeContractId: string;
-  /** Operator confirmed matching billable metrics, rate card and contract. */
+  /** An operator checked that the metrics, prices and contract match. */
   usageConfigured: true;
 };
 
@@ -76,7 +76,7 @@ export function validateSandboxAccount(value: unknown, expectedStripeAccount: st
   };
 }
 
-/** Load only from trusted server configuration or an owner-indexed database table. */
+/** Load from trusted server settings or records selected by the verified account owner. */
 export function createSandboxAccountResolver(accounts: unknown, stripeAccountId: string) {
   identifier(stripeAccountId, stripeAccountPattern);
   if (!Array.isArray(accounts) || accounts.length > 1000) throw Error("Invalid billing account configuration.");
@@ -147,8 +147,8 @@ export function toMetronomeEvent(record: UsageOutboxRecord, account: SandboxBill
   };
 }
 
-/** Called by a trusted scheduled/queue worker reading the durable usage outbox.
- * Retrying this ingestion is safe with unchanged IDs; retrying provider submission is separate.
+/** A trusted scheduled/queue worker sends usage saved in the database.
+ * Usage can be resent with the same IDs. This does not permit resubmitting a paid job.
  */
 export function createUsageDelivery(dependencies: {
   config: MeteredBillingConfig;

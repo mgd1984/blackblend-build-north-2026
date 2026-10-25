@@ -4,7 +4,7 @@ export const PREVIS_WIDTH = 1280;
 export const PREVIS_HEIGHT = 720;
 export const PREVIS_BITRATE = 6_000_000;
 
-/** Fixed frame times, including exact choreography endpoints, with no wall-clock drift. */
+/** Export at fixed animation times, including the exact first and last poses. */
 export function previsFrames(seconds: number) {
   if (!Number.isFinite(seconds) || seconds < 2 || seconds > 15)
     throw Error("Previs duration must be between 2 and 15 seconds.");
@@ -17,7 +17,7 @@ export function previsFrames(seconds: number) {
   }));
 }
 
-/** Returns null only when AVC encoding is unavailable, enabling a truthful WebM fallback. */
+/** Return null when AVC encoding is unavailable so the caller can offer WebM instead. */
 export async function encodeCanvasMp4(
   canvas: HTMLCanvasElement,
   seconds: number,

@@ -3,7 +3,7 @@ import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+import { optimizeNativeAssembly, setInspectionMaterial } from "../../lib/native-assembly";
 import { animationPose, type SceneDocument } from "../../lib/scene-document";
 import { encodeCanvasMp4 } from "../../lib/browser-previs";
 import OrientationGizmo,{type OrientationHandle} from './orientation-gizmo';
@@ -181,8 +181,8 @@ export default forwardRef<ViewerHandle, Props>(
           Math.max(1, rect.height),
           false,
         );
-        // Viewport layout changes projection only. The scene document owns the
-        // camera pose, including when Preview, Apply or Undo reloads geometry.
+        // Resizing changes the aspect ratio, not the saved camera. Keep that camera
+        // when Preview, Apply or Undo loads another model version.
         aspect = rect.width / Math.max(1, rect.height);
         updateProjection();
         forceRender = true;
@@ -192,7 +192,7 @@ export default forwardRef<ViewerHandle, Props>(
       resize();
       const setCamera = (settings: SceneDocument["camera"], orbit = 0) => {
         settingCamera=true;
-        // Drain residual damping before applying an explicit pose or projection.
+        // Stop leftover camera motion before setting a new position or projection.
         const damping=controls.enableDamping;controls.enableDamping=false;controls.update();
         if((settings.projection==='orthographic') !== (camera instanceof THREE.OrthographicCamera)) {
           camera=settings.projection==='orthographic' ? new THREE.OrthographicCamera(-1,1,1,-1,.001,500) : new THREE.PerspectiveCamera(cameraFov(settings),aspect,.001,500);
@@ -233,43 +233,7 @@ export default forwardRef<ViewerHandle, Props>(
       controls.addEventListener('start',()=>{interacting=true;});
       controls.addEventListener('end',()=>{interacting=false;});
       controls.addEventListener('change',()=>{if(!settingCamera&&!recording&&!latest.current.playing)pendingCamera=true;});
-      function optimize(root: THREE.Object3D) {
-        root.updateWorldMatrix(true, true);
-        const inverse = root.matrixWorld.clone().invert(),
-          materials = new Map<THREE.Material, THREE.BufferGeometry[]>(),
-          meshes: THREE.Mesh[] = [];
-        root.traverse((obj) => {
-          if (
-            obj instanceof THREE.Mesh &&
-            obj.geometry &&
-            !Array.isArray(obj.material)
-          ) {
-            let geo = obj.geometry.clone();
-            if (geo.index) geo = geo.toNonIndexed();
-            for (const attr of Object.keys(geo.attributes))
-              if (attr !== "position" && attr !== "normal")
-                geo.deleteAttribute(attr);
-            if (!geo.attributes.normal) geo.computeVertexNormals();
-            geo.applyMatrix4(inverse.clone().multiply(obj.matrixWorld));
-            const list = materials.get(obj.material) ?? [];
-            list.push(geo);
-            materials.set(obj.material, list);
-            meshes.push(obj);
-          }
-        });
-        for (const mesh of meshes) mesh.removeFromParent();
-        for (const [material, geos] of materials) {
-          const geometry = mergeGeometries(geos);
-          if (geometry) {
-            const mesh = new THREE.Mesh(geometry, material.clone());
-            mesh.castShadow = true;
-            mesh.receiveShadow = true;
-            root.add(mesh);
-          }
-          geos.forEach((g) => g.dispose());
-        }
-      }
-      function register(id: string, object: THREE.Object3D) {
+      function register(id: string, object: THREE.Object3D, authoredSize?: THREE.Vector3) {
         const source = latest.current.document.parts.find((p) => p.id === id);
         if (!source) return;
         object.updateWorldMatrix(true,true);
@@ -289,7 +253,7 @@ export default forwardRef<ViewerHandle, Props>(
           rotation: object.rotation.clone(),
           scale: object.scale.clone(),
           size: source.shape === "native"
-            ? new THREE.Box3().setFromObject(object).getSize(new THREE.Vector3()).max(new THREE.Vector3(.001,.001,.001))
+            ? authoredSize!
             : new THREE.Vector3(...source.size),
           color: source.color,
         });
@@ -332,8 +296,8 @@ export default forwardRef<ViewerHandle, Props>(
               if (node.userData.blackblend_part_id) nodes.push(node);
             });
             for (const node of nodes) {
-              optimize(node);
-              register(node.userData.blackblend_part_id, node);
+              const authoredSize = optimizeNativeAssembly(node);
+              register(node.userData.blackblend_part_id, node, authoredSize);
             }
             if (
               [...parts.values()].filter(part => part.shape === "native").length !==
@@ -546,9 +510,7 @@ export default forwardRef<ViewerHandle, Props>(
               const materials = Array.isArray(sourceMaterial) ? sourceMaterial : [sourceMaterial];
               for (const material of materials) {
                 if (material instanceof THREE.MeshStandardMaterial) {
-                  material.transparent = current.xray;
-                  material.opacity = current.xray ? 0.22 : 1;
-                  material.depthWrite = !current.xray;
+                  setInspectionMaterial(material,current.xray);
                   if (!material.userData.sourceColor)
                     material.userData.sourceColor = material.color.clone();
                   if (value.shape !== "native" || value.color !== state.color)
@@ -642,7 +604,7 @@ export default forwardRef<ViewerHandle, Props>(
         capture: async (document, onProgress) => {
           if (recording || loadError || !parts.size)
             throw Error("Wait for the scene to finish loading.");
-          // The workspace retains this same frozen document with the take.
+          // Save these exact scene settings with the exported take.
           const captureDocument = structuredClone(document);
           const seconds = captureDocument.animation.duration;
           pendingCamera=false;

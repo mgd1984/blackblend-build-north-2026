@@ -1,6 +1,8 @@
+> Historical note. Start with the [current guides](../../README.md#docs). Dates, plans and test results below describe the earlier work.
+
 # Inference stack, economics and R&D roadmap
 
-Strategic update: [Product film economics and competitive position](PRODUCT-FILM-ECONOMICS.md) reframes the opportunity around approved launch packages and adds the missing fal Blender/depth/edge competition. Use that analysis and the production v3 visuals for the current recommendation. The hypothetical arithmetic below is a sensitivity illustration, not market intelligence or a validated business case.
+Strategic update: [Product film economics and competitive position](economics.md) reframes the opportunity around approved launch packages and adds the missing fal Blender/depth/edge competition. Use that analysis and the production v3 visuals for the current recommendation. The hypothetical arithmetic below is a sensitivity illustration, not market intelligence or a validated business case.
 
 Research snapshot: 20 October 2026. Proposed roadmap, not a commitment to hardware purchase, training, provider experiments or spending.
 

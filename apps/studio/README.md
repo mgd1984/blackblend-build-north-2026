@@ -1,5 +1,5 @@
-# Blackblend Studio
+# Studio
 
-The only web application. Run `npm ci` and `npm run dev` from the repository root.
+This is Blackblend's web app. Run `npm ci` and `npm run dev` from the repository root; it shares the root lockfile.
 
-See the root README and docs/ARCHITECTURE.md, docs/PRODUCT.md and docs/USAGE.md. This workspace has no separate install or lockfile.
+Start with the [README](../../README.md). See [Studio controls](../../docs/studio.md), [architecture](../../docs/architecture.md) and [setup](../../docs/setup.md) for details.

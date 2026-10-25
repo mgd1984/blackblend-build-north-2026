@@ -1,4 +1,4 @@
-/** Local, file-bound generation proposals. No provider call is made here. */
+/** Save local generation inputs for approval. This module never calls a provider. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash,randomUUID} from 'node:crypto';

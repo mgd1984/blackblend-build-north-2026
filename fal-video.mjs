@@ -56,7 +56,7 @@ export function createFalProvider(key, { fetchImpl = fetch, client = createFalCl
         }
       }
       await fs.writeFile(path.join(job.directory,'fal-request.json'),JSON.stringify(payload,null,2),{mode:0o600});
-      // Persist the ambiguous boundary before the single billable POST.
+      // Save that submission is starting before making the one paid request.
       job.status='submitting'; job.submissionAttempted=true;await save(job);
       const result=await queue('/'+FAL_MODEL,payload);
       return validId(result.request_id);

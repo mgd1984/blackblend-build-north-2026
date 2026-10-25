@@ -16,14 +16,14 @@ const tools = [
   {
     name: "blackblend_list_render_workflows",
     description:
-      "Read the authenticated caller's render proofs, review stages and generation handoffs. Media URLs require that caller's signed-in browser.",
+      "Read the signed-in user's render previews, review progress and prepared generation settings. Media links require that same user's signed-in browser.",
     inputSchema: empty,
     annotations: { readOnlyHint: true, untrustedContentHint: true },
   },
   {
     name: "blackblend_render_workflow_action",
     description:
-      "Create or advance an agent-mediated Blender render workflow. prepare_render returns a local-agent task; request_generation prepares a frozen handoff only. Hosted video submission requires separate human approval in Studio; desktop execution uses its local approval screen. This MCP tool cannot submit a paid job.",
+      "Prepare or update a Blender render job. prepare_render returns instructions for a local agent; request_generation only saves settings for approval. A person must approve hosted generation in Studio or desktop generation on its local approval page. This MCP tool cannot submit a paid job.",
     inputSchema: {
       type: "object",
       properties: {
@@ -115,7 +115,7 @@ export const capabilities = {
   available: [
     "Project briefs saved per signed-in user",
     "Preflight planning via MCP",
-    "Agent-mediated render proofs, source-bound review, local approval handoffs and source/result comparison",
+    "Prepare Blender renders, review the exact source, request local approval and compare source/result videos",
     "Interactive scene editing, choreography and browser MP4 capture in Studio",
     "Operator-restricted hosted scene proposals, native Blender window edits and human-approved fal video jobs in Studio",
     "Optional desktop adapter for local Blender authoring and approved provider jobs",

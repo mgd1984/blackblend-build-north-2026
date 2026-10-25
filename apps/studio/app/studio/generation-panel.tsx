@@ -169,7 +169,7 @@ export default function GenerationPanel({ compact = false, workflowId, sourceHas
           } catch {}
           if (request?.fingerprint !== fingerprint) request = { fingerprint, requestId: crypto.randomUUID() };
           prepareRequest.current = request;
-          // Retain only an opaque request ID and digest, never reference photos.
+          // Save only the request ID and source hash for recovery, never reference photos.
           try { sessionStorage.setItem(storageKey(workflowId), JSON.stringify(request)); } catch {}
         }
         if (status === "rendered") await onUseSource();

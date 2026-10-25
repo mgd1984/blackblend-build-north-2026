@@ -1,6 +1,6 @@
 import { sceneDocument, type SceneDocument } from './scene-document.ts';
 
-/** Compare validated content, never the agent's prose or a revision counter. */
+/** Detect edits from checked scene data, not the agent's claim or the revision number. */
 export function sceneChanges(source: SceneDocument, candidate: SceneDocument) {
   const before = sceneDocument.parse(source), after = sceneDocument.parse(candidate);
   const prior = new Map(before.parts.map(part => [part.id, part]));
@@ -16,7 +16,7 @@ export function sceneChanges(source: SceneDocument, candidate: SceneDocument) {
   return { changed: !!(added.length || removed.length || updated.length || settings.length || geometry || ordering), added, removed, updated, settings, geometry, ordering };
 }
 
-/** Bounded browser Undo history; source scenes and native revisions stay private. */
+/** Limit browser Undo history. Source models and Blender versions remain private. */
 export function retainedSceneHistory(raw: unknown): SceneDocument[] {
   if (!Array.isArray(raw)) return [];
   const retained: SceneDocument[] = [];

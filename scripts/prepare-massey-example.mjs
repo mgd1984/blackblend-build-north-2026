@@ -1,6 +1,6 @@
 /** Prepare the existing R03 GLB for Studio without editing its native source.
  * node --experimental-strip-types scripts/prepare-massey-example.mjs INPUT.glb
- * Writes private derivative assets and provenance under ignored runs/scene-assets.
+ * Saves the private viewer copy and its source hashes under ignored runs/scene-assets.
  */
 import {readFile, writeFile, mkdir} from 'node:fs/promises';
 import path from 'node:path';
@@ -39,7 +39,7 @@ for(const root of selected){
  visit(gltf.nodes.indexOf(root));
 }
 if(gltf.nodes.some((node,index)=>node.mesh!==undefined&&!covered.has(index)))throw Error('Source geometry exists outside the seven assembly roots.');
-// Publish only Studio's group tags in the private viewer derivative.
+// Add only Studio's group tags to the private viewer copy.
 for(const node of gltf.nodes)delete node.extras;
 for(const scene of gltf.scenes)delete scene.extras;
 selected.forEach((node,i)=>{node.extras={blackblend_part_id:'native-'+i};});

@@ -1,6 +1,6 @@
 /** Prepare V0.10.1's existing native mesh exports without opening or changing Blender.
  * node --experimental-strip-types scripts/prepare-ptz-example.mjs SOURCE_DIRECTORY
- * Private output and source provenance stay under ignored runs/scene-assets.
+ * Private output and source hashes stay under ignored runs/scene-assets.
  */
 import {readFile, writeFile, mkdir} from 'node:fs/promises';
 import path from 'node:path';

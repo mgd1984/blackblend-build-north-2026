@@ -42,8 +42,8 @@ def run(payload):
         raise RuntimeError('A shed wall is required.')
     width_axis, normal_axis = (0, 1) if 'wall 1 ' in wall['name'] else (1, 0)
     objects = [o for o in root.children_recursive if o.type == 'MESH' and not o.hide_render]
-    # Authored wall meshes can have a baked rotation relative to their group.
-    # Recover the wall plane from native vertical faces, preferring glazing.
+    # A wall's rotation may already be built into its mesh. Find its plane
+    # from vertical faces, preferring the existing window glass.
     root_inverse = root.matrix_world.inverted()
     preferred = [o for o in objects if any(t in o.name.lower() for t in ('glazing', 'glass'))]
     best_area, normal = 0, None
@@ -176,7 +176,7 @@ def run(payload):
             trim.matrix_parent_inverse.identity()
             trim.matrix_basis = basis @ Matrix.Translation(pos) @ Matrix.Diagonal((*scale, 1))
             trim.data.materials.append(material)
-    # Export only the assembled source; original native IDs and authored motion stay intact.
+    # Export the assembled model, keeping the original part IDs and animation.
     bpy.ops.wm.save_as_mainfile(filepath=str(output / 'scene.blend'), compress=False)
     bpy.ops.export_scene.gltf(filepath=str(output / 'woodshed.glb'), export_format='GLB', export_animations=False, export_cameras=False, export_lights=False, export_extras=True, use_visible=True)
     helper = runpy.run_path(str(Path(__file__).resolve().parents[1] / 'scripts/export-studio-scene.py'))

@@ -73,7 +73,7 @@ export function applySceneChange(input: SceneDocument, raw: unknown): SceneDocum
 const smooth = (value: number) => { const t = Math.min(1, Math.max(0, value)); return t * t * (3 - 2 * t); };
 export function animationPose(progress: number) {
   const t = Math.min(1, Math.max(0, progress));
-  // Assembled hold, open, inspect, close, assembled hold. Endpoints close exactly.
+  // Hold assembled, open, pause for inspection, close, then hold assembled again.
   const explode = t < .12 ? 0 : t < .36 ? smooth((t - .12) / .24) : t < .62 ? 1 : t < .9 ? 1 - smooth((t - .62) / .28) : 0;
   return { explode, orbit: smooth(t) };
 }

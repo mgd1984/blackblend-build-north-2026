@@ -43,7 +43,7 @@ export function hostedWindowExecutor(config:GeometryConfig,owner:string,requestI
    AND NOT EXISTS(SELECT 1 FROM native_geometry WHERE owner=? AND status IN ('pending','running','unknown')) ON CONFLICT(owner,request_id) DO NOTHING`)
    .bind(id,owner,requestId,hash,input,now,now,owner,since,limit,owner).run();
   if(!claim.meta.changes){const existing=await config.DB!.prepare('SELECT * FROM native_geometry WHERE owner=? AND request_id=?').bind(owner,requestId).first<GeometryRow>();if(existing)return result(existing);throw Error('A native edit needs reconciliation, or the daily native-edit limit was reached.');}
-  // One start. OpenAI's background response can be read after an observer disconnects.
+  // Start once. Read the same background response if the browser disconnects.
   try{await (options.dispatch??(id=>runOpenaiGeometryJob(config,id,options.fetchImpl)))(id);}
   catch{/* Inspect the persisted outcome, never repeat an uncertain native request. */}
   return result(await geometryRecord(config,owner,id));
@@ -60,7 +60,7 @@ export async function runGeometryJob(config:GeometryConfig,id:string,execute:(bo
  const started=Date.now();
  try{
   const input=JSON.parse(row.input),scene=sceneDocument.parse(input.scene),{edit}=validateWindowEdit(scene,input.edit);
-  // Keys are server-authored at admission, never taken from model arguments.
+  // The server chooses storage keys when creating the job; the model cannot choose them.
   const source=await bucket.get(input.sourceKey);if(!source||source.size>25_000_000)throw new NativeRejection('Native source unavailable or too large.');
   const output=await nativeOutput(await execute(nativeInput(scene,edit,await source.arrayBuffer())),edit.partId);
   await saveGeometryOutput(config,id,scene,edit,output,started);

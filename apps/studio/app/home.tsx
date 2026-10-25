@@ -381,7 +381,7 @@ export default function Home() {
               ],
               [
                 "Where does my project go?",
-                "Projects, rendered media and hosted Blender revisions are stored privately under your account. Local Blender files stay on your computer unless you upload them. Review frozen inputs and approve each paid video generation in Studio.",
+                "Your projects, videos and Blender edits are private to your account. Local Blender files stay on your computer unless you upload them. Check the animation, references and price before starting a paid video job.",
               ],
             ].map(([q, a]) => (
               <details key={q}>

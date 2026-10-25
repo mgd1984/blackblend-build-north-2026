@@ -111,7 +111,7 @@ function EditorCore({ projectId, onNewProject, activePanel: sidebarTab, onPanelC
       }catch{/* Reads resume on the next poll. No provider submission is retried. */}finally{polling=false;}
     };
     const interval=setInterval(()=>void poll(),3000);void poll();return()=>{stopped=true;clearInterval(interval);};
-    // Poll only the selected, owner-authorized receipt; never discover or assign historical runs.
+    // Check only the selected job after ownership verification. Never attach old runs automatically.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[runtimeToken,flow?.id,flow?.status,flow?.jobId,flow?.localProposal,flow?.sourceHash,flow?.generationId]);
   async function act(input: unknown) {
@@ -243,7 +243,7 @@ function EditorCore({ projectId, onNewProject, activePanel: sidebarTab, onPanelC
     {
       name: "blackblend_workflow_action",
       description:
-        "Create or review a source take, or import an existing approved Blender execution receipt. Generation is prepared in Studio; its frozen inputs require explicit human approval. This tool cannot approve paid generation or control remote Blender.",
+        "Save or review a source animation, or link an existing approved Blender job. Preparing generation saves its inputs; a person must approve the paid request in Studio. This tool cannot approve paid generation or run remote Blender.",
       inputSchema: actionSchema,
       annotations: { readOnlyHint: false, destructiveHint: false },
       execute: act,
@@ -432,7 +432,7 @@ function EditorCore({ projectId, onNewProject, activePanel: sidebarTab, onPanelC
                   </p>
                 )}
                 <details>
-                  <summary>Agent handoff & generation direction</summary>
+                  <summary>Job instructions</summary>
                   <pre className="flow-handoff">
                     {JSON.stringify(
                       handoff ?? {

@@ -27,7 +27,7 @@ type Props = {
   onAttach?: (file?: File) => void;
 };
 
-/** Phantasmo's expanding pill pattern, with Studio-owned actions and state. */
+/** Expand the compact chat box as text grows. Studio supplies its actions and state. */
 export default function PromptComposer({ value, onChange, label, placeholder, maxLength,
   onSubmit, submitLabel, disabled = false, readOnly = false, submitDisabled = false, busy = false,
   enterToSend = false, context, tools, suggestions, attachment, onAttach }: Props) {

@@ -1,7 +1,7 @@
 import {generationAvailable,generationCommand,generationService,GenerationError,type GenerationConfig} from './generation-service.ts';
 import {readJsonBounded} from './request-body.ts';
 const headers={'Cache-Control':'private, no-store'};
-/** Production routes always inject verified Clerk identity; tests exercise this same boundary. */
+/** Production routes supply the verified Clerk user. Tests use this same access check. */
 export function generationHttp(config:GenerationConfig,resolveOwner:(request:Request)=>Promise<string|null>,fetchImpl=fetch){
   return {
     async GET(request:Request){

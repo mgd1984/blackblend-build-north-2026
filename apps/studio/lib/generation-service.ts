@@ -108,8 +108,8 @@ export function generationService(config:GenerationConfig,fetchImpl=fetch){
         if(row.id!==id)for(const key of referenceKeys)await bucket.delete(key);
         return view(row);
       }catch(error){
-        // A failed response does not prove the transaction failed. Preserve frozen assets
-        // after the database write boundary; unused private objects can be reconciled later.
+        // A lost response may follow a successful database write. Keep these input files
+        // once the write starts; check whether they are unused before deleting them.
         if(!databaseWriteAttempted)for(const key of referenceKeys)await bucket.delete(key).catch(()=>{});
         throw error;
       }

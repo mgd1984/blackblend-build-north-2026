@@ -61,8 +61,8 @@ export function createStripeNotificationVerifier(signingSecret: string) {
   };
 }
 
-/** Signature verification precedes JSON parsing and owner mapping. The result is a hint,
- * not credit, payment entitlement, or a grant. Reconcile authoritative invoice/contract state.
+/** Check the signature before parsing JSON or finding the account.
+ * A valid notification asks us to check the invoice/contract; it never grants credit or spending access.
  */
 export async function stripeNotificationHint(input: {
   event: Stripe.Event;
@@ -121,8 +121,8 @@ export async function metronomeNotificationHint(input: {
   return { provider: "metronome", eventId: event.id, type: event.type, owner: account.owner, customerId: event.customer_id, occurredAt: event.timestamp };
 }
 
-/** Implement enqueue with a UNIQUE(provider,eventId) durable inbox and acknowledge only after
- * commit. Queue processing must fetch current vendor state; delivery order is not authoritative.
+/** Save notifications with UNIQUE(provider,eventId), then acknowledge the committed write.
+ * Later processing must read current vendor state rather than trust message arrival order.
  */
 export async function acceptBillingNotification(
   hint: BillingNotificationHint,
@@ -131,7 +131,7 @@ export async function acceptBillingNotification(
   return enqueue(hint.provider + ":" + hint.eventId, hint);
 }
 
-/** Public webhook routes should use this combined boundary, not trust a parsed event. */
+/** Public webhook routes must use these signature/account checks before trusting an event. */
 export function createStripeBillingHandler(dependencies: {
   signingSecret: string;
   stripeAccountId: string;

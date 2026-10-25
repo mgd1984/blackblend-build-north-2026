@@ -3,7 +3,7 @@ import {dispatchBillingUsage} from '../lib/billing-dispatch';
 import type {BillingEnv} from '../lib/billing-store';
 export default {
   fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext) {
-    // Sites identity headers are never trusted on the independent deployment.
+    // The standalone app must verify identity itself; ignore Sites identity headers.
     const headers = new Headers(request.headers);
     for (const key of [...headers.keys()])
       if (key.startsWith("oai-authenticated-")) headers.delete(key);
@@ -11,7 +11,7 @@ export default {
   },
   async scheduled(_controller:ScheduledController,env:Cloudflare.Env){
     const result=await dispatchBillingUsage(env as BillingEnv);
-    // Surface failures to the scheduler without logging private event bodies or credentials.
+    // Report scheduler failures without logging private events or credentials.
     if(result.status==='retry_pending'||result.attentionRequired)throw Error('Billing usage requires reconciliation.');
   },
 };

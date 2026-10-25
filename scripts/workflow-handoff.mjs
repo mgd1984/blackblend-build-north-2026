@@ -1,4 +1,4 @@
-/** Agent/local CLI handoff. Reads JSON on stdin; never submits a generation. */
+/** Read local job settings as JSON on stdin. Prepare approval without submitting a job. */
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';

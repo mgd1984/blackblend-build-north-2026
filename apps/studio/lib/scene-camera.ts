@@ -17,7 +17,7 @@ export function presetCamera(camera:SceneCamera, view:ViewPreset):SceneCamera {
   const angles:Record<ViewPreset,[number,number]> = {iso:[45,35.264],front:[0,0],back:[180,0],right:[90,0],left:[-90,0],top:[0,89.5],bottom:[0,-89.5]};
   return {...camera,yaw:angles[view][0],elevation:angles[view][1]};
 }
-/** Conservative sphere fit: constant time in bounds, independent of mesh density. */
+/** Fit a sphere around the bounds. Mesh vertex count does not affect this calculation. */
 export function fitCamera(camera:SceneCamera, bounds:{min:number[];max:number[]}, aspect:number):SceneCamera {
   const target = bounds.min.map((n,i)=>(n+bounds.max[i])/2) as [number,number,number];
   const radius = Math.max(.001,Math.hypot(...bounds.max.map((n,i)=>(n-bounds.min[i])/2)));
@@ -28,8 +28,8 @@ export function fitCamera(camera:SceneCamera, bounds:{min:number[];max:number[]}
 }
 
 export type AnimationPartBounds = {min:number[];max:number[];explode:number[]};
-/** Part motion is a linear translation times a bounded 0..1 easing curve.
- * Unioning its two endpoints encloses every intermediate pose, without sampling meshes. */
+/** Each part moves along a straight line, with progress between 0 and 1.
+ * Bounds covering its first and last position therefore cover the entire movement. */
 export function animationBounds(parts:AnimationPartBounds[], spread:number) {
   if(!parts.length) throw Error('Show at least one component to fit the animation.');
   const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];
@@ -42,17 +42,16 @@ export function animationBounds(parts:AnimationPartBounds[], spread:number) {
 }
 export function fitAnimationCamera(camera:SceneCamera, parts:AnimationPartBounds[], spread:number, aspect:number):SceneCamera {
   const bounds=animationBounds(parts,spread);
-  // Cover both the current canvas and the 16:9 export. Extra breathing room
-  // keeps the floating playback/composer clear of the animation envelope.
+  // Fit both the canvas and 16:9 export, leaving room for playback and the chat box.
   const limitingAspect=Math.min(aspect,16/9);
   const next=fitCamera(camera,bounds,limitingAspect);
   const elevation=camera.elevation*Math.PI/180,sin=Math.sin(elevation),cos=Math.cos(elevation);
   const tangentV=Math.tan(cameraFov(camera)*Math.PI/360);
   const tangentH=tangentV*Math.max(.1,limitingAspect);
   let distance=.02,halfHeight=.001;
-  // Bound the four frustum planes analytically over all yaw angles, using only
-  // each cached box's eight corners at the two translation endpoints. Unlike a
-  // bounding sphere this preserves useful framing for tall exploded assemblies.
+  // Check the camera's four view edges over the full orbit using box corners
+  // at each part's first and last position. This fits tall exploded assemblies
+  // more closely than a sphere, without checking every mesh vertex or frame.
   for(const part of parts)for(const endpoint of [0,spread])for(let corner=0;corner<8;corner++){
     const point=part.min.map((_,axis)=>((corner>>axis)&1?part.max[axis]:part.min[axis])+part.explode[axis]*endpoint-next.target[axis]);
     const horizontal=Math.hypot(point[0],point[2]),vertical=point[1];

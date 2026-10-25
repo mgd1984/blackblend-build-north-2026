@@ -319,10 +319,10 @@ function SceneWorkspaceCore({ onRender, onImportAnimation, onViewExample, authOw
       }
       if (!cancelled) timer = setTimeout(() => { void check(); }, 3000);
     };
-    // Give the initial POST time to create its durable request before polling.
+    // Let the initial POST save its job record before checking status.
     timer = setTimeout(() => { void check(); }, recoveryCheck ? 0 : 3000);
     return () => { cancelled = true; clearTimeout(timer); };
-  // Recovery is bound to an account and request; camera/scene edits are checked when the reply arrives.
+  // Recover only this account's request. Check for scene/camera changes when its reply arrives.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, runtime.mode, pendingChat, authOwner, recoveryCheck, busy]);
   function discardSavedProposal() {
@@ -531,7 +531,7 @@ function SceneWorkspaceCore({ onRender, onImportAnimation, onViewExample, authOw
         if (!authOwner) throw Error("Sign in to use the hosted scene agent.");
         pending = await createPendingChat(authOwner, source, requestId);
         if (!alive.current) return;
-        // Save recovery metadata and source draft before the one permitted POST.
+        // Save the request ID and scene draft before making the one allowed POST.
         localStorage.setItem(draftKey.current, JSON.stringify({ scene: source, record: savedRecord.current, messages: [...messages, { role: "user", text }].slice(-40), undo:retainedSceneHistory(history.current), redo:retainedSceneHistory(future.current) }));
         storePendingChat(sessionStorage, pending);
         pendingRef.current = pending;
@@ -676,7 +676,7 @@ function SceneWorkspaceCore({ onRender, onImportAnimation, onViewExample, authOw
     {
       name: "blackblend_propose_scene_edit",
       description:
-        "Propose bounded part or camera changes to the visible scene. Uses baseRevision. The human applies or dismisses the proposal in Studio. Never renders or submits generation.",
+        "Suggest supported part or camera edits to the displayed scene at baseRevision. A person chooses Apply or Dismiss in Studio. This tool never renders or submits generation.",
       annotations: { readOnlyHint: false, destructiveHint: false },
       inputSchema: {
         type: "object",
@@ -1117,7 +1117,7 @@ function SceneWorkspaceCore({ onRender, onImportAnimation, onViewExample, authOw
                     <X size={14} />
                   </button>
                 </div>
-                {proposal.scene.geometry&&<a className="scene-native-download" href={'/api/scene-geometry?kind=blend&id='+encodeURIComponent(proposal.scene.geometry.id)}>Download candidate .blend</a>}
+                {proposal.scene.geometry&&<a className="scene-native-download" href={'/api/scene-geometry?kind=blend&id='+encodeURIComponent(proposal.scene.geometry.id)}>Download edited .blend</a>}
               </div>
             )}
             <div ref={chatEnd} />            <details className="scene-connection-details">

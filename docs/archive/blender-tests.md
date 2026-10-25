@@ -1,3 +1,5 @@
+> Historical note. Start with the [current guides](../../README.md#docs). Dates, plans and test results below describe the earlier work.
+
 # Hosted native geometry
 
 22 October 2026. The hosted implementation uses OpenAI's hosted shell. Cloudflare Containers has been removed from the deployment target; no Workers Paid subscription is required by this execution path. The prior deployed Studio completed an explicitly authorized browser-to-container woodshed window edit, with candidate review and native revision Apply/Undo/Redo. Access remains restricted to the verified operator account. Arbitrary agent-authored Blender scripts and general scene creation remain proposed.
@@ -35,7 +37,7 @@ The initial operator Worker deployment was version `fac2351d-c39f-4aad-964e-6d8c
 
 A later, separately authorized browser submission completed the woodshed window edit in 47.5 seconds. Studio displayed the candidate and the applied native opening. Undo restored the original geometry, and Redo restored the same candidate without another provider call. The container was deleted after persistence. This established the signed-in browser-to-container path for this bounded operation; live cross-account access and interrupted-request recovery were not exercised by that run.
 
-The test found camera auto-fit changing the saved radius. Fix `cfa644d` removed automatic fitting on geometry loads and viewport resize. A browser replay of the existing source and candidate verified identical camera values through Preview, Back to current, Apply, Undo, Redo and sidebar resizing with zero additional inference calls. The fix was deployed as Worker version `356281dc-d5c1-4157-908b-9d2b5aeda0de`; the signed-in Studio restored the existing applied geometry after refresh. This is the prior verified deployment, not a claim about the consolidated baseline version. Its exact commit, CI and deployment alignment belong in [the baseline record](BASELINE.md).
+The test found camera auto-fit changing the saved radius. Fix `cfa644d` removed automatic fitting on geometry loads and viewport resize. A browser replay of the existing source and candidate verified identical camera values through Preview, Back to current, Apply, Undo, Redo and sidebar resizing with zero additional inference calls. The fix was deployed as Worker version `356281dc-d5c1-4157-908b-9d2b5aeda0de`; the signed-in Studio restored the existing applied geometry after refresh. This is the prior verified deployment, not a claim about the consolidated baseline version. Its exact commit, CI and deployment alignment belong in [the baseline record](../demo.md).
 
 ## Activation recipe
 
@@ -57,3 +59,21 @@ The corrected live OpenAI test used `openaiBlender` directly, including backgrou
 Contract tests cover disabled networking, command auditing, resource checkpoints, read-only resume, ambiguous POST protection, altered archives and output bounds. D1/R2 tests cover ownership, duplicate admission, private persistence, daily limits and recovery of a verified native candidate.
 
 Sources: [OpenAI hosted shell](https://developers.openai.com/api/docs/guides/tools-shell), [background responses](https://developers.openai.com/api/docs/guides/background), [official Blender 5.1 archive](https://download.blender.org/release/Blender5.1/).
+
+---
+
+# Native window milestone
+
+The local Studio can create a candidate window opening in the authored woodshed. The operation runs static Python in a separate Blender 5.1 background process against a saved private snapshot. No generated code runs, and the live Blender session and original snapshot are untouched.
+
+The tool accepts an authored wall ID, opening width/height, sill height and horizontal offset in source-local metres. It subtracts a cutter from the wall's meshes, checks removed volume and nine rays through the clear opening, adds visualization trim, then exports a new `.blend` and assembled GLB with the original assembly IDs. Browser transforms, camera and choreography remain separate and are retained in the scene document. Engineering adequacy of the changed framing is not verified.
+
+Geometry revisions are private immutable candidates in ignored `runs/scene-assets/revisions/<uuid>/`. Scene documents reference the UUID; Apply/Undo switches the reference. Fixed artifact routes serve the model, native file and verification report with loopback host/origin checks. A missing revision must fail rather than display the original geometry as if it were edited.
+
+Local Studio retains its background Blender executor. The hosted implementation uses pinned offline Blender in OpenAI hosted shell and private R2 revision artifacts. The operator-only deployment is enabled; its full browser submission remains an operator test. See [hosted native geometry](../blender.md). The source snapshot must be `runs/scene-assets/woodshed-before-browser-export.blend`; re-export if assembly names drift. `BLENDER_PATH` can select an explicitly installed compatible executable.
+
+Verified on the private woodshed with Blender 5.1: the initial test removed approximately 0.0398 cubic source units across 27 intersecting meshes and passed nine clear-opening ray checks. Source dimensions are not independently measured. Tests use mocked model requests; no video generation is needed to test geometry.
+
+The cutter rejects overlap with existing glazing or a prior Blackblend opening before changing meshes. The suggested rear-wall offset is +0.85 m to preserve its existing window. Nine-ray clearance verifies an opening, not a structural framing design.
+
+The wall plane is recovered from native mesh faces, including baked rotations. Four trim members are seated with exterior surface raycasts. Run the synthetic regression with `/Applications/Blender.app/Contents/MacOS/Blender --background --factory-startup --python tests/native-window.blender.py`. It checks a rotated wall, rejected overlap, retained glazing, opening clearance, trim contact and the exported native part ID.

@@ -39,8 +39,8 @@ export function billingStore(db:D1Database,stripeAccountId:string){
   };
 }
 
-/** Operator/deployment provisioning only. No public mapping mutation route exists.
- * Insert-only: an existing owner/customer/contract cannot be silently rebound.
+/** Create account mappings only from trusted setup code, never a public route.
+ * Insert new mappings only; never silently replace an owner, customer or contract.
  */
 export async function provisionSandboxBillingAccount(db:D1Database,value:unknown,stripeAccountId:string){
   const account=validateSandboxAccount(value,stripeAccountId);
