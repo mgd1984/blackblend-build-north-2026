@@ -1,6 +1,8 @@
 # Architecture
 
-Blackblend has one web app. The browser displays and animates the model. The server saves projects, checks access and calls paid services. Blender handles the supported geometry edit.
+Blackblend has one web app for agent-assisted physical design. Product visualization is its first working workflow. The browser displays and animates the model. The server saves projects, checks access and calls paid services. Blender handles the supported geometry edit.
+
+The physical-AI roadmap builds on these responsibilities: richer model editing, reusable assembly information and eventually simulation-ready assets. OpenUSD exchange, physics simulation, robot control and connected digital twins are not implemented. The broader positioning does not introduce another app or execution service.
 
 ## The pieces
 

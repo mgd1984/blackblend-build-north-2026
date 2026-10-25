@@ -1,9 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "The product — Blackblend",
+  title: "The opportunity — Blackblend",
   description:
-    "Turn an existing 3D assembly animation into a product film. The working workflow, business and roadmap.",
+    "Agent-assisted physical design, starting with product visualization. The working prototype, business model and path toward engineering and physical AI.",
 };
 export default function Perspective() {
   return (
@@ -16,94 +16,103 @@ export default function Perspective() {
           Open studio ↗
         </Link>
       </nav>
-      <p className="eyebrow">THE PRODUCT</p>
+      <p className="eyebrow">THE OPPORTUNITY</p>
       <h1>
-        From 3D assembly
+        Physical design,
         <br />
-        to product film.
+        with agents.
       </h1>
       <p className="intro">
-        Designers and engineers already have valuable 3D work. Blackblend turns its camera moves and
-        assembly animation into inputs for AI video production, then brings source and result
-        together for review.
+        Physical AI needs useful digital models of products, machines and environments. Blackblend
+        is building a workspace where people and agents can inspect those models, direct changes and
+        put the results to work. Product visualization is the first working application.
       </p>
       <section className="section">
-        <p className="eyebrow">THE WORKFLOW</p>
-        <h2>Animate. Finish.</h2>
+        <p className="eyebrow">THE PROBLEM</p>
+        <h2>Existing geometry. More work to make it useful.</h2>
         <p>
-          Animate the editable woodshed, or import an MP4 rendered in Blender. In Finish, set the
-          appearance and references, approve the generation price, and compare the result. Saved
-          takes live in the Library throughout.
-        </p>
-        <p>
-          Camera and component motion are authored in the source. The generated treatment can change
-          shape or timing; synchronized comparison makes those differences visible.
+          A 3D model is a starting point. Preparing an assembly explanation, a product film or a
+          simulation involves decisions about parts, motion and what the model represents. Our
+          hypothesis is that agents can help with that preparation while people direct and review
+          the work.
         </p>
       </section>
       <section className="section">
         <p className="eyebrow">WORKING TODAY</p>
-        <h2>From assembly to finished video.</h2>
+        <h2>Inspect. Direct. Review.</h2>
         <p>
-          Use the woodshed to inspect parts, ask for edits, animate the assembly and export a
-          preview video. Add reference images for an AI treatment, then compare both videos. Hosted
-          chat, Blender editing and generation are limited to approved accounts during early access.
+          Inspect the woodshed assembly, ask for a supported scene edit, review the proposal and
+          choose camera and assembly motion. Export a preview animation or bring a rendered Blender
+          MP4. Add references for an AI visual treatment, then compare the result with the source.
         </p>
         <p>
-          Start with the included model or your rendered animation. General CAD import, reliable
-          photo reconstruction and unrestricted Blender authoring are development goals.
+          Hosted chat, the fixed Blender window tool and generation are restricted to approved
+          accounts. Generated footage can alter parts or motion. The source remains available for
+          inspection; the examples have assumed dimensions and are not engineering-verified.
         </p>
       </section>
       <section className="section">
         <p className="eyebrow">THE BUSINESS</p>
-        <h2>Repeatable work for product teams.</h2>
+        <h2>Make the model useful more than once.</h2>
         <p>
-          The first customer is a design studio or engineering team producing product films and
-          assembly explanations. The proposed model is a Studio subscription plus clearly priced
-          generation usage. Expert production and engineering support cover more involved projects.
+          Start with design studios and engineering teams producing product films and assembly
+          explanations. The proposed model is a workspace subscription, separately priced execution
+          and scoped expert design or engineering support. Customer checkout is not enabled.
         </p>
         <p>
-          Early pilots need to establish time saved per approved film, repeat usage and contribution
-          margin after generation, retries, storage and support. Pricing and demand are being
-          tested.
-        </p>
-      </section>
-      <section className="section">
-        <p className="eyebrow">NEXT</p>
-        <h2>Broader inputs. Repeatable shots.</h2>
-        <p>
-          Improve model import, reusable choreography, geometry edits and recovery across source
-          revisions. Build a repeatable evaluation set for camera fidelity, part identity and
-          assembly timing. Expand into stills, interactive explainers and technical illustrations as
-          those workflows earn their place.
+          Pilots need to establish time and total cost per accepted deliverable, correction effort
+          and repeat use. The expansion opportunity is reusing reviewed assemblies across product
+          revisions, technical sales, training and service. Demand and margins remain to be tested.
         </p>
       </section>
       <section className="section">
-        <p className="eyebrow">INFERENCE ROADMAP</p>
-        <h2>More choices for each accepted shot.</h2>
+        <p className="eyebrow">THE ROADMAP</p>
+        <h2>From visualization to physical-AI preparation.</h2>
         <p>
-          Prodia documents a Tenstorrent-backed Wan 2.2 image-to-video endpoint, and Tenstorrent
-          describes its Blackhole video work with Prodia. That creates a concrete route for
-          investigating alternative inference hardware.
+          First, broaden model inputs and agent editing with reliable geometry checks and revision
+          handling. Then develop richer part relationships and reusable assembly procedures.
+          Simulation-ready assets and digital twins require additional physical properties,
+          validated behavior and relevant data from the physical system.
         </p>
         <p>
-          Blackblend currently uses fal’s H3 Max 3D-to-video path for animation-conditioned
-          treatment. A Blackhole path needs a compatible model, access to weights and usage rights,
-          and benchmarks for fidelity, latency and cost per accepted shot. Porting the particular H3
-          pipeline remains unproven.
+          OpenUSD exchange, simulation, robotics and connected twins are future work. General
+          Blender code editing is an experiment outside the current release.
+        </p>
+      </section>
+      <section className="section">
+        <p className="eyebrow">THE INDUSTRY DIRECTION</p>
+        <h2>Agents are entering the design workflow.</h2>
+        <p>
+          Autodesk Assistant already supports inspecting and editing Fusion designs. NVIDIA offers
+          agent tools for scene preparation and simulation through Omniverse. These developments
+          support the broader direction and set a high bar for Blackblend: useful, reliable work
+          across models and tools, with clear review of the results.
         </p>
         <p>
-          <a href="https://docs.prodia.com/reference/pricing/">
-            Prodia model and pricing documentation ↗
+          <a href="https://help.autodesk.com/view/fusion360/ENU/?contextId=LEARNINGPANEL">
+            Autodesk Assistant capabilities ↗
           </a>
           <br />
-          <a href="https://tenstorrent.com/deploy">Tenstorrent’s published demonstration ↗</a>
-          <br />
-          <a href="https://fal.ai/models/minimax/h3-max/3d-to-video/api">Current fal endpoint ↗</a>
+          <a href="https://developer.nvidia.com/omniverse">NVIDIA Omniverse tools for agents ↗</a>
+        </p>
+        <p>Neither platform is integrated with Blackblend today.</p>
+      </section>
+      <section className="section">
+        <p className="eyebrow">INFERENCE RESEARCH</p>
+        <h2>Measure the cost of useful work.</h2>
+        <p>
+          Authoring, rendering and viewing have different costs. We need to measure inference,
+          compute, failed attempts and human correction together for each accepted result.
+          Blackblend currently uses fal’s H3 Max 3D-to-video endpoint for visual treatment.
+        </p>
+        <p>
+          Alternative hardware, including Tenstorrent Blackhole, is a research direction. Model
+          compatibility, weight access, licensing and quality benchmarks come first. No Blackblend
+          H3 port or hardware cost advantage has been demonstrated.
         </p>
       </section>
       <p className="sources">
-        The immediate goal is a dependable model-to-film workflow.{" "}
-        <Link href="/studio">Try the woodshed ↗</Link>
+        Explore the working assembly-to-video workflow. <Link href="/studio">Open Studio ↗</Link>
       </p>
     </main>
   );

@@ -15,7 +15,7 @@ export default function Home() {
     {
       name: "blackblend_site_overview",
       description:
-        "Read Blackblend's offers, the workspace URL, and the workflow across the hosted workspace and local rendering.",
+        "Read Blackblend's agent-assisted design workflow, offers, current capabilities and physical-AI roadmap.",
       inputSchema: {
         type: "object",
         properties: {},
@@ -26,9 +26,9 @@ export default function Home() {
         z.object({}).strict().parse(input);
         return {
           offers: [
-            "Studio: self-directed workspace",
-            "Production: product films and agency production support",
-            "Engineering & Design: scoped review and AI workflow consulting",
+            "Studio: assembly inspection, supported scene edits and animation",
+            "Production: directed product films and assembly explanations",
+            "Engineering & Design: scoped expert review and workflow consulting",
           ],
           workspaceUrl: "/studio",
           hosted: [
@@ -42,7 +42,7 @@ export default function Home() {
             "approved provider jobs through the desktop adapter",
           ],
           digitalTwins:
-            "Future direction: revision-linked assets, validated simulation and physical data. No connected twin or Omniverse integration is shipped.",
+            "Physical-AI roadmap: reusable assemblies, simulation-ready assets and relevant physical data. Simulation, connected twins and Omniverse integration are future work.",
           approachUrl: "/perspective",
           paidActions: false,
         };
@@ -60,7 +60,7 @@ export default function Home() {
         </Link>
         <nav aria-label="Main navigation">
           <Link href="#workflow">Workflow</Link>
-          <Link href="#agencies">For studios</Link>
+          <Link href="#agencies">For teams</Link>
           <Link href="/perspective">Our approach</Link>
           <Link href="#agents">For agents</Link>
         </nav>
@@ -71,8 +71,7 @@ export default function Home() {
       <main id="main">
         <section className="hero wrap">
           <div className="hero-kicker">
-            <span className="live-dot" /> PRODUCT & ENGINEERING VISUALIZATION{" "}
-            <span>EARLY ACCESS</span>
+            <span className="live-dot" /> AGENT-ASSISTED PHYSICAL DESIGN <span>EARLY ACCESS</span>
           </div>
           <div className="hero-title">
             <h1>
@@ -86,14 +85,15 @@ export default function Home() {
                 <br />
                 Show how it fits.
               </p>
-              <span>CAD → CHOREOGRAPHY → FILM</span>
+              <span>INSPECT → DIRECT → REVIEW</span>
             </div>
           </div>
           <div className="hero-bottom">
             <p>
-              Turn your 3D animation into a product film.
+              Work through physical designs with an agent.
               <br />
-              Direct the motion in 3D. Develop the appearance with AI. Compare the result.
+              Start with an assembly. Inspect its parts, direct the motion and review an AI-finished
+              film.
             </p>
             <Link className="cta" href="/studio">
               Open studio <ArrowUpRight size={17} />
@@ -113,21 +113,21 @@ export default function Home() {
           </div>
         </section>
         <section className="statement wrap section">
-          <p className="eyebrow">ONE SOURCE / MANY OUTPUTS</p>
+          <p className="eyebrow">THE PHYSICAL AI OPPORTUNITY</p>
           <div>
             <h2>
-              Your geometry,
+              Physical products.
               <br />
-              brought to life.
+              Digital possibilities.
             </h2>
             <p>
-              Blackblend helps designers and engineers turn existing 3D work into product films.
-              Animate the assembly, direct an AI treatment, and inspect the result beside the native
-              source.
+              Agents need usable digital models to help with physical products. Blackblend is
+              building a shared workspace for inspecting assemblies, directing changes and carrying
+              that work into visual explanations, engineering and digital-twin preparation.
             </p>
             <p className="quiet">
-              Today: native animation and generated-take comparison. Next: repeatable scene
-              preparation and revision-linked deliverables.
+              Working today: assembly inspection, supported scene edits, animation and video
+              comparison. Broader CAD editing and simulation remain on the roadmap.
             </p>
           </div>
         </section>
@@ -172,15 +172,15 @@ export default function Home() {
         </section>
         <section id="agencies" className="agency-section wrap section">
           <div className="agency-heading">
-            <p className="eyebrow">FOR INDEPENDENTS & DESIGN STUDIOS</p>
+            <p className="eyebrow">FOR DESIGN & ENGINEERING TEAMS</p>
             <h2>
-              Another pair
+              Put your models
               <br />
-              <em>of capable hands.</em>
+              <em>to work.</em>
             </h2>
             <p>
-              Bring us in for a demanding shot, a product launch or a new way of working. We can
-              support your team behind the scenes or collaborate directly with your client.
+              Start with a product film or assembly explanation. For more involved work, scope an
+              expert engagement around your model, design questions and production workflow.
             </p>
             <Link className="text-link" href="/studio">
               Explore the Studio <ArrowUpRight size={17} />
@@ -201,7 +201,7 @@ export default function Home() {
               [
                 "03",
                 "Continuity",
-                "A path from launch assets to product updates, technical illustrations and documentation.",
+                "Plan how reviewed assemblies could support product updates, technical illustrations and service documentation.",
               ],
             ].map(([n, title, copy]) => (
               <article key={n}>
@@ -221,16 +221,16 @@ export default function Home() {
         <section id="digital-twins" className="twin-section section">
           <div className="wrap">
             <div className="twin-heading">
-              <p className="eyebrow">THE LONGER VIEW</p>
+              <p className="eyebrow">BUILDING TOWARD PHYSICAL AI</p>
               <h2>
-                One product.
+                From a model
                 <br />
-                <em>A longer useful life.</em>
+                <em>to useful understanding.</em>
               </h2>
               <p>
-                A well-prepared digital model can serve a launch film, a design review and a service
-                manual. We want to help that work carry forward into simulation and digital-twin
-                workflows.
+                The opportunity is to make digital models easier to prepare, update and reuse. Our
+                roadmap extends from visual explanations to engineering review, simulation
+                preparation and digital twins.
               </p>
             </div>
             <ol className="twin-path">
@@ -242,7 +242,9 @@ export default function Home() {
               <li>
                 <span>02 / PROPOSED</span>
                 <h3>Reuse.</h3>
-                <p>Component identities, source revisions and technical documentation.</p>
+                <p>
+                  Richer assembly relationships, reviewed revisions and technical documentation.
+                </p>
               </li>
               <li>
                 <span>03 / RESEARCH</span>
@@ -257,9 +259,9 @@ export default function Home() {
             </ol>
             <div className="twin-footnote">
               <p>
-                Digital twins extend beyond appearance to behavior and real-world data. NVIDIA
-                Omniverse is one ecosystem we are evaluating. Simulation, connected twins and an
-                Omniverse integration are future work.
+                Simulation needs physical properties and tested behavior. Connected twins also need
+                maintained data from the physical asset. OpenUSD and NVIDIA Omniverse are potential
+                integration paths; these capabilities are future work.
               </p>
               <Link className="text-link" href="/perspective">
                 Explore the direction <ArrowUpRight size={17} />
@@ -271,19 +273,21 @@ export default function Home() {
           <div className="section-head">
             <p className="eyebrow">THREE WAYS TO WORK</p>
             <h2>Choose your level of support.</h2>
-            <p>Direct it yourself, commission a film or bring us into the design.</p>
+            <p>
+              Use the workspace, commission a visual explanation or scope expert design support.
+            </p>
           </div>
           <div className="offer-grid three-tiers">
             {[
               {
                 name: "Studio",
                 tag: "SELF-DIRECTED",
-                title: "Your next animation.",
+                title: "Your model, in motion.",
                 price: "$49",
                 unit: "CAD / month · proposed",
-                copy: "Prepare scenes, compare takes and deliver your own work.",
+                copy: "Inspect assemblies, direct supported edits and compare visual results.",
                 items: [
-                  "Blender-connected workflow",
+                  "Browser animation and Blender video input",
                   "Source review and take records",
                   "Synchronized video comparison",
                   "Source-linked project records",
@@ -364,13 +368,13 @@ export default function Home() {
             <div>
               <p className="eyebrow">WORK FROM CHAT</p>
               <h2>
-                Prepare. Review.
+                Describe. Inspect.
                 <br />
-                Approve.
+                Refine.
               </h2>
               <p>
-                Ask an agent to prepare a Blender render, bring it into the workspace and assemble a
-                generation request. Review the source and settings before approving a paid job.
+                Ask for a supported scene change, inspect the proposal and apply it when ready.
+                Direct the animation in Studio, then use references to explore a visual treatment.
               </p>
               <Link href="/studio" className="text-link">
                 Open studio <ArrowRight size={17} />
@@ -421,15 +425,15 @@ export default function Home() {
               ],
               [
                 "Who is this for?",
-                "Design agencies, independent practitioners and product teams working from CAD. We also help teams bringing AI and agents into design workflows.",
+                "Design studios and engineering teams starting with an assembly or rendered animation. The first workflow is product visualization; broader engineering and physical-AI uses are roadmap goals.",
               ],
               [
                 "How is work priced?",
                 "We are developing Studio subscriptions, Production projects and Engineering & Design reviews. Project quotes will specify deliverables, revisions and generation costs.",
               ],
               [
-                "Does Blackblend build digital twins?",
-                "Our current prototype focuses on visualization and review. Revision-linked assets, simulation and physical-system data are longer-term directions. A generated film alone does not establish a validated digital twin.",
+                "How does this relate to physical AI?",
+                "Blackblend starts with agents helping people inspect and revise digital models of physical products. Today’s workflow covers visualization and supported edits. Simulation-ready assets, connected twins and robotics workflows need further development and validation.",
               ],
               [
                 "Where does my project go?",
@@ -458,7 +462,7 @@ export default function Home() {
         <Link className="wordmark" href="/">
           blackblend<span className="foot-period">.</span>
         </Link>
-        <p>Design practice. Software. Shared knowledge.</p>
+        <p>Agent-assisted physical design.</p>
         <span>© {new Date().getFullYear()} Blackblend · Early access</span>
       </footer>
     </>

@@ -6,7 +6,7 @@ import Providers from "./providers";
 export const metadata: Metadata = {
   title: "Blackblend — Design, in motion.",
   description:
-    "Product and engineering visualization from one source of geometry. Blender animation, agent-directed production and source/result review in one Studio.",
+    "A workspace for agent-assisted physical design. Inspect assemblies, review scene edits and direct product animations. Building toward engineering and digital-twin workflows.",
   metadataBase: new URL("https://blackblend-studio.mgd1984.workers.dev"),
 };
 export default function Layout({ children }: { children: React.ReactNode }) {

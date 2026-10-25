@@ -1,6 +1,8 @@
 # Blackblend
 
-Turn a 3D assembly animation into a product video. Keep the original beside the AI version so you can see what changed.
+A workspace for agent-assisted physical design. Inspect assemblies, review scene edits and turn authored motion into product video.
+
+Physical AI creates new uses for digital models of products, machines and environments. Blackblend starts with product visualization; broader agent authoring, engineering reuse and digital-twin preparation are the roadmap. See the [product guide](docs/product.md) for current capabilities and the business hypothesis.
 
 [Open Studio](https://blackblend-studio.mgd1984.workers.dev/studio) · [Demo video](https://www.youtube.com/watch?v=-E_kNycUh-M) · [Walkthrough](docs/demo.md) · [Architecture](docs/architecture.md)
 
@@ -41,7 +43,7 @@ For your own deployment, replace the D1, Clerk and application-origin placeholde
 
 ## Submission provenance
 
-This public repository is the audited Build North source snapshot of release `c24340633f4089912488ed9bf296bbe9cd4a9468` (reviewed PR head `454a431`), merged on 25 October 2026. It has its own public history. Development and full recovery history remain in the private Blackblend repository. Public snapshots are refreshed deliberately after review; they do not follow private pushes automatically. `SUBMISSION-SOURCE.json` records source hashes, exclusions and publication changes.
+This public repository is the audited Build North source snapshot of release `c0587058746cae72d2726426eeb1e40aed02fdad` (reviewed PR head `3255da5`), merged on 25 October 2026. It has its own public history. Development and full recovery history remain in the private Blackblend repository. Public snapshots are refreshed deliberately after review; they do not follow private pushes automatically. `SUBMISSION-SOURCE.json` records source hashes, exclusions and publication changes.
 
 The woodshed, PTZ and combine assets and earlier visualization experiments predate the hackathon software. During Build Week, development built and consolidated the Studio, browser animation capture, review/comparison, account boundaries and hosted agent/generation workflow, using AI coding assistance. Earlier model and video work is disclosed as demonstration input. Clerk provides identity; server-side checks enforce access to each user's projects and files.
 

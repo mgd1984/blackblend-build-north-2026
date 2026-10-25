@@ -1,7 +1,7 @@
 {
   "snapshot": "Build North 2026",
-  "sourceCommit": "c24340633f4089912488ed9bf296bbe9cd4a9468",
-  "testedIntegration": "454a43163b80ff4de3716deb125293d8a6a27f51",
+  "sourceCommit": "c0587058746cae72d2726426eeb1e40aed02fdad",
+  "testedIntegration": "3255da56b5de238f90947f224a91a2ff9c5f88b3",
   "publicationChanges": [
     "README.md",
     "apps/studio/wrangler.jsonc",
@@ -113,13 +113,13 @@
     },
     {
       "path": "AGENTS.md",
-      "sourceSha256": "5ef247367191ce363c4e9265cce4f0dd2bd289a3e7b19e6805c9a663a9ce4b67",
-      "sha256": "5ef247367191ce363c4e9265cce4f0dd2bd289a3e7b19e6805c9a663a9ce4b67"
+      "sourceSha256": "c46ec81a956c62a3309c177cfe5cc34e40147dc280e36656a8ed5f2c8d3a38dc",
+      "sha256": "c46ec81a956c62a3309c177cfe5cc34e40147dc280e36656a8ed5f2c8d3a38dc"
     },
     {
       "path": "README.md",
-      "sourceSha256": "6f760cb71f3d9e35e856a3afab7aabeb47bc407c1316fef06951b993206350fa",
-      "sha256": "a90594f6296c22ce4fc60cdf221943504dd0d121fbceb23dc520efb343861805"
+      "sourceSha256": "a7971a73d592e706037e9c131b4041a6bf395db47c0e184f64ba3c5d90751f90",
+      "sha256": "68fef7f9909cf866f55f693b191c0d9ba0d8dd91a0c87c311c0247d6c20f2adf"
     },
     {
       "path": "apps/studio/.gitignore",
@@ -218,13 +218,13 @@
     },
     {
       "path": "apps/studio/app/home.tsx",
-      "sourceSha256": "4151fafab8e53a90eb7f45b8916c1478ec7b34a7ee25157dbae37c7f10f0f319",
-      "sha256": "4151fafab8e53a90eb7f45b8916c1478ec7b34a7ee25157dbae37c7f10f0f319"
+      "sourceSha256": "25dedb14cb1c4b848c3259245746bc3b00c5a2a967ab911de59b1baca400ac10",
+      "sha256": "25dedb14cb1c4b848c3259245746bc3b00c5a2a967ab911de59b1baca400ac10"
     },
     {
       "path": "apps/studio/app/layout.tsx",
-      "sourceSha256": "b04e8630e6e91be7bf96621eb541c7d01549ff1163b1226332aa2aa6e7292620",
-      "sha256": "b04e8630e6e91be7bf96621eb541c7d01549ff1163b1226332aa2aa6e7292620"
+      "sourceSha256": "77087ddf05b08dac597c5556b7acea4471ec169ff38b156d47ce92f72f81fae3",
+      "sha256": "77087ddf05b08dac597c5556b7acea4471ec169ff38b156d47ce92f72f81fae3"
     },
     {
       "path": "apps/studio/app/mcp/route.ts",
@@ -238,8 +238,8 @@
     },
     {
       "path": "apps/studio/app/perspective/page.tsx",
-      "sourceSha256": "e3c687daf72d934eaa7c735959c1565f80b15786a9096d3e7dfa3ffa0e267f54",
-      "sha256": "e3c687daf72d934eaa7c735959c1565f80b15786a9096d3e7dfa3ffa0e267f54"
+      "sourceSha256": "fc8ed4069ffe3885e5af1b8b35041c5240f5da39ef86b5e5d5723e0f38c07c23",
+      "sha256": "fc8ed4069ffe3885e5af1b8b35041c5240f5da39ef86b5e5d5723e0f38c07c23"
     },
     {
       "path": "apps/studio/app/providers.tsx",
@@ -973,8 +973,8 @@
     },
     {
       "path": "docs/architecture.md",
-      "sourceSha256": "b94652f0bdec9821edc3197bdf447e1934d3354418a9b8eb261fb40e7b8ec003",
-      "sha256": "b94652f0bdec9821edc3197bdf447e1934d3354418a9b8eb261fb40e7b8ec003"
+      "sourceSha256": "a6291fbb54d24ffad76b5b466d76a7c45a9424d65c079e4214f0d9fb16503037",
+      "sha256": "a6291fbb54d24ffad76b5b466d76a7c45a9424d65c079e4214f0d9fb16503037"
     },
     {
       "path": "docs/archive/README.md",
@@ -1018,13 +1018,13 @@
     },
     {
       "path": "docs/demo.md",
-      "sourceSha256": "4d345f066fb460634b54b62831a072fae7ebf26abbbe6f8e6a506574abcfdfb2",
-      "sha256": "02b5bb310213b38286c60b9a41c441ff1376128571cb8981068409611099fc2c"
+      "sourceSha256": "5d36550205a46ce1dfa6cbfddbcf4b711536a61d53407860b6110f402dd00d3d",
+      "sha256": "3288408751758dc89b103e0cc68aba48fac6c80e4cfd0a7393111cda92245cfe"
     },
     {
       "path": "docs/product.md",
-      "sourceSha256": "4c38393e88b51aa24954d8e8973eeec417836afd7eaf933e8555bb48acf19e49",
-      "sha256": "4c38393e88b51aa24954d8e8973eeec417836afd7eaf933e8555bb48acf19e49"
+      "sourceSha256": "012b24483100d1590ff0c8dc4092b31856608098fb76b48c64cdda2585d615de",
+      "sha256": "012b24483100d1590ff0c8dc4092b31856608098fb76b48c64cdda2585d615de"
     },
     {
       "path": "docs/reviews/studio-baseline-prompt.txt",
@@ -1253,6 +1253,7 @@
     }
   ],
   "publicationNotes": [
-    "Retained desktop receipt-wait test fix; application behavior is unchanged. General Blender code experiment is excluded."
+    "Retained desktop receipt-wait test fix; application behavior is unchanged. General Blender code experiment is excluded.",
+    "Copy pass aligns the physical-AI roadmap; application behavior and published media are unchanged."
   ]
 }

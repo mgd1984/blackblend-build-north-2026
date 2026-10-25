@@ -2,7 +2,7 @@
 
 ## Product and docs
 
-Blackblend is one product-visualization Studio. Read README, `docs/product.md` and `docs/architecture.md` before changing direction. Product video is the working workflow. Drawing-to-CAD automation, other output formats, simulation and connected twins are still proposed.
+Blackblend is one Studio for agent-assisted physical design, starting with product visualization. Read README, `docs/product.md` and `docs/architecture.md` before changing direction. Physical AI is the broader opportunity: helping people and agents prepare, inspect and reuse digital models of physical products. Product video is the working workflow. General agentic CAD, drawing-to-CAD automation, simulation and connected twins are still proposed. Keep those capability boundaries explicit in public copy.
 
 Write plain, direct English in docs, comments and help text. Say what happens, who does it and why it matters. Keep technical identifiers exact, and explain unfamiliar terms when needed. Use short, descriptive doc names. Update an existing guide rather than adding another plan or checkpoint document; put dated research and old decisions in `docs/archive/`.
 

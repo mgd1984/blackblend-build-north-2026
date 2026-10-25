@@ -1,25 +1,36 @@
 # Demo
 
-**Blackblend turns a 3D assembly animation into a product video, with the original beside the AI result for comparison.** Show that working path first.
+**Blackblend is building a workspace for agent-assisted physical design. Product visualization is the first working application.** Show the opportunity through that application, using the existing release and results.
 
-## Walkthrough
+## Story
 
-1. Open **Animate** with the woodshed. Isolate a roof section, inspect it, then restore the assembly. Show the camera controls and explosion/reassembly.
-2. Preview and apply an existing chat edit. Use the saved Blender window result to show a real opening and Undo; this does not need another model request.
-3. Choose **Fit animation**, play the sequence, then **Render previs**. Check the assembled first/last frames, wall orientation, clipping and steady camera distance. The MP4 opens in **Finish**.
-4. Add appearance instructions and references. Show preparation and the cost confirmation. Stop before paid submission during rehearsal.
-5. Open the existing woodshed, PTZ or combine pair. Play Split and Breathe to show the source/result difference. Be candid about any generated drift.
-6. Open **Library** to revisit a saved take.
+Physical AI needs usable digital models of products, machines and environments. Preparing and updating those models involves specialist work. Blackblend explores how agents can help people inspect, revise and reuse assemblies, beginning with visual explanations.
 
-A rendered Blender MP4 can also enter at step 3 through **Start with… → Import Blender animation**. Keep the existing demo video as a fallback. No new paid run is needed for recording or judging.
+The first customer hypothesis is a design studio or engineering team with an existing assembly and a product to explain. The proposed business combines workspace subscriptions, separately priced execution and scoped expert support. Pilot projects must establish demand, time saved, correction effort and total cost per accepted deliverable.
 
-## What to explain
+Agentic CAD is the authoring direction; richer assemblies can support later engineering and digital-twin workflows. Simulation, robot control and connected twins need additional capabilities and validation. The demo proves the current visualization workflow.
 
-The 3D source controls the intended parts and motion. Chat helps edit the scene; Blender handles the supported window cut. The video model adds a visual treatment. The comparison keeps changes visible.
+## Walkthrough: about 2½ minutes
 
-The current customer is a designer, agency or engineering team with an existing model to explain. A subscription plus generation usage and optional expert production are business ideas to test. Measure time and cost per approved video, including failures and correction work.
+| Time | Show | Explain |
+| --- | --- | --- |
+| 0–20s | Existing woodshed source/result comparison | The physical-AI opportunity begins with digital models people and agents can use. Blackblend starts with inspecting, editing and explaining an assembly. |
+| 20–40s | Inspect and isolate parts; show the complete model | A design or engineering team already has geometry. Turning it into a useful explanation involves preparation, motion and review. |
+| 40–70s | Existing chat proposal; Preview, Apply and Undo if the saved result is available | Supported changes are inspectable and reversible. The native window result demonstrates a bounded Blender edit. General authoring remains on the roadmap. |
+| 70–95s | Scrub explosion/reassembly and show the source animation in Finish | The user directs the camera and motion. An MP4 rendered in Blender can also enter here. Show browser export only if rehearsed. |
+| 95–115s | Existing generated result; Split and Breathe | The AI treatment can change parts or motion. Compare it against the source. This is an existing result; no paid request is needed. |
+| 115–135s | PTZ/combine comparison, then the same project | The customer hypothesis is repeated work from existing assemblies. Explain subscription, execution usage and scoped expert services; commercial billing is not enabled. |
+| 135–150s | Product/roadmap page | Next: broader agent editing and dependable revisions, then engineering reuse and simulation-ready assets. The current prototype demonstrates the first application. |
 
-General CAD import, photo-to-CAD reconstruction, arbitrary Blender scripting, fabrication drawings and a Tenstorrent port are future work. The hosted tools are restricted to approved accounts; customer billing remains disabled. The examples are not structurally verified designs.
+The existing [YouTube video](https://www.youtube.com/watch?v=-E_kNycUh-M) remains a fallback until a replacement has been recorded, uploaded and checked. The silent comparison reel supports the walkthrough; it is not a recording of the UI.
+
+## Recording boundaries
+
+- Use existing scenes, proposals and generated footage. Do not submit chat or paid jobs during recording or rehearsal.
+- Rehearse saved Preview, Apply and Undo before recording; if the saved result is unavailable, describe the supported operation without staging a new success.
+- Check assembled first/last poses, wall orientation, clipping and constant camera distance if exporting again.
+- Keep private files, account settings, keys, provider URLs and billing details off screen.
+- Keep the stack explanation brief. The [architecture guide](architecture.md) covers implementation; the [product guide](product.md) separates current capabilities from the roadmap.
 
 ## Release checklist
 
@@ -33,4 +44,4 @@ General CAD import, photo-to-CAD reconstruction, arbitrary Blender scripting, fa
 
 ## Submission source
 
-This snapshot follows the reviewed release recorded in `SUBMISSION-SOURCE.json`. Public source updates include the current docs and viewer regressions; private geometry and job records remain excluded. Use the existing demo video as a fallback. Recording and rehearsal need no new paid generation.
+This snapshot follows the reviewed release recorded in `SUBMISSION-SOURCE.json`. Private geometry and job records remain excluded. The demo script leads with the physical-AI opportunity and demonstrates the existing visualization workflow. Recording and rehearsal need no new paid generation.
