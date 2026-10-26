@@ -10,6 +10,7 @@ type Props = {
   result: string;
   sourcePoster?: string;
   resultPoster?: string;
+  openingTime?: number;
   storageKey?: string;
   resultLabel?: string;
   hero?: boolean;
@@ -41,6 +42,7 @@ export default function Comparison({
   result,
   sourcePoster,
   resultPoster,
+  openingTime = 0,
   storageKey = "preview",
   resultLabel = "AI VARIANT",
   hero = false,
@@ -50,7 +52,7 @@ export default function Comparison({
   const root = useRef<HTMLDivElement>(null);
   const reducedMotion = useRef(false);
   const autoStarted = useRef(false);
-  const mixPhase = useRef(0);
+  const mixPhase = useRef(openingTime > 0 ? -0.25 : 0);
   const [breathing, setBreathing] = useState(hero);
   const [fullscreenTarget, setFullscreenTarget] = useState<HTMLElement | null>(null);
   const fullscreen = fullscreenTarget !== null;
@@ -63,6 +65,7 @@ export default function Comparison({
   const [settings, setSettings] = useState<Settings>({
       ...defaults,
       mode: hero ? "blend" : "split",
+      reveal: hero && openingTime > 0 ? 6 : defaults.reveal,
     }),
     [playing, setPlaying] = useState(false),
     [position, setPosition] = useState(0),
@@ -142,6 +145,32 @@ export default function Comparison({
       b.current?.pause();
     };
   }, [source, result]);
+  useEffect(() => {
+    if (openingTime <= 0) return;
+    const source = a.current,
+      result = b.current;
+    if (!source || !result) return;
+    let primed = false;
+    const prime = () => {
+      if (primed || !(source.duration > 0) || !(result.duration > 0)) return;
+      primed = true;
+      const time = clamp(openingTime, 0, Math.max(0, source.duration - 0.04));
+      source.currentTime = time;
+      result.currentTime = clamp(
+        (time / source.duration) * result.duration,
+        0,
+        Math.max(0, result.duration - 0.04),
+      );
+    };
+    source.addEventListener("loadedmetadata", prime);
+    result.addEventListener("loadedmetadata", prime);
+    // Cached media may have loaded before React attached its handlers.
+    prime();
+    return () => {
+      source.removeEventListener("loadedmetadata", prime);
+      result.removeEventListener("loadedmetadata", prime);
+    };
+  }, [source, result, openingTime]);
   const target = (time: number, durationA: number, durationB: number) =>
     clamp(
       (profile === "ptz"
@@ -424,7 +453,7 @@ export default function Comparison({
       <div className={`compare-canvas mode-${mode}`}>
         <video
           ref={b}
-          src={result}
+          src={openingTime > 0 ? `${result}#t=${openingTime}` : result}
           poster={resultPoster}
           muted
           playsInline
@@ -445,7 +474,7 @@ export default function Comparison({
         >
           <video
             ref={a}
-            src={source}
+            src={openingTime > 0 ? `${source}#t=${openingTime}` : source}
             poster={sourcePoster}
             muted
             playsInline
@@ -459,7 +488,7 @@ export default function Comparison({
             }}
             onEnded={() => {
               if (hero && wanted.current) {
-                seek(0);
+                seek(a.current?.duration ? (openingTime / a.current.duration) * 1000 : 0);
                 void start();
                 return;
               }

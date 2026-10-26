@@ -1897,44 +1897,45 @@ footer > span {
   flex-shrink: 0;
 }
 .perspective-page {
-  max-width: 1180px;
+  max-width: 1000px;
   margin: auto;
-  padding: 60px 28px 100px;
+  padding: 36px 32px 72px;
+}
+.perspective-page article {
+  max-width: 680px;
+  margin: 64px auto 0;
 }
 .perspective-page h1 {
-  font:
-    clamp(42px, 7vw, 84px)/1.05 Georgia,
-    serif;
-  margin: 60px 0 24px;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin: 0 0 24px;
 }
 .perspective-page .intro {
-  max-width: 720px;
-  font-size: 19px;
-  line-height: 1.7;
-  color: #b1b7ad;
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.5;
+  margin: 0 0 40px;
 }
-.perspective-page figure {
-  margin: 64px 0;
+.perspective-page article section {
+  margin: 0 0 30px;
 }
-.perspective-page figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+.perspective-page h2 {
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
 }
-.perspective-page figcaption {
-  margin-top: 14px;
-  color: #90988b;
-  font-size: 12px;
-  line-height: 1.7;
+.perspective-page p {
+  color: #b7bcb5;
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 0;
 }
-.perspective-page .sources {
-  border-top: 1px solid var(--line);
-  padding-top: 24px;
-  color: #90988b;
-  font-size: 13px;
-  line-height: 1.8;
+.perspective-page article > .text-link {
+  margin-top: 8px;
 }
 @media (max-width: 800px) {
   .agency-section {
@@ -1964,9 +1965,6 @@ footer > span {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-}
-.perspective-page > .eyebrow {
-  margin-top: 80px;
 }
 .perspective-page .sources a {
   color: #dce6b1;

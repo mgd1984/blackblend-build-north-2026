@@ -99,6 +99,7 @@ export default function Home() {
               result="/media/woodshed-hero-result.mp4"
               sourcePoster="/media/woodshed-source-poster.webp"
               resultPoster="/media/woodshed-result-poster.webp"
+              openingTime={2.2}
               resultLabel="AI treatment"
               hero
             />

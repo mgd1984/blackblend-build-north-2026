@@ -59,4 +59,4 @@ The woodshed, PTZ rig, combine and earlier visualization experiments predate Bui
 
 The public repository is a source snapshot. Its README records the snapshot date and source revision. Private models, photos and credentials are excluded. Third-party notices remain with their code.
 
-Snapshot: 25 October 2026 · source revision `4e6b5c661ab53b7a5186bdf38d2d281ea5382160`.
+Snapshot: 25 October 2026 · source revision `e05bc53410bd68f597c93ac77b7665aa4694f59c`.
