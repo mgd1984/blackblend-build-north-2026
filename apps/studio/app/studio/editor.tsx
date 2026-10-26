@@ -430,7 +430,7 @@ function EditorCore({
       <main className="flow-page">
         <div className="workspace-heading">
           <div>
-            <span className="workbench-section">02 / FINISH · Saved take</span>
+            <span className="workbench-section">Saved take</span>
             <h1>
               {flow
                 ? (briefs.find((b) => b.id === flow.briefId)?.title ?? "Project")

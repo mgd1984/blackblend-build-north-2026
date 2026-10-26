@@ -1,27 +1,25 @@
 # Blackblend
 
-A workspace for agent-assisted physical design. Inspect assemblies, review scene edits and turn authored motion into product video.
+**Design, in motion.** Turn a 3D assembly into a product film, with agent-assisted editing and source-to-result comparison.
 
-Physical AI creates new uses for digital models of products, machines and environments. Blackblend starts with product visualization; broader agent authoring, engineering reuse and digital-twin preparation are the roadmap. See the [product guide](docs/product.md) for current capabilities and the business hypothesis.
+[Open Studio](https://blackblend-studio.mgd1984.workers.dev/studio) · [Watch the demo](https://youtu.be/BZyJ6gSjerM) · [Public source](https://github.com/mgd1984/blackblend-build-north-2026)
 
-[Open Studio](https://blackblend-studio.mgd1984.workers.dev/studio) · [Demo video](https://www.youtube.com/watch?v=-E_kNycUh-M) · [Walkthrough](docs/demo.md) · [Architecture](docs/architecture.md)
+![Woodshed assembly rendered in Blender](apps/studio/public/media/woodshed-assembly.webp)
 
-## Try it
+## From assembly to film
 
-1. **Animate:** inspect an assembly, isolate parts, and choose camera and explosion/reassembly motion. Detailed model examples require the operator's private geometry; published comparison films can be viewed without it.
-2. **Render previs:** export an MP4 from the browser, or import an animation rendered in Blender.
-3. **Finish:** add appearance instructions and reference images. Paid generation requires an approved account and a displayed price confirmation.
-4. **Compare:** play the original and AI result together using Split, Blend or Breathe. Saved takes live in the Library.
+1. **Inspect** — select, isolate and explore the parts of an assembly.
+2. **Animate** — direct the camera, explosion and reassembly; export a preview video or import a Blender animation.
+3. **Finish** — add reference images and visual direction, then confirm the price to generate a treatment.
+4. **Compare** — play source and result together to review what changed.
 
-Chat proposes scene changes for Preview, Apply and Undo. A restricted Blender tool makes a real rectangular window cut. General Blender scripting is a separate local experiment, excluded from this release. Generated video can change shape or motion; comparison helps people inspect those changes. Customer billing is not enabled.
+The examples include a woodshed, a PTZ camera rig and a Massey-Harris combine. Published comparison videos are available without a paid request. Detailed native models are private; a local checkout without them loads a labelled concept scene.
 
-## Stack
-
-One vinext/React/TypeScript Studio, Three.js, Tailwind/shadcn/Radix, Clerk sign-in, and Cloudflare Workers with owner-scoped D1/R2 storage. Sol uses the OpenAI Agents SDK for scene proposals. The fixed window tool runs in offline OpenAI-hosted Blender 5.1; fal supplies the animation-conditioned video treatment. Stripe/Metronome adapters remain sandbox-only and inactive.
+Chat edits can be previewed, applied and undone. The hosted Blender integration turns an agent-requested geometry change into a saved, editable model revision. The roadmap extends this workflow to broader agentic CAD, engineering review and digital twins.
 
 ## Run locally
 
-Use Node 22 LTS or 24+, with ffmpeg/ffprobe for media tests:
+Use Node 22 LTS or 24+, with ffmpeg and ffprobe for media tests:
 
 ```sh
 npm ci
@@ -29,7 +27,7 @@ npm run db:local
 npm run dev
 ```
 
-Open http://127.0.0.1:4331. The tests use synthetic fixtures and mocked providers; they need no private models or paid requests.
+Open http://127.0.0.1:4331. [Setup](docs/setup.md) covers Clerk configuration, private storage and provider access.
 
 ```sh
 npm run format:check
@@ -39,14 +37,26 @@ npm run build
 npm run check:dependencies
 ```
 
-For your own deployment, replace the D1, Clerk and application-origin placeholders in `apps/studio/wrangler.jsonc`. Set your own Clerk publishable identifier as `VITE_CLERK_PUBLISHABLE_KEY` in an ignored `apps/studio/.env.standalone.local` or your build environment. Provider secrets belong in Keychain or Worker secrets. See [setup](docs/setup.md), [Studio controls](docs/studio.md), [Blender](docs/blender.md) and [billing](docs/billing.md).
+Tests use synthetic scenes and mocked providers. These commands do not deploy or purchase generation.
 
-## Submission provenance
+## Stack
 
-This public repository is the audited Build North source snapshot of release `c0587058746cae72d2726426eeb1e40aed02fdad` (reviewed PR head `3255da5`), merged on 25 October 2026. It has its own public history. Development and full recovery history remain in the private Blackblend repository. Public snapshots are refreshed deliberately after review; they do not follow private pushes automatically. `SUBMISSION-SOURCE.json` records source hashes, exclusions and publication changes.
+React, TypeScript and vinext; Three.js and browser MP4 encoding; Clerk authentication; Cloudflare Workers, D1 and R2; OpenAI Agents SDK for scene proposals and hosted Blender execution; fal for animation-conditioned video generation. Paid tools are restricted to approved accounts. Customer billing is not enabled.
 
-The woodshed, PTZ and combine assets and earlier visualization experiments predate the hackathon software. During Build Week, development built and consolidated the Studio, browser animation capture, review/comparison, account boundaries and hosted agent/generation workflow, using AI coding assistance. Earlier model and video work is disclosed as demonstration input. Clerk provides identity; server-side checks enforce access to each user's projects and files.
+## Guides
 
-Published demonstration encodes are included. Native CAD/Blender models, personal photos, provider result URLs, credentials, account data and run receipts are excluded. Historical strategy graphics and private operational notes are omitted. Application source, tests, migrations, lockfile and retained third-party licenses are included. The retained desktop test waits for its completed receipt before restarting; application behavior matches the release.
+- [Studio](docs/studio.md) — parts, camera, animation and comparison
+- [Product](docs/product.md) — customer, business model and roadmap
+- [Architecture](docs/architecture.md) — application and service boundaries
+- [Setup](docs/setup.md) — development, deployment and credentials
+- [Blender](docs/blender.md) — native editing and validation
+- [Billing](docs/billing.md) — sandbox integration
+- [Demo](docs/demo.md) — a short walkthrough
 
-Project source is published for review; this snapshot grants no additional project license. Third-party license notices remain in their source directories.
+## Build North
+
+The woodshed, PTZ rig, combine and earlier visualization experiments predate Build Week. The submission builds and consolidates the Studio, browser animation capture, scene proposals, comparison, account protection and hosted generation workflow around those assets. OpenAI Codex assisted development; AI-assisted imagery and video are identified in the media notes. Clerk provides session identity, with server-side checks protecting each account’s projects and files.
+
+The public repository is a source snapshot. Its README records the snapshot date and source revision. Private models, photos and credentials are excluded. Third-party notices remain with their code.
+
+Snapshot: 25 October 2026 · source revision `4e6b5c661ab53b7a5186bdf38d2d281ea5382160`.

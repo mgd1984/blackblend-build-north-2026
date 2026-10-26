@@ -24,7 +24,7 @@ Without private model exports, Studio uses a labelled concept woodshed. Adding a
 
 Run `npm run format` before committing, then `npm run format:check` to verify it. CI runs the same check. Prettier is pinned at the root and uses a 100-column target; editor integrations read `.prettierrc.json`.
 
-The commands cover our JavaScript, TypeScript, styles and configuration. They exclude generated output, migration metadata, the lockfile and vendored code. Python and Swift keep their current formatting. Avoid mixing behavior changes into the initial formatting commit.
+The commands cover owned JavaScript, TypeScript, styles and configuration. They exclude generated output, migration metadata, the lockfile and vendored code. Python and Swift keep their current formatting.
 
 ## Check a build
 
@@ -136,6 +136,6 @@ Work in the private repository. Check a PR before merging; Cloudflare builds and
 
 Release builds must come from a committed tree with no tracked changes. Check `/api/version` locally and on the deployed app after startup/deployment; it exposes only the commit and development/release mode. Builds never apply remote migrations. Migrations through `0007_openai_native_receipts.sql` are required for the current hosted features.
 
-The public hackathon repository is a separately reviewed source copy. It does not follow private pushes automatically. Refresh it deliberately if the submitted demo changes, exclude private history/data/models/secrets, and record the originating commit. The first copy used placeholders for production resource IDs. There is no automatic publication command yet.
+The public hackathon repository is a separately reviewed source copy. It does not follow private pushes automatically. Refresh it deliberately if the submitted demo changes, exclude private history/data/models/secrets, and record the originating commit. Public copies use placeholders for deployment resource IDs.
 
 Customer billing remains disabled; see [billing](billing.md) before connecting a sandbox or selling access. A connected Stripe tool or dashboard session does not configure Worker credentials.

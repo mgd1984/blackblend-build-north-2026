@@ -6,7 +6,20 @@ import Providers from "./providers";
 export const metadata: Metadata = {
   title: "Blackblend — Design, in motion.",
   description:
-    "A workspace for agent-assisted physical design. Inspect assemblies, review scene edits and direct product animations. Building toward engineering and digital-twin workflows.",
+    "Turn a 3D assembly into a product film. Inspect parts, direct motion and compare AI treatments with the original. Agent-assisted design, in one Studio.",
+  openGraph: {
+    title: "Blackblend — Design, in motion.",
+    description: "Turn a 3D assembly into a product film.",
+    images: [
+      {
+        url: "/media/woodshed-assembly.webp",
+        width: 1600,
+        height: 900,
+        alt: "Exploded woodshed assembly, rendered in Blender",
+      },
+    ],
+    type: "website",
+  },
   metadataBase: new URL("https://blackblend-studio.mgd1984.workers.dev"),
 };
 export default function Layout({ children }: { children: React.ReactNode }) {

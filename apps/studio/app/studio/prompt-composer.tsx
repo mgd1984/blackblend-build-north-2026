@@ -283,10 +283,7 @@ export default function PromptComposer({
           {busy ? <LoaderCircle size={18} className="scene-spin" /> : <ArrowUp size={16} />}
         </Button>
       </div>
-      <p
-        className={enterToSend ? "sr-only" : "mt-2 text-center text-[10px] text-muted-foreground"}
-        id={id + "-hint"}
-      >
+      <p className="sr-only" id={id + "-hint"}>
         {enterToSend
           ? "Enter to send · Shift + Enter for a new line"
           : "⌘ / Ctrl + Enter to continue"}

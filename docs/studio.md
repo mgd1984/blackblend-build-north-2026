@@ -79,4 +79,4 @@ These are visualization models with assumed dimensions. Browser materials simpli
 
 With explicit approval for paid compute, ask: “Cut a real window in the rear wall, 0.8 m wide and 0.7 m high, sill 1 m, offset +0.85 m.” Preview before applying. Undo restores the previous model; the opening stays with its wall during explosion and reassembly. The Blender file can be downloaded before or after Apply.
 
-This tool supports rectangular cuts in the woodshed. Filling openings, maze cuts and arbitrary mesh edits are unsupported. It adds visual trim, not verified structural framing. Use the existing successful result for rehearsal. See [Blender](blender.md) for execution, checks and recovery.
+This tool supports rectangular cuts in the woodshed. Filling openings, maze cuts and arbitrary mesh edits are unsupported. It adds visual trim, not verified structural framing. See [Blender](blender.md) for execution, checks and recovery.

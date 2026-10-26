@@ -15,7 +15,7 @@ The physical-AI roadmap builds on these responsibilities: richer model editing, 
 | Cloudflare D1 | Store projects, scenes, takes and job records | `db/schema.ts`, `drizzle/` |
 | Cloudflare R2 | Store private models, references and videos | Storage calls in `lib/` and `app/api/` |
 | OpenAI Agents SDK and Sol | Read scene details and propose supported edits | `lib/scene-agent-runner.ts` |
-| OpenAI hosted shell and Blender 5.1 | Run the fixed window tool in a temporary container | `lib/openai-blender.ts`, `lib/hosted-geometry.ts` |
+| OpenAI hosted shell and Blender 5.1 | Execute a geometry edit and export model revisions | `lib/openai-blender.ts`, `lib/hosted-geometry.ts` |
 | fal | Generate a visual treatment from animation and reference images | `lib/generation-service.ts`, `lib/fal-queue.ts` |
 | Optional desktop service | Use local Blender files, Keychain and approved jobs on a Mac | Root `server.mjs`, `workflow.mjs`, `blender/` |
 
@@ -45,8 +45,6 @@ The scene document stores part changes, camera, animation settings and the selec
 
 ## Billing and deployment
 
-D1 stores usage awaiting delivery. Metronome is intended to price it; Stripe would collect payment. Current code supports sandbox tests only, with no active billing schedule or customer spending permission. See [billing](billing.md).
+D1 stores usage awaiting delivery. Metronome is a usage-based billing platform: it would apply pricing to generation and compute usage, supporting subscriptions with separately priced execution. Stripe would collect payment. Current code supports sandbox tests only, with no active billing schedule or customer spending permission. See [billing](billing.md).
 
 There is one root npm install, lockfile and Studio deployment. GitHub runs checks; Cloudflare builds and deploys `main`. `/api/version` reports the running commit. Building locally does not deploy.
-
-The earlier Convex app, Sites deployment and separate video-lab interface were removed. `/workflows` and `/workspace` redirect old bookmarks to Studio. Historical remote data has not been automatically deleted or migrated.

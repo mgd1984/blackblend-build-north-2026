@@ -160,7 +160,7 @@ button:disabled {
   font-size: 12px;
 }
 .hero {
-  padding-top: 45px;
+  padding-top: 24px;
 }
 .hero-kicker,
 .eyebrow {
@@ -321,8 +321,8 @@ button:disabled {
 }
 .statement {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
 }
 .statement h2 {
   font-size: clamp(32px, 3.7vw, 52px);
@@ -333,6 +333,9 @@ button:disabled {
   color: #bec3b7;
   font-size: 16px;
 }
+.statement > div > p + p {
+  margin-top: 20px;
+}
 .statement .quiet {
   font-size: 13px;
   color: #838e79;
@@ -340,7 +343,7 @@ button:disabled {
 }
 .section-head {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-bottom: 54px;
 }
@@ -352,6 +355,39 @@ button:disabled {
   color: var(--muted);
   font-size: 14px;
   margin-top: 0;
+}
+.section-head > h2:only-child {
+  grid-column: 1 / -1;
+}
+.study-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.study-grid figure {
+  margin: 0;
+  min-width: 0;
+}
+.study-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: #090b0c;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.study-grid figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  color: #b2b7ae;
+  font-size: 12px;
+}
+.study-grid figcaption span:last-child {
+  color: #93988e;
 }
 .steps {
   display: grid;
@@ -1002,6 +1038,7 @@ footer > span {
   }
   .statement,
   .section-head,
+  .study-grid,
   .faq,
   .agent-grid {
     grid-template-columns: 1fr;

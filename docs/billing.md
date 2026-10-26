@@ -1,8 +1,8 @@
 # Billing
 
-**Customer billing is not enabled.** The code records usage and supports a Stripe/Metronome sandbox. It has not created or sent a real invoice, payment or usage event, and no billing schedule is active.
+**Sandbox integration.** Blackblend records usage for Stripe/Metronome testing. Customer charging and scheduled billing delivery are disabled.
 
-The intended jobs are simple: Blackblend records completed work; Metronome calculates its price using a contract and rate card; Stripe collects payment. Clerk identifies the user, and a server-side mapping selects that user's billing accounts. D1 does not hold a second credit wallet.
+Blackblend records completed work. Metronome is a usage-based billing platform that would turn those records into charges using customer pricing agreements. Stripe would collect payment. This fits a workspace subscription with separate generation and compute charges. Clerk identifies the user, and a server-side mapping selects that user's billing accounts. D1 does not hold a second credit wallet.
 
 ## Existing code
 

@@ -3,12 +3,12 @@ import Link from "next/link";
 import { usePageTools } from "../lib/webmcp";
 import { z } from "zod";
 import Comparison from "./studio/comparison";
-import { ArrowUpRight, ArrowRight, Check, Plus } from "lucide-react";
+import { ArrowUpRight, Check, Plus } from "lucide-react";
 const steps = [
   ["01", "Start", "Open the woodshed model or bring a rendered Blender animation."],
-  ["02", "Animate", "Direct the camera and assembly motion, then render a previs."],
-  ["03", "Finish", "Choose materials, lighting and references. Approve the generation price."],
-  ["04", "Compare", "Check the generated take against the source and download your result."],
+  ["02", "Animate", "Set the camera, separate the parts and export a preview animation."],
+  ["03", "Finish", "Add a visual direction and reference images. Confirm the price to generate."],
+  ["04", "Compare", "Play source and result together. Choose the take that tells the story."],
 ];
 export default function Home() {
   usePageTools([
@@ -62,7 +62,6 @@ export default function Home() {
           <Link href="#workflow">Workflow</Link>
           <Link href="#agencies">For teams</Link>
           <Link href="/perspective">Our approach</Link>
-          <Link href="#agents">For agents</Link>
         </nav>
         <Link className="nav-cta" href="/studio">
           Open studio <ArrowUpRight size={15} />
@@ -70,9 +69,6 @@ export default function Home() {
       </header>
       <main id="main">
         <section className="hero wrap">
-          <div className="hero-kicker">
-            <span className="live-dot" /> AGENT-ASSISTED PHYSICAL DESIGN <span>EARLY ACCESS</span>
-          </div>
           <div className="hero-title">
             <h1>
               Design,
@@ -85,15 +81,13 @@ export default function Home() {
                 <br />
                 Show how it fits.
               </p>
-              <span>INSPECT → DIRECT → REVIEW</span>
             </div>
           </div>
           <div className="hero-bottom">
             <p>
-              Work through physical designs with an agent.
+              Turn a 3D assembly into a product film.
               <br />
-              Start with an assembly. Inspect its parts, direct the motion and review an AI-finished
-              film.
+              Direct the parts, motion and finish in one workspace.
             </p>
             <Link className="cta" href="/studio">
               Open studio <ArrowUpRight size={17} />
@@ -103,37 +97,36 @@ export default function Home() {
             <Comparison
               source="/media/woodshed-hero-source.mp4"
               result="/media/woodshed-hero-result.mp4"
-              resultLabel="GENERATED / FAL"
+              sourcePoster="/media/woodshed-source-poster.webp"
+              resultPoster="/media/woodshed-result-poster.webp"
+              resultLabel="AI treatment"
               hero
             />
           </div>
           <div className="film-caption">
             <span>Woodshed · assembly study</span>
-            <span>Previs → generated take · drag to compare</span>
+            <span>Source animation + AI treatment</span>
           </div>
         </section>
         <section className="statement wrap section">
-          <p className="eyebrow">THE PHYSICAL AI OPPORTUNITY</p>
+          <h2>
+            The design is there.
+            <br />
+            Bring it to life.
+          </h2>
           <div>
-            <h2>
-              Physical products.
-              <br />
-              Digital possibilities.
-            </h2>
             <p>
-              Agents need usable digital models to help with physical products. Blackblend is
-              building a shared workspace for inspecting assemblies, directing changes and carrying
-              that work into visual explanations, engineering and digital-twin preparation.
+              A product model holds the details that make it work. Turning those details into a
+              clear visual story takes another set of tools, skills and decisions.
             </p>
-            <p className="quiet">
-              Working today: assembly inspection, supported scene edits, animation and video
-              comparison. Broader CAD editing and simulation remain on the roadmap.
+            <p>
+              Blackblend brings assembly inspection, agent-assisted edits, animation and video
+              finishing together. The original stays beside each generated take for review.
             </p>
           </div>
         </section>
         <section id="workflow" className="workflow wrap section">
           <div className="section-head">
-            <p className="eyebrow">THE WORKFLOW</p>
             <h2>From model to product film.</h2>
           </div>
           <div className="steps">
@@ -147,40 +140,73 @@ export default function Home() {
           </div>
           <div className="proof">
             <div className="proof-copy">
-              <span className="eyebrow">ALSO IN THE STUDIO</span>
               <h3>
                 Inspect the
                 <br />
                 source.
               </h3>
               <p>
-                A native Blender animation alongside its generated treatment. Drag the reveal to
-                compare the same motion.
+                From mechanical detail to a finished shot. Compare the PTZ rig’s Blender animation
+                with its AI treatment.
               </p>
-              <small>PTZ camera rig · matched motion + adaptive framing.</small>
             </div>
             <div className="ptz-comparison">
               <Comparison
                 source="/media/ptz-compare-source.mp4"
                 result="/media/ptz-compare-result.mp4"
-                resultLabel="GENERATED / FAL"
+                resultLabel="AI treatment"
                 profile="ptz"
                 hero
               />
             </div>
           </div>
         </section>
+        <section className="assembly-studies wrap section" aria-labelledby="studies-title">
+          <div className="section-head">
+            <h2 id="studies-title">Every part tells a story.</h2>
+            <p>Construction, mechanisms and the relationships between them.</p>
+          </div>
+          <div className="study-grid">
+            <figure>
+              <img
+                src="/media/woodshed-assembly.webp"
+                width="1600"
+                height="900"
+                loading="lazy"
+                decoding="async"
+                alt="Native woodshed render with the roof, walls and timber extension separated into assembly layers"
+              />
+              <figcaption>
+                <span>Woodshed</span>
+                <span>Native Blender render</span>
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="/media/ptz-concept.webp"
+                width="1440"
+                height="960"
+                loading="lazy"
+                decoding="async"
+                alt="Exploded PTZ mechanism study with brushed metal plates, shafts, belts and motors on an obsidian background"
+              />
+              <figcaption>
+                <span>PTZ mechanism</span>
+                <span>AI concept study</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
         <section id="agencies" className="agency-section wrap section">
           <div className="agency-heading">
-            <p className="eyebrow">FOR DESIGN & ENGINEERING TEAMS</p>
             <h2>
               Put your models
               <br />
               <em>to work.</em>
             </h2>
             <p>
-              Start with a product film or assembly explanation. For more involved work, scope an
-              expert engagement around your model, design questions and production workflow.
+              For design agencies and product teams explaining something complex. Work in Studio,
+              commission a film, or bring Blackblend into the design process.
             </p>
             <Link className="text-link" href="/studio">
               Explore the Studio <ArrowUpRight size={17} />
@@ -212,56 +238,46 @@ export default function Home() {
                 </div>
               </article>
             ))}
-            <p className="fine">
-              Scope, confidentiality, client relationships and source-file delivery agreed per
-              project.
-            </p>
           </div>
         </section>
         <section id="digital-twins" className="twin-section section">
           <div className="wrap">
             <div className="twin-heading">
-              <p className="eyebrow">BUILDING TOWARD PHYSICAL AI</p>
               <h2>
-                From a model
+                A foundation for
                 <br />
-                <em>to useful understanding.</em>
+                <em>agentic design.</em>
               </h2>
               <p>
-                The opportunity is to make digital models easier to prepare, update and reuse. Our
-                roadmap extends from visual explanations to engineering review, simulation
-                preparation and digital twins.
+                Physical AI needs models that describe how things fit, move and behave.
+                Visualization is our starting point. The next steps are broader model editing,
+                reusable assembly knowledge and preparation for simulation and digital twins.
               </p>
             </div>
             <ol className="twin-path">
               <li>
-                <span>01 / TODAY</span>
                 <h3>Visualize.</h3>
-                <p>Prepared scenes, directed motion and reviewed takes.</p>
+                <p>Available today: inspect assemblies, direct motion and compare takes.</p>
               </li>
               <li>
-                <span>02 / PROPOSED</span>
                 <h3>Reuse.</h3>
                 <p>
-                  Richer assembly relationships, reviewed revisions and technical documentation.
+                  Next: preserve part relationships across revisions and technical explanations.
                 </p>
               </li>
               <li>
-                <span>03 / RESEARCH</span>
                 <h3>Simulate.</h3>
-                <p>Interoperable scenes, physical behavior and validated tests.</p>
+                <p>Research: exchange scenes with physical properties and tested behavior.</p>
               </li>
               <li>
-                <span>04 / LONGER TERM</span>
                 <h3>Connect.</h3>
-                <p>Link a physical asset to maintained operational data.</p>
+                <p>Longer term: link the model to data from the physical asset.</p>
               </li>
             </ol>
             <div className="twin-footnote">
               <p>
-                Simulation needs physical properties and tested behavior. Connected twins also need
-                maintained data from the physical asset. OpenUSD and NVIDIA Omniverse are potential
-                integration paths; these capabilities are future work.
+                Simulation and connected twins are future capabilities. Each needs validation beyond
+                a visual model.
               </p>
               <Link className="text-link" href="/perspective">
                 Explore the direction <ArrowUpRight size={17} />
@@ -271,7 +287,6 @@ export default function Home() {
         </section>
         <section id="ways" className="offers wrap section">
           <div className="section-head">
-            <p className="eyebrow">THREE WAYS TO WORK</p>
             <h2>Choose your level of support.</h2>
             <p>
               Use the workspace, commission a visual explanation or scope expert design support.
@@ -281,14 +296,13 @@ export default function Home() {
             {[
               {
                 name: "Studio",
-                tag: "SELF-DIRECTED",
                 title: "Your model, in motion.",
                 price: "$49",
-                unit: "CAD / month · proposed",
+                unit: "CAD / month",
                 copy: "Inspect assemblies, direct supported edits and compare visual results.",
                 items: [
                   "Browser animation and Blender video input",
-                  "Source review and take records",
+                  "Agent-assisted scene edits",
                   "Synchronized video comparison",
                   "Source-linked project records",
                 ],
@@ -298,10 +312,9 @@ export default function Home() {
               },
               {
                 name: "Production",
-                tag: "EXPERT-ASSISTED",
                 title: "A finished film.",
                 price: "From $1,500",
-                unit: "CAD / project · proposed",
+                unit: "CAD / project",
                 copy: "Commission a film or bring us into your agency’s production team.",
                 items: [
                   "Source and shot planning",
@@ -315,10 +328,9 @@ export default function Home() {
               },
               {
                 name: "Engineering & Design",
-                tag: "HANDS-ON REVIEW",
                 title: "Work through the details.",
                 price: "$750",
-                unit: "CAD / review · proposed",
+                unit: "CAD / review",
                 copy: "Work through an assembly or establish an AI-assisted design workflow.",
                 items: [
                   "One assembly, scoped review",
@@ -332,10 +344,7 @@ export default function Home() {
               },
             ].map((tier) => (
               <article key={tier.name}>
-                <div className="offer-label">
-                  {tier.name}
-                  <span>{tier.tag}</span>
-                </div>
+                <div className="offer-label">{tier.name}</div>
                 <h3>{tier.title}</h3>
                 <div className="tier-price">
                   {tier.price}
@@ -359,58 +368,12 @@ export default function Home() {
             ))}
           </div>
           <p className="fine pricing-note">
-            Pricing preview · Packages are being tested during early access. Subscriptions and
-            service checkout are planned. Open Studio to explore the working prototype.
+            Proposed early-access pricing. Generation is charged separately. Subscriptions and
+            service checkout are not yet available.
           </p>
-        </section>
-        <section id="agents" className="agent-section section">
-          <div className="wrap agent-grid">
-            <div>
-              <p className="eyebrow">WORK FROM CHAT</p>
-              <h2>
-                Describe. Inspect.
-                <br />
-                Refine.
-              </h2>
-              <p>
-                Ask for a supported scene change, inspect the proposal and apply it when ready.
-                Direct the animation in Studio, then use references to explore a visual treatment.
-              </p>
-              <Link href="/studio" className="text-link">
-                Open studio <ArrowRight size={17} />
-              </Link>
-            </div>
-            <div className="agent-console">
-              <div className="console-top">
-                <span className="live-dot" /> BLACKBLEND / MCP <span>AVAILABLE NOW</span>
-              </div>
-              <div className="tool-row">
-                <span>01</span>
-                <code>create_brief</code>
-                <span>Capture intent</span>
-              </div>
-              <div className="tool-row">
-                <span>02</span>
-                <code>plan_brief</code>
-                <span>Prepare preflight</span>
-              </div>
-              <div className="tool-row">
-                <span>03</span>
-                <code>get_brief</code>
-                <span>Keep context</span>
-              </div>
-              <p>Human approval before paid generation.</p>
-              <small>
-                Studio keeps your scene, animation and reviews together. Hosted tools handle scene
-                proposals, a native window edit and approved video generation. Detailed Blender
-                authoring can also run on your computer.
-              </small>
-            </div>
-          </div>
         </section>
         <section className="faq wrap section">
           <div>
-            <p className="eyebrow">PRACTICAL DETAILS</p>
             <h2>Before you start.</h2>
           </div>
           <div>
@@ -451,7 +414,6 @@ export default function Home() {
           </div>
         </section>
         <section className="closing wrap">
-          <p className="eyebrow">YOUR NEXT PROJECT</p>
           <h2>What are you building?</h2>
           <Link href="/studio" className="cta">
             Open studio <ArrowUpRight size={18} />

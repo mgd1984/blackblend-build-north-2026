@@ -8,6 +8,8 @@ import { ptzSample } from "../../lib/ptz-comparison";
 type Props = {
   source: string;
   result: string;
+  sourcePoster?: string;
+  resultPoster?: string;
   storageKey?: string;
   resultLabel?: string;
   hero?: boolean;
@@ -37,6 +39,8 @@ const clamp = (value: number, min: number, max: number) =>
 export default function Comparison({
   source,
   result,
+  sourcePoster,
+  resultPoster,
   storageKey = "preview",
   resultLabel = "AI VARIANT",
   hero = false,
@@ -421,6 +425,7 @@ export default function Comparison({
         <video
           ref={b}
           src={result}
+          poster={resultPoster}
           muted
           playsInline
           preload="metadata"
@@ -441,6 +446,7 @@ export default function Comparison({
           <video
             ref={a}
             src={source}
+            poster={sourcePoster}
             muted
             playsInline
             preload="metadata"

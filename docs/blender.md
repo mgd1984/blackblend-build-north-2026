@@ -1,6 +1,10 @@
 # Blender
 
-The current Blender tool cuts a rectangular window in the existing woodshed. It saves a new model for Preview, Apply and Undo. It does not run arbitrary Python written by the agent or verify structural framing.
+Blender is the native modeling and animation engine behind Blackblend’s agentic CAD direction. The hosted prototype takes a geometry change through execution, export and review, preserving editable source files and reversible revisions.
+
+## Current operation
+
+The first supported operation creates a rectangular opening in the woodshed and returns an updated model for Preview, Apply and Undo. Broader scripted scene authoring is the next step.
 
 ## How the hosted tool works
 
@@ -29,7 +33,7 @@ Browser part changes, camera settings and animation remain in the scene document
 - `scripts/package-openai-blender.py` packages four reviewed source files. Store the archive at private R2 key `scene-tools/blender-window-v1.zip` and keep its SHA-256 in server configuration.
 - Each job uploads the selected source and tool archive. The fixed command checks both archive hashes, runs Blender with `--disable-autoexec` and enforces a 120-second process deadline. Inputs must pass the tool's dimension limits.
 - The reported shell command must match exactly and exit successfully. An exclusive marker prevents it running twice in the same container. Customer-selected commands and generated Python are rejected.
-- The expanded runtime is removed before shell returns, including on failure, to stay within OpenAI's container file limit. The first probe exceeded that limit and its result was not recovered; it is not a verified edit.
+- The expanded runtime is removed before shell returns, including on failure, to stay within OpenAI's container file limit.
 - The 4 GiB container expires after 20 minutes of inactivity. Completed jobs request deletion after results are safely saved. Failed or uncertain jobs keep their resource IDs for investigation and expire automatically. The reusable runtime File remains until explicitly retired.
 - Worker API keys never enter the container. Account allowlists, an enable flag, one active/uncertain job per user and a rolling daily limit remain required. These count jobs, not dollars. Settings are listed in [setup](setup.md#keys-and-settings).
 
@@ -65,14 +69,12 @@ It covers a rotated wall, overlap rejection, retained glass, clear opening, trim
 4. Set server-only `OPENAI_API_KEY`, `OPENAI_BLENDER_RUNTIME_FILE_ID`, `NATIVE_TOOL_SHA256`, `AGENT_ALLOWED_OWNERS`, `NATIVE_ALLOWED_OWNERS` and `NATIVE_GEOMETRY_ENABLED=true`. Missing configuration blocks execution.
 5. Deploy and check sign-in, file ownership and access to existing results. Reuse saved files for Preview/Apply/Undo tests. A new paid edit needs explicit approval for that experiment.
 
-Cloudflare Containers is not part of this deployment. This execution path did not require upgrading the Cloudflare account. Video access and customer billing are configured separately.
+Video access and customer billing are configured separately.
 
-## Existing evidence
+## Verification
 
-General Blender scripting was tested in a separate local experiment, preserved on `codex/parked-blender-agent-2026-10-24`. It is excluded from this release. Its bay and sauna models, execution records and recovery files remain private under ignored `runs/`. The release keeps the fixed window operation described above.
+Mocked tests cover ownership, limits, duplicate starts, interrupted replies, disabled networking, command/hash checks and output validation. Native fixture tests cover the opening, trim and exported part identity. Browser checks with a saved hosted result covered Preview, Apply, Undo and stable camera framing.
 
-An authorized browser-to-container woodshed edit completed in 47.5 seconds. Preview, Apply, Undo and Redo worked with the saved files, and the container was deleted. A later fix kept the camera unchanged through those actions and sidebar resizing, using that same result without more inference.
-
-Mocked tests cover account ownership, limits, duplicate starts, interrupted replies, disabled networking, command/hash checks and output validation. The live run did not test cross-account access or every recovery case. Detailed dated results, file checks and token usage are in [Blender test notes](archive/blender-tests.md).
+These checks validate a visualization edit. They do not establish structural suitability or fabrication accuracy.
 
 Reference docs: [hosted shell](https://developers.openai.com/api/docs/guides/tools-shell), [background Responses](https://developers.openai.com/api/docs/guides/background), [Blender 5.1 downloads](https://download.blender.org/release/Blender5.1/).

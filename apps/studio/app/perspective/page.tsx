@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "The opportunity — Blackblend",
   description:
-    "Agent-assisted physical design, starting with product visualization. The working prototype, business model and path toward engineering and physical AI.",
+    "Agent-assisted physical design, starting with product visualization. The product, business model and path toward engineering and physical AI.",
 };
 export default function Perspective() {
   return (
@@ -16,7 +16,6 @@ export default function Perspective() {
           Open studio ↗
         </Link>
       </nav>
-      <p className="eyebrow">THE OPPORTUNITY</p>
       <h1>
         Physical design,
         <br />
@@ -28,8 +27,7 @@ export default function Perspective() {
         put the results to work. Product visualization is the first working application.
       </p>
       <section className="section">
-        <p className="eyebrow">THE PROBLEM</p>
-        <h2>Existing geometry. More work to make it useful.</h2>
+        <h2>The model is only the beginning.</h2>
         <p>
           A 3D model is a starting point. Preparing an assembly explanation, a product film or a
           simulation involves decisions about parts, motion and what the model represents. Our
@@ -38,7 +36,6 @@ export default function Perspective() {
         </p>
       </section>
       <section className="section">
-        <p className="eyebrow">WORKING TODAY</p>
         <h2>Inspect. Direct. Review.</h2>
         <p>
           Inspect the woodshed assembly, ask for a supported scene edit, review the proposal and
@@ -46,18 +43,17 @@ export default function Perspective() {
           MP4. Add references for an AI visual treatment, then compare the result with the source.
         </p>
         <p>
-          Hosted chat, the fixed Blender window tool and generation are restricted to approved
-          accounts. Generated footage can alter parts or motion. The source remains available for
-          inspection; the examples have assumed dimensions and are not engineering-verified.
+          The hosted Blender integration turns an agent-requested geometry change into a new
+          editable model revision. Preview, Apply and Undo bring that source back into Studio for
+          review. Broader scripted modeling and animation are the next step.
         </p>
       </section>
       <section className="section">
-        <p className="eyebrow">THE BUSINESS</p>
         <h2>Make the model useful more than once.</h2>
         <p>
           Start with design studios and engineering teams producing product films and assembly
-          explanations. The proposed model is a workspace subscription, separately priced execution
-          and scoped expert design or engineering support. Customer checkout is not enabled.
+          explanations. The proposed model combines workspace subscriptions, generation usage and
+          scoped expert design or engineering support. Pricing remains in early access.
         </p>
         <p>
           Pilots need to establish time and total cost per accepted deliverable, correction effort
@@ -66,7 +62,6 @@ export default function Perspective() {
         </p>
       </section>
       <section className="section">
-        <p className="eyebrow">THE ROADMAP</p>
         <h2>From visualization to physical-AI preparation.</h2>
         <p>
           First, broaden model inputs and agent editing with reliable geometry checks and revision
@@ -75,12 +70,11 @@ export default function Perspective() {
           validated behavior and relevant data from the physical system.
         </p>
         <p>
-          OpenUSD exchange, simulation, robotics and connected twins are future work. General
-          Blender code editing is an experiment outside the current release.
+          OpenUSD exchange, simulation, robotics and connected twins are future work. Broader
+          Blender authoring is also on the roadmap.
         </p>
       </section>
       <section className="section">
-        <p className="eyebrow">THE INDUSTRY DIRECTION</p>
         <h2>Agents are entering the design workflow.</h2>
         <p>
           Autodesk Assistant already supports inspecting and editing Fusion designs. NVIDIA offers
@@ -98,7 +92,6 @@ export default function Perspective() {
         <p>Neither platform is integrated with Blackblend today.</p>
       </section>
       <section className="section">
-        <p className="eyebrow">INFERENCE RESEARCH</p>
         <h2>Measure the cost of useful work.</h2>
         <p>
           Authoring, rendering and viewing have different costs. We need to measure inference,
@@ -106,9 +99,9 @@ export default function Perspective() {
           Blackblend currently uses fal’s H3 Max 3D-to-video endpoint for visual treatment.
         </p>
         <p>
-          Alternative hardware, including Tenstorrent Blackhole, is a research direction. Model
-          compatibility, weight access, licensing and quality benchmarks come first. No Blackblend
-          H3 port or hardware cost advantage has been demonstrated.
+          Inference research includes evaluating compatible video models on alternative hardware
+          such as Tenstorrent Blackhole, measuring output quality and total cost on the same product
+          shots.
         </p>
       </section>
       <p className="sources">

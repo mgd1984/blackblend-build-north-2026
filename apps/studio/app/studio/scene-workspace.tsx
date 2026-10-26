@@ -895,8 +895,7 @@ function SceneWorkspaceCore({
           <div>
             <h1>{scene.title}</h1>
             <span>
-              01 / ANIMATE ·{" "}
-              {scene.fidelity === "source-derived" ? "BLENDER SOURCE" : "CONCEPT MODEL"} <i /> REV{" "}
+              {scene.fidelity === "source-derived" ? "Blender source" : "Concept model"} <i /> Rev{" "}
               {String(scene.revision).padStart(2, "0")}
             </span>
           </div>
